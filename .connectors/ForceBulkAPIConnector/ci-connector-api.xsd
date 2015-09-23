@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cast Iron Systems
+  Connector API schema. 
+  Copyright 2009 Cast Iron Systems, Inc.
+  
+  Author: David Keehn
+  Version 1.0
+-->
+<xs:schema id="ci-cdk-api" version="1.0" targetNamespace="http://www.approuter.com/schemas/cdk/api/" xmlns:tns="http://www.approuter.com/schemas/cdk/api/"
+  xmlns:ccc="http://www.approuter.com/schemas/cdk/config/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+  jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.0" elementFormDefault="qualified">
+  <xs:import namespace="http://www.approuter.com/schemas/cdk/config/" schemaLocation="ci-connector-config.xsd"/>
+
+  <xs:annotation>
+    <xs:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="com.approuter.studio.connectors.cdk.api"/>
+      </jaxb:schemaBindings>
+    </xs:appinfo>
+  </xs:annotation>
+
+  <xs:complexType name="TestConnection">
+    <xs:sequence>
+       <xs:element name="endpoint" type="ccc:EndpointForm"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TestConnectionResponse">
+    <xs:sequence>
+      <xs:element name="success" type="xs:boolean"/>
+      <xs:element name="message" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ListObjects">
+    <xs:sequence>
+      <xs:element name="endpoint" type="ccc:EndpointForm"/>
+      <xs:element name="operation" type="xs:string" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ListObjectsResponse">
+    <xs:sequence>
+      <xs:element name="objectType" type="tns:ObjectType" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ObjectType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="label" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="DescribeObject">
+    <xs:sequence>
+      <xs:element name="endpoint" type="ccc:EndpointForm" minOccurs="1"/>
+      <xs:element name="objectType" type="xs:string" minOccurs="1"/>
+      <xs:element name="operation-name" type="xs:string"/>        
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="DescribeObjectResponse">
+    <xs:sequence>
+        <xs:element name="object" type="ccc:ObjectDescriptor" />
+    </xs:sequence>
+    <!-- name of the derived type -->
+    <xs:attribute name="name" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="typeNS" type="xs:string"/>
+    <xs:attribute name="baseTypeNS" type="xs:string" />
+    <xs:attribute name="baseType" type="xs:string" />
+  </xs:complexType>
+
+</xs:schema>

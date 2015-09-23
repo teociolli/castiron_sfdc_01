@@ -1,0 +1,16 @@
+<com.approuter.studio.repository.model.EntryMetaData>
+  <__metaData>
+    <properties>
+      <entry>
+        <string>variables</string>
+        <list>
+          <string>Products</string>
+        </list>
+      </entry>
+    </properties>
+  </__metaData>
+  <__namespace>http://www.approuter.com/schemas/2003/1/xmlschema/</__namespace>
+  <__valid>true</__valid>
+  <__hidden>false</__hidden>
+  <__guid>91EEB39B51EAC86D805D0E8F86AE529B13659716BB9C3A58C46088FC3CC16DFB</__guid>
+</com.approuter.studio.repository.model.EntryMetaData>

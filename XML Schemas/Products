@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document><main name="schema.xsd" type="http://www.approuter.com/schemas/2003/1/xmlschema/"><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+
+    <xs:complexType name="product">
+    	<xs:sequence>
+    		<xs:element name="Id" type="xs:string"/><xs:element name="Name" type="xs:string"/><xs:element name="Piano_Commerciale__c" type="xs:string"/><xs:element name="KeyPiano_Commerciale__c" type="xs:string"/><xs:element name="Macroprodotto__c" type="xs:string"/><xs:element name="RecordType_developer_name__c" type="xs:string"/></xs:sequence></xs:complexType><xs:element name="Products" type="productList"/><xs:complexType name="productList">
+    	<xs:sequence maxOccurs="unbounded" minOccurs="0">
+    		<xs:element name="list" type="product"/></xs:sequence></xs:complexType></xs:schema></main></document>

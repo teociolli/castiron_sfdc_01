@@ -1,0 +1,1269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process currentId="2649" name="ConsEventi01" persistenceEnabled="true" selectedActivityId="25" serialize="false" targetNamespace="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:bpel-ext="http://www.approuter.com/schemas/2003/1/bpel-ext/" xmlns:bpws="http://www.approuter.com/schemas/2004/01/maestro/process/" xmlns:fn="http://www.w3.org/2002/11/xquery-functions" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"><schemas><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="saveResult-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <simpleType name="ID">
+        <restriction base="xsd:string">
+            <length value="18"/>
+            <pattern value='[a-zA-Z0-9]{18}'/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="StatusCode">
+		<restriction base="xsd:string">
+			<enumeration value="ALL_OR_NONE_OPERATION_ROLLED_BACK"/>
+			<enumeration value="ALREADY_IN_PROCESS"/>
+			<enumeration value="ASSIGNEE_TYPE_REQUIRED"/>
+			<enumeration value="BAD_CUSTOM_ENTITY_PARENT_DOMAIN"/>
+			<enumeration value="BCC_NOT_ALLOWED_IF_BCC_COMPLIANCE_ENABLED"/>
+			<enumeration value="CANNOT_CASCADE_PRODUCT_ACTIVE"/>
+			<enumeration value="CANNOT_CHANGE_FIELD_TYPE_OF_APEX_REFERENCED_FIELD"/>
+			<enumeration value="CANNOT_CHANGE_FIELD_TYPE_OF_REFERENCED_FIELD"/>
+			<enumeration value="CANNOT_CREATE_ANOTHER_MANAGED_PACKAGE"/>
+			<enumeration value="CANNOT_DEACTIVATE_DIVISION"/>
+			<enumeration value="CANNOT_DELETE_LAST_DATED_CONVERSION_RATE"/>
+			<enumeration value="CANNOT_DELETE_MANAGED_OBJECT"/>
+			<enumeration value="CANNOT_DISABLE_LAST_ADMIN"/>
+			<enumeration value="CANNOT_ENABLE_IP_RESTRICT_REQUESTS"/>
+			<enumeration value="CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY"/>
+			<enumeration value="CANNOT_MODIFY_MANAGED_OBJECT"/>
+			<enumeration value="CANNOT_RENAME_APEX_REFERENCED_FIELD"/>
+			<enumeration value="CANNOT_RENAME_APEX_REFERENCED_OBJECT"/>
+			<enumeration value="CANNOT_RENAME_REFERENCED_FIELD"/>
+			<enumeration value="CANNOT_RENAME_REFERENCED_OBJECT"/>
+			<enumeration value="CANNOT_REPARENT_RECORD"/>
+			<enumeration value="CANNOT_UPDATE_CONVERTED_LEAD"/>
+			<enumeration value="CANT_DISABLE_CORP_CURRENCY"/>
+			<enumeration value="CANT_UNSET_CORP_CURRENCY"/>
+			<enumeration value="CHILD_SHARE_FAILS_PARENT"/>
+			<enumeration value="CIRCULAR_DEPENDENCY"/>
+			<enumeration value="COMMUNITY_NOT_ACCESSIBLE"/>
+			<enumeration value="CUSTOM_CLOB_FIELD_LIMIT_EXCEEDED"/>
+			<enumeration value="CUSTOM_ENTITY_OR_FIELD_LIMIT"/>
+			<enumeration value="CUSTOM_FIELD_INDEX_LIMIT_EXCEEDED"/>
+			<enumeration value="CUSTOM_INDEX_EXISTS"/>
+			<enumeration value="CUSTOM_LINK_LIMIT_EXCEEDED"/>
+			<enumeration value="CUSTOM_TAB_LIMIT_EXCEEDED"/>
+			<enumeration value="DELETE_FAILED"/>
+			<enumeration value="DELETE_OPERATION_TOO_LARGE"/>
+			<enumeration value="DELETE_REQUIRED_ON_CASCADE"/>
+			<enumeration value="DEPENDENCY_EXISTS"/>
+			<enumeration value="DUPLICATE_CASE_SOLUTION"/>
+			<enumeration value="DUPLICATE_COMM_NICKNAME"/>
+			<enumeration value="DUPLICATE_CUSTOM_ENTITY_DEFINITION"/>
+			<enumeration value="DUPLICATE_CUSTOM_TAB_MOTIF"/>
+			<enumeration value="DUPLICATE_DEVELOPER_NAME"/>
+			<enumeration value="DUPLICATE_EXTERNAL_ID"/>
+			<enumeration value="DUPLICATE_MASTER_LABEL"/>
+			<enumeration value="DUPLICATE_SENDER_DISPLAY_NAME"/>
+			<enumeration value="DUPLICATE_USERNAME"/>
+			<enumeration value="DUPLICATE_VALUE"/>
+			<enumeration value="EMAIL_NOT_PROCESSED_DUE_TO_PRIOR_ERROR"/>
+			<enumeration value="EMPTY_SCONTROL_FILE_NAME"/>
+			<enumeration value="ENTITY_FAILED_IFLASTMODIFIED_ON_UPDATE"/>
+			<enumeration value="ENTITY_IS_ARCHIVED"/>
+			<enumeration value="ENTITY_IS_DELETED"/>
+			<enumeration value="ENTITY_IS_LOCKED"/>
+			<enumeration value="ENVIRONMENT_HUB_MEMBERSHIP_CONFLICT"/>
+			<enumeration value="ERROR_IN_MAILER"/>
+			<enumeration value="FAILED_ACTIVATION"/>
+			<enumeration value="FIELD_CUSTOM_VALIDATION_EXCEPTION"/>
+			<enumeration value="FIELD_FILTER_VALIDATION_EXCEPTION"/>
+			<enumeration value="FIELD_INTEGRITY_EXCEPTION"/>
+			<enumeration value="FILTERED_LOOKUP_LIMIT_EXCEEDED"/>
+			<enumeration value="HTML_FILE_UPLOAD_NOT_ALLOWED"/>
+			<enumeration value="IMAGE_TOO_LARGE"/>
+			<enumeration value="INACTIVE_OWNER_OR_USER"/>
+			<enumeration value="INSUFFICIENT_ACCESS_ON_CROSS_REFERENCE_ENTITY"/>
+			<enumeration value="INSUFFICIENT_ACCESS_OR_READONLY"/>
+			<enumeration value="INVALID_ACCESS_LEVEL"/>
+			<enumeration value="INVALID_ARGUMENT_TYPE"/>
+			<enumeration value="INVALID_ASSIGNEE_TYPE"/>
+			<enumeration value="INVALID_ASSIGNMENT_RULE"/>
+			<enumeration value="INVALID_BATCH_OPERATION"/>
+			<enumeration value="INVALID_CONTENT_TYPE"/>
+			<enumeration value="INVALID_CREDIT_CARD_INFO"/>
+			<enumeration value="INVALID_CROSS_REFERENCE_KEY"/>
+			<enumeration value="INVALID_CROSS_REFERENCE_TYPE_FOR_FIELD"/>
+			<enumeration value="INVALID_CURRENCY_CONV_RATE"/>
+			<enumeration value="INVALID_CURRENCY_CORP_RATE"/>
+			<enumeration value="INVALID_CURRENCY_ISO"/>
+			<enumeration value="INVALID_DATA_CATEGORY_GROUP_REFERENCE"/>
+			<enumeration value="INVALID_DATA_URI"/>
+			<enumeration value="INVALID_EMAIL_ADDRESS"/>
+			<enumeration value="INVALID_EMPTY_KEY_OWNER"/>
+			<enumeration value="INVALID_FIELD"/>
+			<enumeration value="INVALID_FIELD_FOR_INSERT_UPDATE"/>
+			<enumeration value="INVALID_FIELD_WHEN_USING_TEMPLATE"/>
+			<enumeration value="INVALID_FILTER_ACTION"/>
+			<enumeration value="INVALID_GOOGLE_DOCS_URL"/>
+			<enumeration value="INVALID_ID_FIELD"/>
+			<enumeration value="INVALID_INET_ADDRESS"/>
+			<enumeration value="INVALID_LINEITEM_CLONE_STATE"/>
+			<enumeration value="INVALID_MASTER_OR_TRANSLATED_SOLUTION"/>
+			<enumeration value="INVALID_MESSAGE_ID_REFERENCE"/>
+			<enumeration value="INVALID_OPERATION"/>
+			<enumeration value="INVALID_OPERATOR"/>
+			<enumeration value="INVALID_OR_NULL_FOR_RESTRICTED_PICKLIST"/>
+			<enumeration value="INVALID_PACKAGE_VERSION"/>
+			<enumeration value="INVALID_PARTNER_NETWORK_STATUS"/>
+			<enumeration value="INVALID_PERSON_ACCOUNT_OPERATION"/>
+			<enumeration value="INVALID_QUERY_LOCATOR"/>
+			<enumeration value="INVALID_READ_ONLY_USER_DML"/>
+			<enumeration value="INVALID_SAVE_AS_ACTIVITY_FLAG"/>
+			<enumeration value="INVALID_SESSION_ID"/>
+			<enumeration value="INVALID_SETUP_OWNER"/>
+			<enumeration value="INVALID_STATUS"/>
+			<enumeration value="INVALID_TYPE"/>
+			<enumeration value="INVALID_TYPE_FOR_OPERATION"/>
+			<enumeration value="INVALID_TYPE_ON_FIELD_IN_RECORD"/>
+			<enumeration value="IP_RANGE_LIMIT_EXCEEDED"/>
+			<enumeration value="LICENSE_LIMIT_EXCEEDED"/>
+			<enumeration value="LIGHT_PORTAL_USER_EXCEPTION"/>
+			<enumeration value="LIMIT_EXCEEDED"/>
+			<enumeration value="MALFORMED_ID"/>
+			<enumeration value="MANAGER_NOT_DEFINED"/>
+			<enumeration value="MASSMAIL_RETRY_LIMIT_EXCEEDED"/>
+			<enumeration value="MASS_MAIL_LIMIT_EXCEEDED"/>
+			<enumeration value="MAXIMUM_CCEMAILS_EXCEEDED"/>
+			<enumeration value="MAXIMUM_DASHBOARD_COMPONENTS_EXCEEDED"/>
+			<enumeration value="MAXIMUM_HIERARCHY_LEVELS_REACHED"/>
+			<enumeration value="MAXIMUM_SIZE_OF_ATTACHMENT"/>
+			<enumeration value="MAXIMUM_SIZE_OF_DOCUMENT"/>
+			<enumeration value="MAX_ACTIONS_PER_RULE_EXCEEDED"/>
+			<enumeration value="MAX_ACTIVE_RULES_EXCEEDED"/>
+			<enumeration value="MAX_APPROVAL_STEPS_EXCEEDED"/>
+			<enumeration value="MAX_FORMULAS_PER_RULE_EXCEEDED"/>
+			<enumeration value="MAX_RULES_EXCEEDED"/>
+			<enumeration value="MAX_RULE_ENTRIES_EXCEEDED"/>
+			<enumeration value="MAX_TASK_DESCRIPTION_EXCEEEDED"/>
+			<enumeration value="MAX_TM_RULES_EXCEEDED"/>
+			<enumeration value="MAX_TM_RULE_ITEMS_EXCEEDED"/>
+			<enumeration value="MERGE_FAILED"/>
+			<enumeration value="MISSING_ARGUMENT"/>
+			<enumeration value="MIXED_DML_OPERATION"/>
+			<enumeration value="NONUNIQUE_SHIPPING_ADDRESS"/>
+			<enumeration value="NO_APPLICABLE_PROCESS"/>
+			<enumeration value="NO_ATTACHMENT_PERMISSION"/>
+			<enumeration value="NO_INACTIVE_DIVISION_MEMBERS"/>
+			<enumeration value="NO_MASS_MAIL_PERMISSION"/>
+			<enumeration value="NUMBER_OUTSIDE_VALID_RANGE"/>
+			<enumeration value="NUM_HISTORY_FIELDS_BY_SOBJECT_EXCEEDED"/>
+			<enumeration value="OPTED_OUT_OF_MASS_MAIL"/>
+			<enumeration value="OP_WITH_INVALID_USER_TYPE_EXCEPTION"/>
+			<enumeration value="PACKAGE_LICENSE_REQUIRED"/>
+			<enumeration value="PORTAL_NO_ACCESS"/>
+			<enumeration value="PORTAL_USER_ALREADY_EXISTS_FOR_CONTACT"/>
+			<enumeration value="PRIVATE_CONTACT_ON_ASSET"/>
+			<enumeration value="QUERY_TIMEOUT"/>
+			<enumeration value="RECORD_IN_USE_BY_WORKFLOW"/>
+			<enumeration value="REQUEST_RUNNING_TOO_LONG"/>
+			<enumeration value="REQUIRED_FEATURE_MISSING"/>
+			<enumeration value="REQUIRED_FIELD_MISSING"/>
+			<enumeration value="SELF_REFERENCE_FROM_TRIGGER"/>
+			<enumeration value="SHARE_NEEDED_FOR_CHILD_OWNER"/>
+			<enumeration value="SINGLE_EMAIL_LIMIT_EXCEEDED"/>
+			<enumeration value="STANDARD_PRICE_NOT_DEFINED"/>
+			<enumeration value="STORAGE_LIMIT_EXCEEDED"/>
+			<enumeration value="STRING_TOO_LONG"/>
+			<enumeration value="TABSET_LIMIT_EXCEEDED"/>
+			<enumeration value="TEMPLATE_NOT_ACTIVE"/>
+			<enumeration value="TERRITORY_REALIGN_IN_PROGRESS"/>
+			<enumeration value="TEXT_DATA_OUTSIDE_SUPPORTED_CHARSET"/>
+			<enumeration value="TOO_MANY_APEX_REQUESTS"/>
+			<enumeration value="TOO_MANY_ENUM_VALUE"/>
+			<enumeration value="TRANSFER_REQUIRES_READ"/>
+			<enumeration value="UNABLE_TO_LOCK_ROW"/>
+			<enumeration value="UNAVAILABLE_RECORDTYPE_EXCEPTION"/>
+			<enumeration value="UNDELETE_FAILED"/>
+			<enumeration value="UNKNOWN_EXCEPTION"/>
+			<enumeration value="UNSPECIFIED_EMAIL_ADDRESS"/>
+			<enumeration value="UNSUPPORTED_APEX_TRIGGER_OPERATON"/>
+			<enumeration value="UNVERIFIED_SENDER_ADDRESS"/>
+			<enumeration value="USER_OWNS_PORTAL_ACCOUNT_EXCEPTION"/>
+			<enumeration value="USER_WITH_APEX_SHARES_EXCEPTION"/>
+			<enumeration value="WEBLINK_SIZE_LIMIT_EXCEEDED"/>
+			<enumeration value="WRONG_CONTROLLER_TYPE"/>
+		</restriction>
+	</simpleType>
+
+    <complexType name="Error">
+        <sequence>
+            <element name="fields"     type="xsd:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="message"    type="xsd:string"/>
+            <element name="statusCode" type="tns:StatusCode"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="SaveResult">
+        <sequence>
+            <element name="errors"    type="tns:Error" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="id"        type="tns:ID" nillable="true"/>
+            <element name="success"   type="xsd:boolean"/>
+        </sequence>
+    </complexType>
+
+    <element name="results">
+        <complexType>
+            <sequence>
+                <element name="result" type="tns:SaveResult" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="index_eventi_1"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="index_eventi_1" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="oggi"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="oggi" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="mru-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="MruHeader">
+        <complexType>
+            <sequence>
+                <element name="updateMru" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+    
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_congiunti_pianificati"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_congiunti_pianificati" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="sessionInfo-out-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="sessionInfo-out-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="loginCredentials-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	elementFormDefault="qualified">
+
+	<element name="connection">
+		<complexType>
+			<sequence>
+				<element name="loginUrl" type="xsd:string" minOccurs="0" />
+				<element name="username" type="xsd:string" />
+				<element name="password" type="xsd:string" />
+				<element name="proxy" type="tns:ProxyDetails"
+					minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<xsd:complexType name="ProxyDetails">
+		<xsd:sequence>
+			<xsd:element name="host" type="xsd:string" />
+			<xsd:element name="port" type="xsd:string" />
+			<xsd:element name="username" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</schema>
+]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="gruppo_pc_OLD"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="gruppo_pc_OLD" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="loginCredentials-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	elementFormDefault="qualified">
+
+	<element name="connection">
+		<complexType>
+			<sequence>
+				<element name="loginUrl" type="xsd:string" minOccurs="0" />
+				<element name="username" type="xsd:string" />
+				<element name="password" type="xsd:string" />
+				<element name="proxy" type="tns:ProxyDetails"
+					minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<xsd:complexType name="ProxyDetails">
+		<xsd:sequence>
+			<xsd:element name="host" type="xsd:string" />
+			<xsd:element name="port" type="xsd:string" />
+			<xsd:element name="username" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</schema>
+]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="loopcounter_1_1_2"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="loopcounter_1_1_2" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_ytd"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_ytd" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="loginCredentials-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	elementFormDefault="qualified">
+
+	<element name="connection">
+		<complexType>
+			<sequence>
+				<element name="loginUrl" type="xsd:string" minOccurs="0" />
+				<element name="username" type="xsd:string" />
+				<element name="password" type="xsd:string" />
+				<element name="proxy" type="tns:ProxyDetails"
+					minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<xsd:complexType name="ProxyDetails">
+		<xsd:sequence>
+			<xsd:element name="host" type="xsd:string" />
+			<xsd:element name="port" type="xsd:string" />
+			<xsd:element name="username" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</schema>
+]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="allOrNoneHeader.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+
+        <xsd:element name="AllOrNoneHeader">
+            <xsd:complexType>
+                <xsd:sequence>
+                    <xsd:element name="allOrNone" type="xsd:boolean" />
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:element>
+</schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="sessionInfo-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="opzione"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="opzione" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="params-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="parameters"><xsd:complexType><xsd:sequence/></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="packageVersionHeader-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+    
+    <xsd:complexType name="PackageVersion">
+        <xsd:sequence>
+            <xsd:element name="majorNumber" type="xsd:int"/>
+            <xsd:element name="minorNumber" type="xsd:int"/>
+            <xsd:element name="namespace" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="PackageVersionHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="packageVersions" minOccurs="0" maxOccurs="unbounded" type="tns:PackageVersion"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_congiunti"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_congiunti" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="params-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="parameters"><xsd:complexType><xsd:sequence/></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="sessionInfo-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="packageVersionHeader-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+    
+    <xsd:complexType name="PackageVersion">
+        <xsd:sequence>
+            <xsd:element name="majorNumber" type="xsd:int"/>
+            <xsd:element name="minorNumber" type="xsd:int"/>
+            <xsd:element name="namespace" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="PackageVersionHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="packageVersions" minOccurs="0" maxOccurs="unbounded" type="tns:PackageVersion"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    
+</schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="Prodotto_del_Piano_Commerciale__c" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:all><xsd:element name="Id" type="ID"/><xsd:element name="Eventi__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="Di_cui_con_Relazioni__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="ETL_N_Eventi_Congiunti_Svolti__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="ETL_N_Eventi_Congiunti_Pianificati__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="ETL_N_Eventi_Congiunti_MTD__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="ETL_N_Eventi_Totali_MTD__c" minOccurs="0" nillable="true" type="xsd:double"/><xsd:element name="ETL_N_Eventi_Totali_YTD__c" minOccurs="0" nillable="true" type="xsd:double"/></xsd:all></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="params-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="parameters"><xsd:complexType><xsd:sequence/></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription counter-for-extra-xml-schema="0" isRepositoryLocation="true" repository-url="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" schemaId="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3"/><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="Event" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:sequence><xsd:element name="Id" type="ID"/><xsd:element name="ActivityDate" nillable="true" type="xsd:date"/><xsd:element name="AccountId" nillable="true" type="ID"/><xsd:element name="IsChild" type="xsd:boolean"/><xsd:element name="Partecipazione_delle_Relazioni__c" nillable="true" type="xsd:string"/><xsd:element name="Partecipazione_dei_Prodotti__c" nillable="true" type="xsd:string"/><xsd:element name="Principale_Desk_coinvolto__c" nillable="true" type="xsd:string"/><xsd:element name="DevNameDesk__c" nillable="true" type="xsd:string"/><xsd:element name="Account" minOccurs="0"><xsd:complexType><xsd:sequence><xsd:element name="Gruppo_PC__c" nillable="true" type="ID"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="mru-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="MruHeader">
+        <complexType>
+            <sequence>
+                <element name="updateMru" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+    
+</schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="Prodotto_del_Piano_Commerciale__c" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:sequence><xsd:element name="Id" type="ID"/><xsd:element name="Name" type="xsd:string"/><xsd:element name="Piano_Commerciale__c" nillable="true" type="ID"/><xsd:element name="Key_piano_commerciale__c" nillable="true" type="xsd:string"/><xsd:element name="Macroprodotto__c" nillable="true" type="xsd:string"/><xsd:element name="RecordType_developer_name__c" nillable="true" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="disableFeedTracking-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+
+    <element name="DisableFeedTrackingHeader">
+        <complexType>
+            <sequence>
+                <element name="disableFeedTracking" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_mese"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_mese" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="packageVersionHeader-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+    
+    <xsd:complexType name="PackageVersion">
+        <xsd:sequence>
+            <xsd:element name="majorNumber" type="xsd:int"/>
+            <xsd:element name="minorNumber" type="xsd:int"/>
+            <xsd:element name="namespace" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="PackageVersionHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="packageVersions" minOccurs="0" maxOccurs="unbounded" type="tns:PackageVersion"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    
+</schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="mru-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="MruHeader">
+        <complexType>
+            <sequence>
+                <element name="updateMru" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+    
+</schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="sessionInfo-out-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="objects-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:sobject.partner.soap.sforce.com" targetNamespace="urn:sobject.partner.soap.sforce.com" elementFormDefault="qualified"><xsd:simpleType name="ID"><xsd:restriction base="xsd:string"><xsd:length value="18"/><xsd:pattern value="[a-zA-Z0-9]{18}"/></xsd:restriction></xsd:simpleType><xsd:element name="objects"><xsd:complexType><xsd:sequence><xsd:element name="AggregateResult" minOccurs="0" maxOccurs="unbounded"><xsd:complexType><xsd:sequence><xsd:element name="Piano_Commerciale__c" nillable="true" type="ID"/><xsd:element name="expr0" type="xsd:int"/><xsd:element name="expr1" type="xsd:int"/><xsd:element name="expr2" type="xsd:int"/><xsd:element name="expr3" type="xsd:int"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="mru-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="MruHeader">
+        <complexType>
+            <sequence>
+                <element name="updateMru" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+    
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="zerooo"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="zerooo" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_congiunti_svolti"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_congiunti_svolti" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="sessionInfo-out-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="ordina_prodotti"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="ordina_prodotti" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="4" counter-for-extra-xml-schema="0" schemaId="http-receive-output-parameter-body-string.xsd-4"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xsd:element name="body" type="xsd:string"/>
+</xsd:schema>
+]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="sessionInfo-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="callOptions-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="CallOptions">
+        <complexType>
+            <sequence>
+                <element name="client" type="xsd:string" nillable="true"/>
+                <element name="defaultNamespace"  type="xsd:string" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="ownerChangeOptions.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+        
+<element name="OwnerChangeOptions">
+            <complexType>
+                <sequence>
+                    <element name="transferAttachments" type="xsd:boolean"/>
+                    <element name="transferOpenActivities" type="xsd:boolean"/>
+                </sequence>
+            </complexType>
+</element>
+
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="gruppo_pc"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="gruppo_pc" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="5" counter-for-extra-xml-schema="0" schemaId="callOptions-param.xsd-5"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="CallOptions">
+        <complexType>
+            <sequence>
+                <element name="client" type="xsd:string" nillable="true"/>
+                <element name="defaultNamespace"  type="xsd:string" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="6" counter-for-extra-xml-schema="0" schemaId="callOptions-param.xsd-6"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="CallOptions">
+        <complexType>
+            <sequence>
+                <element name="client" type="xsd:string" nillable="true"/>
+                <element name="defaultNamespace"  type="xsd:string" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="materiale_eventi"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="materiale_eventi" type="xsd:string"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="email-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+    <element name="EmailHeader">
+        <complexType>
+            <sequence>
+                <element name="triggerAutoResponseEmail" 	type="xsd:boolean"/>
+                <element name="triggerOtherEmail" 			type="xsd:boolean"/>
+                <element name="triggerUserEmail"  			type="xsd:boolean"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="4" counter-for-extra-xml-schema="0" schemaId="http-receive-output-parameter-header.xsd-4"><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema elementFormDefault="qualified" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+    <xsd:complexType name="HeaderItemType">
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string"/>
+            <xsd:element name="value" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="Headers">
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="headerItem" type="HeaderItemType"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="PathParameter">
+        <xsd:sequence/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="QueryParameter">
+        <xsd:sequence><xsd:element name="ordina" type="xsd:string"/></xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:complexType name="HttpHeaderType">
+        <xsd:sequence>
+            <xsd:element name="uri" type="xsd:string"/>
+            <xsd:element name="host" type="xsd:string"/>            
+            <xsd:element name="method" type="xsd:string"/>
+            <!-- start configurable headers --><!-- end configurable headers -->
+            <xsd:element maxOccurs="1" minOccurs="0" name="queryParameters" type="QueryParameter"/><xsd:element maxOccurs="1" minOccurs="0" name="otherHeaders" type="Headers"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="httpheaders" type="HttpHeaderType"/>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="loginCredentials-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+	elementFormDefault="qualified">
+
+	<element name="connection">
+		<complexType>
+			<sequence>
+				<element name="loginUrl" type="xsd:string" minOccurs="0" />
+				<element name="username" type="xsd:string" />
+				<element name="password" type="xsd:string" />
+				<element name="proxy" type="tns:ProxyDetails"
+					minOccurs="0" />
+			</sequence>
+		</complexType>
+	</element>
+
+	<xsd:complexType name="ProxyDetails">
+		<xsd:sequence>
+			<xsd:element name="host" type="xsd:string" />
+			<xsd:element name="port" type="xsd:string" />
+			<xsd:element name="username" type="xsd:string" minOccurs="0" maxOccurs="1" />
+			<xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</schema>
+]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="assignmentRule-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <simpleType name="ID">
+        <restriction base="xsd:string">
+            <length value="18"/>
+            <pattern value='[a-zA-Z0-9]{18}'/>
+        </restriction>
+    </simpleType>
+
+    <element name="AssignmentRuleHeader">
+        <complexType>
+            <sequence>
+                <element name="assignmentRuleId"    type="tns:ID"  nillable="true" />
+                <element name="useDefaultRule"      type="xsd:boolean" nillable="true" />
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="" counter-for-extra-xml-schema="0" schemaId="num_eventi_con_relazioni"><![CDATA[<xsd:schema targetNamespace="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns:tns="http://www.approuter.com/schemas/2003/1/castirontypes" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema"> <xsd:element name="num_eventi_con_relazioni" type="xsd:int"/> </xsd:schema>]]></schemaDescription><schemaDescription activityId="961" counter-for-extra-xml-schema="0" schemaId="Schema_4_mapInputsTask_in_961"><![CDATA[<xs:schema elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="rows" type="RowsType"/><xs:complexType name="RowsType"><xs:sequence><xs:element name="row" minOccurs="1" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="GUID" type="xs:string" nillable="false"/><xs:element name="MATERIAL" type="xs:string" nillable="false"/><xs:element name="EVENT01" type="xs:string" nillable="true"/><xs:element name="EVENT02" type="xs:string" nillable="true"/><xs:element name="EVENT03" type="xs:string" nillable="true"/><xs:element name="EVENT04" type="xs:string" nillable="true"/><xs:element name="EVENT05" type="xs:string" nillable="true"/><xs:element name="EVENT06" type="xs:string" nillable="true"/><xs:element name="EVENT07" type="xs:string" nillable="true"/><xs:element name="EVENT08" type="xs:string" nillable="true"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="sessionInfo-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam"
+        elementFormDefault="qualified">
+
+    <element name="sessionInfo">
+        <complexType>
+            <sequence>
+                <element name="serverURL" type="xsd:string"/>
+                <element name="sessionId" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="961" counter-for-extra-xml-schema="0" schemaId="Schema_4_mapOutputsTask_in_961"><![CDATA[<xs:schema elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="rowCounts" type="RowCountsType"/><xs:complexType name="RowCountsType"><xs:sequence><xs:element name="rowCount" type="xs:int" minOccurs="1" maxOccurs="1"/></xs:sequence></xs:complexType></xs:schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="callOptions-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="urn:partner.soap.sforce.com"
+        targetNamespace="urn:partner.soap.sforce.com"
+        elementFormDefault="qualified">
+
+    <element name="CallOptions">
+        <complexType>
+            <sequence>
+                <element name="client" type="xsd:string" nillable="true"/>
+                <element name="defaultNamespace"  type="xsd:string" nillable="true"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>]]></schemaDescription><schemaDescription activityId="1440" counter-for-extra-xml-schema="0" schemaId="allowFieldTruncation-param.xsd-1440"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+    
+    <element name="AllowFieldTruncationHeader">
+        <complexType>
+            <sequence>
+                <element name="allowFieldTruncation" type="xsd:boolean" />
+            </sequence>
+        </complexType>
+    </element>
+    
+</schema>]]></schemaDescription><schemaDescription activityId="2" counter-for-extra-xml-schema="0" schemaId="orchestration_internal_variableJobInfo"><![CDATA[<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo"
+            targetNamespace="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" elementFormDefault="qualified">
+    <xsd:element name="JobInfo" type="tns:JobInfoType"/>
+    <xsd:complexType name="JobInfoType">
+        <xsd:sequence>
+           <xsd:element name="jobId" type="xsd:string"/>
+           <xsd:element name="jobStartTime" type="xsd:dateTime"/>
+           <xsd:element name="projectName" type="xsd:string"/>
+           <xsd:element name="configurationName" type="xsd:string"/>
+           <xsd:element name="orchestrationName" type="xsd:string"/>
+           <xsd:element name="routerHostName" type="xsd:string"/>
+        </xsd:sequence>
+     </xsd:complexType>
+</xsd:schema>]]></schemaDescription><schemaDescription activityId="1638" counter-for-extra-xml-schema="0" schemaId="packageVersionHeader-param.xsd-1638"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="urn:partner.soap.sforce.com"
+    targetNamespace="urn:partner.soap.sforce.com"
+    elementFormDefault="qualified">
+    
+    <xsd:complexType name="PackageVersion">
+        <xsd:sequence>
+            <xsd:element name="majorNumber" type="xsd:int"/>
+            <xsd:element name="minorNumber" type="xsd:int"/>
+            <xsd:element name="namespace" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="PackageVersionHeader">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="packageVersions" minOccurs="0" maxOccurs="unbounded" type="tns:PackageVersion"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    
+    
+</schema>]]></schemaDescription></schemas><dependecies><dependency id="4" projectNodeGuid="appnet-guid://75078864299587FC2EE1467D151633C134672C4D5121CE764AE47B07045C60F2" type="activity"/><dependency id="5" projectNodeGuid="appnet-guid://927205F41FF88C60E2A4922B9F579A2D72D6BCA1942F95FB93F55323E5489D52" type="activity"/><dependency id="6" projectNodeGuid="appnet-guid://927205F41FF88C60E2A4922B9F579A2D72D6BCA1942F95FB93F55323E5489D52" type="activity"/><dependency id="Prodotto_PC" projectNodeGuid="appnet-guid://91EEB39B51EAC86D805D0E8F86AE529B13659716BB9C3A58C46088FC3CC16DFB" type="variable"/><dependency id="292" projectNodeGuid="appnet-guid://920ABAE4DEB795A8DABEC82F5826FE5EA9C88FE5D17E4C77424BEFE36E064AD1" type="activity"/><dependency id="961" projectNodeGuid="appnet-guid://E88EDDB6F04F4C5F314F56044F737916063CE968FB5AAA48BB567A4169CEAD16" type="activity"/><dependency id="1440" projectNodeGuid="appnet-guid://927205F41FF88C60E2A4922B9F579A2D72D6BCA1942F95FB93F55323E5489D52" type="activity"/><dependency id="1638" projectNodeGuid="appnet-guid://927205F41FF88C60E2A4922B9F579A2D72D6BCA1942F95FB93F55323E5489D52" type="activity"/></dependecies><variables selectedVariableName="num_eventi_ytd"><variable assignable="false" bpel-ext:location="orchestration_internal_variableJobInfo" bpel-ext:locationType="2" bpel-ext:originalRootNode="" bpel-ext:rootNode="JobInfo" bpel-ext:rootNodeNS="http://www.approuter.com/schemas/2005/1/orchestration/jobinfo" canBeSubstitutedFromUI="true" internal="true" name="JobInfo" readOnly="true" typeEditable="false"><description>L'orchestrazione crea questa variabile per ogni lavoro. Non è possibile rinominarla o eliminarla.</description></variable><variable assignable="true" bpel-ext:activityId="6" bpel-ext:location="objects-param.xsd-6" bpel-ext:locationType="2" bpel-ext:originalRootNode="objects" bpel-ext:originalRootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:rootNode="objects" bpel-ext:rootNodeNS="urn:sobject.partner.soap.sforce.com" canBeSubstitutedFromUI="true" internal="false" messageType="objects" name="Eventi" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="gruppo_pc" bpel-ext:locationType="2" bpel-ext:originalRootNode="gruppo_pc" bpel-ext:rootNode="gruppo_pc" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="gruppo_pc" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi" bpel-ext:rootNode="num_eventi" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="opzione" bpel-ext:locationType="2" bpel-ext:originalRootNode="opzione" bpel-ext:rootNode="opzione" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="opzione" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="false" bpel-ext:location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" bpel-ext:locationType="0" bpel-ext:originalRootNode="Products" bpel-ext:rootNode="list" bpel-ext:sourcexpath="/Products/list" canBeSubstitutedFromUI="true" internal="false" name="riga_prodotto" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="loopcounter_1_1_2" bpel-ext:locationType="2" bpel-ext:originalRootNode="loopcounter_1_1_2" bpel-ext:rootNode="loopcounter_1_1_2" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="loopcounter_1_1_2" primitiveType="int" readOnly="false" typeEditable="false"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" bpel-ext:locationType="0" bpel-ext:originalRootNode="Products" bpel-ext:rootNode="Products" canBeSubstitutedFromUI="true" internal="false" name="Prodotto_PC" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="ordina_prodotti" bpel-ext:locationType="2" bpel-ext:originalRootNode="ordina_prodotti" bpel-ext:rootNode="ordina_prodotti" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="ordina_prodotti" primitiveType="string" readOnly="false" typeEditable="true"><defaultValue>N</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="zerooo" bpel-ext:locationType="2" bpel-ext:originalRootNode="zerooo" bpel-ext:rootNode="zerooo" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="zerooo" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="gruppo_pc_OLD" bpel-ext:locationType="2" bpel-ext:originalRootNode="gruppo_pc_OLD" bpel-ext:rootNode="gruppo_pc_OLD" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="gruppo_pc_OLD" primitiveType="string" readOnly="false" typeEditable="true"><defaultValue>XXX</defaultValue><description>Variable Description</description></variable><variable assignable="false" bpel-ext:activityId="6" bpel-ext:location="objects-param.xsd-6" bpel-ext:locationType="2" bpel-ext:originalRootNode="objects" bpel-ext:originalRootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:rootNode="Event" bpel-ext:rootNodeNS="urn:sobject.partner.soap.sforce.com" bpel-ext:sourcexpath="/objects/Event" canBeSubstitutedFromUI="true" internal="false" messageType="objects" name="riga_eventi" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="index_eventi_1" bpel-ext:locationType="2" bpel-ext:originalRootNode="index_eventi_1" bpel-ext:rootNode="index_eventi_1" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="index_eventi_1" primitiveType="int" readOnly="false" typeEditable="false"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="materiale_eventi" bpel-ext:locationType="2" bpel-ext:originalRootNode="materiale_eventi" bpel-ext:rootNode="materiale_eventi" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="materiale_eventi" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="oggi" bpel-ext:locationType="2" bpel-ext:originalRootNode="oggi" bpel-ext:rootNode="oggi" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="oggi" primitiveType="string" readOnly="false" typeEditable="true"><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_ytd" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_ytd" bpel-ext:rootNode="num_eventi_ytd" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_ytd" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_con_relazioni" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_con_relazioni" bpel-ext:rootNode="num_eventi_con_relazioni" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_con_relazioni" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_mese" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_mese" bpel-ext:rootNode="num_eventi_mese" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_mese" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_congiunti" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_congiunti" bpel-ext:rootNode="num_eventi_congiunti" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_congiunti" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_congiunti_svolti" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_congiunti_svolti" bpel-ext:rootNode="num_eventi_congiunti_svolti" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_congiunti_svolti" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable><variable assignable="true" bpel-ext:location="num_eventi_congiunti_pianificati" bpel-ext:locationType="2" bpel-ext:originalRootNode="num_eventi_congiunti_pianificati" bpel-ext:rootNode="num_eventi_congiunti_pianificati" canBeSubstitutedFromUI="true" internal="false" isPrimitiveType="true" name="num_eventi_congiunti_pianificati" primitiveType="int" readOnly="false" typeEditable="true"><defaultValue>0</defaultValue><description>Variable Description</description></variable></variables><comments><comment activityId="19">filtro su eventi con lo stesso gruppo prodotto </comment></comments><sequence activityId="2" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="Avvia"><start activityId="4" activityName="" comments="" configurationId="http_receiverequest_id" description="Questa attività rimane in ascolto di una richiesta sull'endpoint HTTP selezionato" expanded="true" moduleName="http://www.approuter.com/module/http/" name="Ricevi richiesta" partnerLink=""><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="4" canBeSubstitutedFromUI="true" displayName="httpheaders" isParameter="true" location="http-receive-output-parameter-header.xsd-4" locationType="2" logicalName="srcDoc1" messageType="httpheaders" optionalParameter="false" originalRootNodeName="httpheaders" rootNodeName="httpheaders" varName="httpheaders"/><source activityId="4" canBeSubstitutedFromUI="true" displayName="body" isParameter="true" location="http-receive-output-parameter-body-string.xsd-4" locationType="2" logicalName="srcDoc2" messageType="body" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="body" originalRootNodeNameNS="http://www.approuter.com/schemas/2003/1/castirontypes" rootNodeName="body"/><destination canBeSubstitutedFromUI="true" displayName="opzione" isParameter="false" location="opzione" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="opzione" rootNodeName="opzione" varName="opzione"/><destination canBeSubstitutedFromUI="true" displayName="ordina_prodotti" isParameter="false" location="ordina_prodotti" locationType="2" logicalName="dstDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="ordina_prodotti" rootNodeName="ordina_prodotti" varName="ordina_prodotti"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><to docName="dstDoc1" path="/opzione"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/httpheaders/queryParameters/ordina"/><to docName="dstDoc2" path="/ordina_prodotti"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+      ]]><key><![CDATA[summaryTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners/><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+    ]]><com.approuter.studio.connectors.http.tasks.HTTPEndpointTask><![CDATA[
+      ]]><key><![CDATA[endpointTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[endpoint]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://75078864299587FC2EE1467D151633C134672C4D5121CE764AE47B07045C60F2]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.http.tasks.HTTPRecieveRequstTask><![CDATA[
+          ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+          ]]><children><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[requestHeadersTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[isIncludeStandardHeaders]]></string><![CDATA[
+                    ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]></children><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_receive_requiresreply]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_receive_accept_method]]></string><![CDATA[
+                ]]><string><![CDATA[ALL]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[true]]></string><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_need_reply]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_compresion]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_receive_path]]></string><![CDATA[
+                ]]><string/><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_receive_binary]]></string><![CDATA[
+                ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+              ]]></entry><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[http_receive_extrapath]]></string><![CDATA[
+                ]]><string><![CDATA[/start/?ordina=value1]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners><![CDATA[
+            ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+              ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]></listeners><![CDATA[
+        ]]></com.approuter.studio.connectors.http.tasks.HTTPRecieveRequstTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.http.tasks.HTTPEndpointTask><![CDATA[
+    ]]><com.approuter.studio.connectors.http.tasks.HTTPRecieveRequstTask reference="../com.approuter.studio.connectors.http.tasks.HTTPEndpointTask/listeners/com.approuter.studio.connectors.http.tasks.HTTPRecieveRequstTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.http.tasks.HTTPEndpointTask/listeners/com.approuter.studio.connectors.http.tasks.HTTPRecieveRequstTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></start><map activityId="994" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="set data odierna"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><destination canBeSubstitutedFromUI="true" displayName="oggi" isParameter="false" location="oggi" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="oggi" rootNodeName="oggi" varName="oggi"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid function="date-time-format" gridX="240" gridY="36" id="2" resultType="xsd:string"><arg dataType="xsd:string"><result functoidId="3" srcFunctoidName="current-date-time"/></arg><arg dataType="xsd:string"><constant>yyyy-MM-dd</constant></arg></functoid><functoid function="current-date-time" gridX="240" gridY="104" id="3" resultType="xsd:dateTime"/><link destFunctoid="2" destFunctoidArgIndex="0" id="0" srcFunctoid="3"/><link destDocName="dstDoc1" destPath="/oggi" id="1" srcFunctoid="2"/></call></rule></doMapping></mapSpec></mapSpecConfig></map><invoke activityId="5" activityName="" comments="" configurationId="sfdc_query_id" description="Esegui query oggetti" expanded="true" moduleName="http://www.approuter.com/module/sfdc/" name="estrai prodotti" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><destination activityId="5" canBeSubstitutedFromUI="true" displayName="parameters" isParameter="true" location="params-param.xsd-5" locationType="2" logicalName="dstDoc1" messageType="parameters" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="parameters" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="parameters" varName="parameters"/><destination activityId="5" canBeSubstitutedFromUI="true" displayName="MruHeader" isParameter="true" location="mru-param.xsd-5" locationType="2" logicalName="dstDoc2" messageType="MruHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="MruHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="MruHeader"/><destination activityId="5" canBeSubstitutedFromUI="true" displayName="CallOptions" isParameter="true" location="callOptions-param.xsd-5" locationType="2" logicalName="dstDoc3" messageType="CallOptions" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="CallOptions" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="CallOptions"/><destination activityId="5" canBeSubstitutedFromUI="true" displayName="PackageVersionHeader" isParameter="true" location="packageVersionHeader-param.xsd-5" locationType="2" logicalName="dstDoc4" messageType="PackageVersionHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="PackageVersionHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="PackageVersionHeader"/><destination activityId="5" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="loginCredentials-param.xsd-5" locationType="2" logicalName="dstDoc5" messageType="connection" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="connection"/><destination activityId="5" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-param.xsd-5" locationType="2" logicalName="dstDoc6" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/></specInfo><doMapping/></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="5" canBeSubstitutedFromUI="true" displayName="objects" isParameter="true" location="objects-param.xsd-5" locationType="2" logicalName="srcDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects"/><source activityId="5" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-out-param.xsd-5" locationType="2" logicalName="srcDoc2" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="false" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/><destination canBeSubstitutedFromUI="true" displayName="Prodotto_PC" isParameter="false" location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" locationType="0" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="Products" rootNodeName="Products" varName="Prodotto_PC"/></specInfo><doMapping><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ihmap:instances"/><to docName="dstDoc1" path="/Products/list/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Id"/><to docName="dstDoc1" path="/Products/list/Id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Name"/><to docName="dstDoc1" path="/Products/list/Name"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Piano_Commerciale__c"/><to docName="dstDoc1" path="/Products/list/Piano_Commerciale__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Key_piano_commerciale__c"/><to docName="dstDoc1" path="/Products/list/KeyPiano_Commerciale__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Macroprodotto__c"/><to docName="dstDoc1" path="/Products/list/Macroprodotto__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/RecordType_developer_name__c"/><to docName="dstDoc1" path="/Products/list/RecordType_developer_name__c"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><model><queryObjects batchSize="500" connectionTimeout="300" endpoint="/Endpoints/Salesforce" includeDeleted="false" maxRetries="5" query="&#xa;SELECT Id, Macroprodotto__c, Name, Piano_Commerciale__c, RecordType_developer_name__c, Key_piano_commerciale__c FROM Prodotto_del_Piano_Commerciale__c where Piano_Commerciale__c in (SELECT Id FROM Piano_Commerciale__c where Name = '2015')" retryInterval="30" valid="true" xmlns="http://www.approuter.com/schemas/module/sfdc/activity/1.0"/></model></invoke><switch activityId="546" comments="" configurationId="flow_switch_id_1" description="IfThen" expanded="true" name="ordina materiali grPC"><case activityId="547" bpel-ext:wizardMode="true" comments="" condition="bpws:getVariableData('ordina_prodotti') = &quot;Y&quot;" configurationId="flow_case_id_1" description="Attività If" expanded="true" name="ordinare"><sequence activityId="2650" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><invoke activityId="292" activityName="" comments="" configurationId="custom_xslt_xml_id_1" description="XSLT personalizzato" expanded="true" inputVariable="Prodotto_PC" moduleName="http://www.approuter.com/module/xml/" name="sort prodotto PC" outputVariable="Prodotto_PC" partnerLink="" xsltGuid="appnet-guid://920ABAE4DEB795A8DABEC82F5826FE5EA9C88FE5D17E4C77424BEFE36E064AD1"><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.activities.xml.tasks.XSLTTask><![CDATA[
+      ]]><key><![CDATA[pickStylesheet]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[true]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.activities.xml.tasks.XSLTInputOutputTask><![CDATA[
+          ]]><key><![CDATA[setInputOutput]]></key><![CDATA[
+          ]]><children/><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners/><![CDATA[
+        ]]></com.approuter.studio.activities.xml.tasks.XSLTInputOutputTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.activities.xml.tasks.XSLTTask><![CDATA[
+    ]]><com.approuter.studio.activities.xml.tasks.XSLTInputOutputTask reference="../com.approuter.studio.activities.xml.tasks.XSLTTask/listeners/com.approuter.studio.activities.xml.tasks.XSLTInputOutputTask"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke></sequence><conditional><expression joinOperator="" leftExpression="bpws:getVariableData('ordina_prodotti')" operator="=" rightExpression="&quot;Y&quot;"/></conditional></case><otherwise activityId="548" comments="" configurationId="flow_otherwise_id_1" description="Attività Altrimenti" expanded="true" name="Else"><sequence activityId="2651" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><empty activityId="550" comments="" configurationId="flow_empty_id_1" description="Attività Svuota" expanded="true" name="Svuota"/></sequence></otherwise></switch><invoke activityId="6" activityName="" comments="" configurationId="sfdc_query_id" description="Esegui query oggetti" expanded="true" moduleName="http://www.approuter.com/module/sfdc/" name="estrai eventi" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><destination activityId="6" canBeSubstitutedFromUI="true" displayName="parameters" isParameter="true" location="params-param.xsd-6" locationType="2" logicalName="dstDoc1" messageType="parameters" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="parameters" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="parameters" varName="parameters"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="MruHeader" isParameter="true" location="mru-param.xsd-6" locationType="2" logicalName="dstDoc2" messageType="MruHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="MruHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="MruHeader"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="CallOptions" isParameter="true" location="callOptions-param.xsd-6" locationType="2" logicalName="dstDoc3" messageType="CallOptions" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="CallOptions" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="CallOptions"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="PackageVersionHeader" isParameter="true" location="packageVersionHeader-param.xsd-6" locationType="2" logicalName="dstDoc4" messageType="PackageVersionHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="PackageVersionHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="PackageVersionHeader"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="loginCredentials-param.xsd-6" locationType="2" logicalName="dstDoc5" messageType="connection" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="connection"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-param.xsd-6" locationType="2" logicalName="dstDoc6" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/></specInfo><doMapping/></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="6" canBeSubstitutedFromUI="true" displayName="objects" isParameter="true" location="objects-param.xsd-6" locationType="2" logicalName="srcDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects"/><source activityId="6" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-out-param.xsd-6" locationType="2" logicalName="srcDoc2" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="false" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/><destination activityId="6" canBeSubstitutedFromUI="true" displayName="Eventi" isParameter="false" location="objects-param.xsd-6" locationType="2" logicalName="dstDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="Eventi"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/ihmap:instances"/><to docName="dstDoc1" path="/objects/Event/ihmap:instances"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Id"/><to docName="dstDoc1" path="/objects/Event/Id"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/ActivityDate/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/ActivityDate/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/ActivityDate"/><to docName="dstDoc1" path="/objects/Event/ActivityDate"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/AccountId/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/AccountId/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/AccountId"/><to docName="dstDoc1" path="/objects/Event/AccountId"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/IsChild"/><to docName="dstDoc1" path="/objects/Event/IsChild"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Partecipazione_delle_Relazioni__c/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/Partecipazione_delle_Relazioni__c/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Partecipazione_delle_Relazioni__c"/><to docName="dstDoc1" path="/objects/Event/Partecipazione_delle_Relazioni__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Partecipazione_dei_Prodotti__c/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/Partecipazione_dei_Prodotti__c/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Partecipazione_dei_Prodotti__c"/><to docName="dstDoc1" path="/objects/Event/Partecipazione_dei_Prodotti__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/DevNameDesk__c/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/DevNameDesk__c/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/DevNameDesk__c"/><to docName="dstDoc1" path="/objects/Event/DevNameDesk__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Account/Gruppo_PC__c/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/Account/Gruppo_PC__c/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Account/ihmap:exists"/><to docName="dstDoc1" path="/objects/Event/Account/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Account/Gruppo_PC__c"/><to docName="dstDoc1" path="/objects/Event/Account/Gruppo_PC__c"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Principale_Desk_coinvolto__c/ihmap:nillable"/><to docName="dstDoc1" path="/objects/Event/Principale_Desk_coinvolto__c/ihmap:nillable"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/objects/Event/Principale_Desk_coinvolto__c"/><to docName="dstDoc1" path="/objects/Event/Principale_Desk_coinvolto__c"/></do></rule></doMapping></mapSpec></outputMapSpecConfig><model><queryObjects batchSize="500" connectionTimeout="300" endpoint="/Endpoints/Salesforce" includeDeleted="false" maxRetries="5" query="select Id, AccountId, Account.Gruppo_PC__c, Principale_Desk_coinvolto__c, DevNameDesk__c, ActivityDate, isChild, Partecipazione_delle_Relazioni__c, Partecipazione_dei_Prodotti__c from Event where AccountId in (select Id from Account where Gruppo_PC__c != null) and Principale_Desk_coinvolto__c != '' and isChild = false" retryInterval="30" valid="true" xmlns="http://www.approuter.com/schemas/module/sfdc/activity/1.0"/></model></invoke><foreach activityId="7" comments="" configurationId="flow_for_each_id_1" description="Attività ForEach" expanded="true" inputVariable="Prodotto_PC" loopCounter="loopcounter_1_1_2" loopValue="riga_prodotto" name="consuntivo prodotto" query="/Products/list"><sequence activityId="2652" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><map activityId="25" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="set gruppo PC"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="riga_prodotto" isParameter="false" location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" locationType="0" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="Products" rootNodeName="list" varName="riga_prodotto" xpathToRootNode="/Products/list"/><destination canBeSubstitutedFromUI="true" displayName="gruppo_pc" isParameter="false" location="gruppo_pc" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="gruppo_pc" rootNodeName="gruppo_pc" varName="gruppo_pc"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="substringLeft" gridX="121" gridY="70" id="1" resultType="string"><arg dataType="xsd:string" docName="srcDoc1"><path>/list/KeyPiano_Commerciale__c</path></arg><arg dataType="number"><constant>18</constant></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc1" srcPath="/list/KeyPiano_Commerciale__c"/><link destDocName="dstDoc1" destPath="/gruppo_pc" id="1" srcFunctoid="1"/></call></rule></doMapping></mapSpec></mapSpecConfig></map><switch activityId="691" comments="" configurationId="flow_switch_id_1" description="IfThen" expanded="true" name="cambio gruppo PC"><case activityId="692" bpel-ext:wizardMode="true" comments="" condition="bpws:getVariableData('gruppo_pc') != bpws:getVariableData('gruppo_pc_OLD')" configurationId="flow_case_id_1" description="Attività If" expanded="true" name="nuovo gruppo PC"><sequence activityId="2653" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><map activityId="743" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="set new as old"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="gruppo_pc" isParameter="false" location="gruppo_pc" locationType="2" logicalName="srcDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="gruppo_pc" rootNodeName="gruppo_pc" varName="gruppo_pc"/><destination canBeSubstitutedFromUI="true" displayName="gruppo_pc_OLD" isParameter="false" location="gruppo_pc_OLD" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="gruppo_pc_OLD" rootNodeName="gruppo_pc_OLD" varName="gruppo_pc_OLD"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/gruppo_pc"/><to docName="dstDoc1" path="/gruppo_pc_OLD"/></do></rule></doMapping></mapSpec></mapSpecConfig></map><map activityId="682" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="reset counters"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="zerooo" isParameter="false" location="zerooo" locationType="2" logicalName="srcDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="zerooo" rootNodeName="zerooo" varName="zerooo"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_con_relazioni" isParameter="false" location="num_eventi_con_relazioni" locationType="2" logicalName="dstDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_con_relazioni" rootNodeName="num_eventi_con_relazioni" varName="num_eventi_con_relazioni"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti" isParameter="false" location="num_eventi_congiunti" locationType="2" logicalName="dstDoc3" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti" rootNodeName="num_eventi_congiunti" varName="num_eventi_congiunti"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_svolti" isParameter="false" location="num_eventi_congiunti_svolti" locationType="2" logicalName="dstDoc5" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_svolti" rootNodeName="num_eventi_congiunti_svolti" varName="num_eventi_congiunti_svolti"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_mese" isParameter="false" location="num_eventi_mese" locationType="2" logicalName="dstDoc6" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_mese" rootNodeName="num_eventi_mese" varName="num_eventi_mese"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_ytd" isParameter="false" location="num_eventi_ytd" locationType="2" logicalName="dstDoc7" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_ytd" rootNodeName="num_eventi_ytd" varName="num_eventi_ytd"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc1" path="/num_eventi"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc2" path="/num_eventi_con_relazioni"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc3" path="/num_eventi_congiunti"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc5" path="/num_eventi_congiunti_svolti"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc6" path="/num_eventi_mese"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/zerooo"/><to docName="dstDoc7" path="/num_eventi_ytd"/></do></rule></doMapping></mapSpec></mapSpecConfig></map><foreach activityId="19" comments="filtro su eventi con lo stesso gruppo prodotto " configurationId="flow_for_each_id_1" description="Attività ForEach" expanded="true" inputVariable="Eventi" loopCounter="index_eventi_1" loopValue="riga_eventi" name="conta eventi" query="/*:objects/*:Event[*:Account/*:Gruppo_PC__c=bpws:getVariableData('gruppo_pc')]"><sequence activityId="2654" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><map activityId="637" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="set counter"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="6" canBeSubstitutedFromUI="true" displayName="riga_eventi" isParameter="false" location="objects-param.xsd-6" locationType="2" logicalName="srcDoc2" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="Event" varName="riga_eventi" xpathToRootNode="/objects/Event"/><source canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="srcDoc3" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_con_relazioni" isParameter="false" location="num_eventi_con_relazioni" locationType="2" logicalName="srcDoc4" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_con_relazioni" rootNodeName="num_eventi_con_relazioni" varName="num_eventi_con_relazioni"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti" isParameter="false" location="num_eventi_congiunti" locationType="2" logicalName="srcDoc5" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti" rootNodeName="num_eventi_congiunti" varName="num_eventi_congiunti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_svolti" isParameter="false" location="num_eventi_congiunti_svolti" locationType="2" logicalName="srcDoc6" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_svolti" rootNodeName="num_eventi_congiunti_svolti" varName="num_eventi_congiunti_svolti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_mese" isParameter="false" location="num_eventi_mese" locationType="2" logicalName="srcDoc7" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_mese" rootNodeName="num_eventi_mese" varName="num_eventi_mese"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_ytd" isParameter="false" location="num_eventi_ytd" locationType="2" logicalName="srcDoc8" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_ytd" rootNodeName="num_eventi_ytd" varName="num_eventi_ytd"/><source canBeSubstitutedFromUI="true" displayName="oggi" isParameter="false" location="oggi" locationType="2" logicalName="srcDoc9" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="oggi" rootNodeName="oggi" varName="oggi"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_pianificati" isParameter="false" location="num_eventi_congiunti_pianificati" locationType="2" logicalName="srcDoc10" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_pianificati" rootNodeName="num_eventi_congiunti_pianificati" varName="num_eventi_congiunti_pianificati"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_con_relazioni" isParameter="false" location="num_eventi_con_relazioni" locationType="2" logicalName="dstDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_con_relazioni" rootNodeName="num_eventi_con_relazioni" varName="num_eventi_con_relazioni"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti" isParameter="false" location="num_eventi_congiunti" locationType="2" logicalName="dstDoc3" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti" rootNodeName="num_eventi_congiunti" varName="num_eventi_congiunti"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_svolti" isParameter="false" location="num_eventi_congiunti_svolti" locationType="2" logicalName="dstDoc4" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_svolti" rootNodeName="num_eventi_congiunti_svolti" varName="num_eventi_congiunti_svolti"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_mese" isParameter="false" location="num_eventi_mese" locationType="2" logicalName="dstDoc5" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_mese" rootNodeName="num_eventi_mese" varName="num_eventi_mese"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_ytd" isParameter="false" location="num_eventi_ytd" locationType="2" logicalName="dstDoc6" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_ytd" rootNodeName="num_eventi_ytd" varName="num_eventi_ytd"/><destination canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_pianificati" isParameter="false" location="num_eventi_congiunti_pianificati" locationType="2" logicalName="dstDoc7" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_pianificati" rootNodeName="num_eventi_congiunti_pianificati" varName="num_eventi_congiunti_pianificati"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi" gridX="172" gridY="70" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc3"><path>/num_eventi</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc3" srcPath="/num_eventi"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destDocName="dstDoc1" destPath="/num_eventi" id="3" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_ytd" gridX="274" gridY="274" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc8"><path>/num_eventi_ytd</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc8" srcPath="/num_eventi_ytd"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destDocName="dstDoc6" destPath="/num_eventi_ytd" id="3" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_con_relazioni" gridX="291" gridY="393" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc4"><path>/num_eventi_con_relazioni</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_delle_Relazioni__c</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc4" srcPath="/num_eventi_con_relazioni"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destFunctoid="1" destFunctoidArgIndex="3" id="3" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_delle_Relazioni__c"/><link destDocName="dstDoc2" destPath="/num_eventi_con_relazioni" id="4" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_mtd" gridX="291" gridY="359" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc7"><path>/num_eventi_mese</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc7" srcPath="/num_eventi_mese"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destDocName="dstDoc5" destPath="/num_eventi_mese" id="3" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_congiunti" gridX="257" gridY="359" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc5"><path>/num_eventi_congiunti</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_delle_Relazioni__c</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_dei_Prodotti__c</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc5" srcPath="/num_eventi_congiunti"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destFunctoid="1" destFunctoidArgIndex="3" id="3" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_delle_Relazioni__c"/><link destFunctoid="1" destFunctoidArgIndex="4" id="4" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_dei_Prodotti__c"/><link destDocName="dstDoc3" destPath="/num_eventi_congiunti" id="5" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_congiunti_svolti" gridX="223" gridY="393" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc6"><path>/num_eventi_congiunti_svolti</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_delle_Relazioni__c</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_dei_Prodotti__c</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc6" srcPath="/num_eventi_congiunti_svolti"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destFunctoid="1" destFunctoidArgIndex="3" id="3" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_delle_Relazioni__c"/><link destFunctoid="1" destFunctoidArgIndex="4" id="4" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_dei_Prodotti__c"/><link destDocName="dstDoc4" destPath="/num_eventi_congiunti_svolti" id="5" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="conta_eventi_congiunti_pianificati" gridX="274" gridY="359" id="1" resultType="number"><arg dataType="xsd:decimal" docName="srcDoc10"><path>/num_eventi_congiunti_pianificati</path></arg><arg dataType="xsd:string" docName="srcDoc9"><path>/oggi</path></arg><arg dataType="xsd:date" docName="srcDoc2"><path>/Event/ActivityDate</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_delle_Relazioni__c</path></arg><arg dataType="xsd:string" docName="srcDoc2"><path>/Event/Partecipazione_dei_Prodotti__c</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc10" srcPath="/num_eventi_congiunti_pianificati"/><link destFunctoid="1" destFunctoidArgIndex="1" id="1" srcDocName="srcDoc9" srcPath="/oggi"/><link destFunctoid="1" destFunctoidArgIndex="2" id="2" srcDocName="srcDoc2" srcPath="/Event/ActivityDate"/><link destFunctoid="1" destFunctoidArgIndex="3" id="3" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_delle_Relazioni__c"/><link destFunctoid="1" destFunctoidArgIndex="4" id="4" srcDocName="srcDoc2" srcPath="/Event/Partecipazione_dei_Prodotti__c"/><link destDocName="dstDoc7" destPath="/num_eventi_congiunti_pianificati" id="5" srcFunctoid="1"/></call></rule></doMapping></mapSpec></mapSpecConfig></map></sequence></foreach></sequence><conditional><expression joinOperator="" leftExpression="bpws:getVariableData('gruppo_pc')" operator="!=" rightExpression="bpws:getVariableData('gruppo_pc_OLD')"/></conditional></case><otherwise activityId="693" comments="" configurationId="flow_otherwise_id_1" description="Attività Altrimenti" expanded="true" name="Else"><sequence activityId="2655" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><empty activityId="695" comments="" configurationId="flow_empty_id_1" description="Attività Svuota" expanded="true" name="Svuota"/></sequence></otherwise></switch><switch activityId="906" comments="" configurationId="flow_switch_id_1" description="IfThen" expanded="true" name="consuntivo prodotti"><case activityId="907" bpel-ext:wizardMode="true" comments="" condition="bpws:getVariableData('num_eventi') > 0" configurationId="flow_case_id_1" description="Attività If" expanded="true" name="esistono eventi"><sequence activityId="2656" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><map activityId="777" comments="" configurationId="flow_map_id_1" description="Attività associazione" expanded="true" name="set materiali eventi"><mapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="true" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="riga_prodotto" isParameter="false" location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" locationType="0" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="Products" rootNodeName="list" varName="riga_prodotto" xpathToRootNode="/Products/list"/><source canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="srcDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><destination canBeSubstitutedFromUI="true" displayName="materiale_eventi" isParameter="false" location="materiale_eventi" locationType="2" logicalName="dstDoc1" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="materiale_eventi" rootNodeName="materiale_eventi" varName="materiale_eventi"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid function="Concatenate" gridX="155" gridY="87" id="1" resultType="xsd:string"><arg dataType="xsd:string" docName="srcDoc1"><path>/list/Id</path></arg><arg dataType="xsd:string"><constant>|</constant></arg><arg dataType="xsd:decimal" docName="srcDoc2"><path>/num_eventi</path></arg></functoid><link destFunctoid="1" destFunctoidArgIndex="0" id="0" srcDocName="srcDoc1" srcPath="/list/Id"/><link destFunctoid="1" destFunctoidArgIndex="2" id="1" srcDocName="srcDoc2" srcPath="/num_eventi"/><link destDocName="dstDoc1" destPath="/materiale_eventi" id="2" srcFunctoid="1"/></call></rule></doMapping></mapSpec></mapSpecConfig></map><invoke activityId="961" activityName="" comments="" configurationId="db_insert_event_id" description="Questa attività inserisce righe in una determinata tabella nell'endpoint del database selezionato" expanded="true" moduleName="http://www.approuter.com/module/database/" name="Inserisci righe" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="riga_prodotto" isParameter="false" location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" locationType="0" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="Products" rootNodeName="list" varName="riga_prodotto" xpathToRootNode="/Products/list"/><source canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="srcDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_con_relazioni" isParameter="false" location="num_eventi_con_relazioni" locationType="2" logicalName="srcDoc3" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_con_relazioni" rootNodeName="num_eventi_con_relazioni" varName="num_eventi_con_relazioni"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti" isParameter="false" location="num_eventi_congiunti" locationType="2" logicalName="srcDoc4" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti" rootNodeName="num_eventi_congiunti" varName="num_eventi_congiunti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_svolti" isParameter="false" location="num_eventi_congiunti_svolti" locationType="2" logicalName="srcDoc5" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_svolti" rootNodeName="num_eventi_congiunti_svolti" varName="num_eventi_congiunti_svolti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_mese" isParameter="false" location="num_eventi_mese" locationType="2" logicalName="srcDoc6" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_mese" rootNodeName="num_eventi_mese" varName="num_eventi_mese"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_ytd" isParameter="false" location="num_eventi_ytd" locationType="2" logicalName="srcDoc7" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_ytd" rootNodeName="num_eventi_ytd" varName="num_eventi_ytd"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_pianificati" isParameter="false" location="num_eventi_congiunti_pianificati" locationType="2" logicalName="srcDoc8" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_pianificati" rootNodeName="num_eventi_congiunti_pianificati" varName="num_eventi_congiunti_pianificati"/><destination canBeSubstitutedFromUI="true" displayName="rows" isParameter="true" location="Schema_4_mapInputsTask_in_961" locationType="2" logicalName="dstDoc1" optionalParameter="false" originalRootNodeName="rows" rootNodeName="rows" varName="rows"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><call guaranteed="true"><functoid custom="true" function="generaGUID" gridX="189" gridY="70" id="1" resultType="string"/><link destDocName="dstDoc1" destPath="/rows/row/GUID" id="0" srcFunctoid="1"/></call></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/list/Id"/><to docName="dstDoc1" path="/rows/row/MATERIAL"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc2" path="/num_eventi"/><to docName="dstDoc1" path="/rows/row/EVENT01"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc7" path="/num_eventi_ytd"/><to docName="dstDoc1" path="/rows/row/EVENT02"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc3" path="/num_eventi_con_relazioni"/><to docName="dstDoc1" path="/rows/row/EVENT03"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc6" path="/num_eventi_mese"/><to docName="dstDoc1" path="/rows/row/EVENT04"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc4" path="/num_eventi_congiunti"/><to docName="dstDoc1" path="/rows/row/EVENT05"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc5" path="/num_eventi_congiunti_svolti"/><to docName="dstDoc1" path="/rows/row/EVENT06"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc8" path="/num_eventi_congiunti_pianificati"/><to docName="dstDoc1" path="/rows/row/EVENT07"/></do></rule><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/list/Piano_Commerciale__c"/><to docName="dstDoc1" path="/rows/row/EVENT08"/></do></rule></doMapping></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="rowCounts" isParameter="true" location="Schema_4_mapOutputsTask_in_961" locationType="2" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="rowCounts" rootNodeName="rowCounts" varName="rowCounts"/></specInfo><doMapping/></mapSpec></outputMapSpecConfig><tasksConfig><com.approuter.studio.connectors.task.TaskList><![CDATA[
+  ]]><tasks><![CDATA[
+    ]]><com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+      ]]><key><![CDATA[summaryTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners/><![CDATA[
+    ]]></com.approuter.studio.connectors.task.SummaryTask><![CDATA[
+    ]]><com.approuter.studio.connectors.database.tasks.DBEndpointTask><![CDATA[
+      ]]><key><![CDATA[endpointTask]]></key><![CDATA[
+      ]]><children/><![CDATA[
+      ]]><model><![CDATA[
+        ]]><map><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[selected]]></string><![CDATA[
+            ]]><string><![CDATA[false]]></string><![CDATA[
+          ]]></entry><![CDATA[
+          ]]><entry><![CDATA[
+            ]]><string><![CDATA[endpoint]]></string><![CDATA[
+            ]]><string><![CDATA[appnet-guid://E88EDDB6F04F4C5F314F56044F737916063CE968FB5AAA48BB567A4169CEAD16]]></string><![CDATA[
+          ]]></entry><![CDATA[
+        ]]></map><![CDATA[
+      ]]></model><![CDATA[
+      ]]><listeners><![CDATA[
+        ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]><key><![CDATA[setupWorkflowTask]]></key><![CDATA[
+          ]]><children><![CDATA[
+            ]]><com.approuter.studio.connectors.database.tasks.DBBuildMessageTask><![CDATA[
+              ]]><key><![CDATA[buildOutboundMessageTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[schema]]></string><![CDATA[
+                    ]]><string><![CDATA[APP]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[tableData]]></string><![CDATA[
+                    ]]><list><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[GUID]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[36]]></size><![CDATA[
+                        ]]><nullable><![CDATA[false]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[MATERIAL]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[false]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT01]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT02]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT03]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT04]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT05]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT06]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT07]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                      ]]><com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                        ]]><use><![CDATA[true]]></use><![CDATA[
+                        ]]><name><![CDATA[EVENT08]]></name><![CDATA[
+                        ]]><type><![CDATA[VARCHAR]]></type><![CDATA[
+                        ]]><encoding><![CDATA[ISO-8859-1]]></encoding><![CDATA[
+                        ]]><size><![CDATA[20]]></size><![CDATA[
+                        ]]><nullable><![CDATA[true]]></nullable><![CDATA[
+                        ]]><tableName><![CDATA[CONSUNTIVO_MAT]]></tableName><![CDATA[
+                      ]]></com.approuter.studio.connectors.database.tables.BuildMessageTableData><![CDATA[
+                    ]]></list><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[tableName]]></string><![CDATA[
+                    ]]><string><![CDATA[CONSUNTIVO_MAT]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[hideTables]]></string><![CDATA[
+                    ]]><boolean><![CDATA[true]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[primaryKeys]]></string><![CDATA[
+                    ]]><list><![CDATA[
+                      ]]><string><![CDATA[GUID]]></string><![CDATA[
+                    ]]></list><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[encoding]]></string><![CDATA[
+                    ]]><string><![CDATA[ISO-8859-1]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[dataTypes]]></string><![CDATA[
+                    ]]><list><![CDATA[
+                      ]]><string><![CDATA[LONGVARBINARY]]></string><![CDATA[
+                      ]]><string><![CDATA[LONGVARCHAR]]></string><![CDATA[
+                      ]]><string><![CDATA[NUMERIC]]></string><![CDATA[
+                      ]]><string><![CDATA[BIGINT]]></string><![CDATA[
+                      ]]><string><![CDATA[INTEGER]]></string><![CDATA[
+                      ]]><string><![CDATA[CHAR]]></string><![CDATA[
+                      ]]><string><![CDATA[CLOB]]></string><![CDATA[
+                      ]]><string><![CDATA[DOUBLE]]></string><![CDATA[
+                      ]]><string><![CDATA[DATE]]></string><![CDATA[
+                      ]]><string><![CDATA[FLOAT]]></string><![CDATA[
+                      ]]><string><![CDATA[DECIMAL]]></string><![CDATA[
+                      ]]><string><![CDATA[TIMESTAMP]]></string><![CDATA[
+                      ]]><string><![CDATA[BLOB]]></string><![CDATA[
+                      ]]><string><![CDATA[REAL]]></string><![CDATA[
+                      ]]><string><![CDATA[TIME]]></string><![CDATA[
+                      ]]><string><![CDATA[SQLXML]]></string><![CDATA[
+                      ]]><string><![CDATA[VARBINARY]]></string><![CDATA[
+                      ]]><string><![CDATA[BINARY]]></string><![CDATA[
+                      ]]><string><![CDATA[SMALLINT]]></string><![CDATA[
+                      ]]><string><![CDATA[VARCHAR]]></string><![CDATA[
+                    ]]></list><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.database.tasks.DBBuildMessageTask><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[deliveryOptionsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[deliver]]></string><![CDATA[
+                    ]]><string><![CDATA[Una sola volta]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[batch]]></string><![CDATA[
+                    ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[getRowCounts]]></string><![CDATA[
+                    ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[rows]]></string><![CDATA[
+                    ]]><int><![CDATA[100]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+            ]]><com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+              ]]><key><![CDATA[retryTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[maxRetries]]></string><![CDATA[
+                    ]]><int><![CDATA[5]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[timeout]]></string><![CDATA[
+                    ]]><int><![CDATA[300]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[retryInterval]]></string><![CDATA[
+                    ]]><int><![CDATA[30]]></int><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+          ]]></children><![CDATA[
+          ]]><model><![CDATA[
+            ]]><map><![CDATA[
+              ]]><entry><![CDATA[
+                ]]><string><![CDATA[selected]]></string><![CDATA[
+                ]]><string><![CDATA[false]]></string><![CDATA[
+              ]]></entry><![CDATA[
+            ]]></map><![CDATA[
+          ]]></model><![CDATA[
+          ]]><listeners><![CDATA[
+            ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+              ]]><key><![CDATA[mapInputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[schema]]></string><![CDATA[
+                    ]]><string><![CDATA[<xs:schema elementFormDefault="unqualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="rows" type="RowsType"/><xs:complexType name="RowsType"><xs:sequence><xs:element name="row" minOccurs="1" maxOccurs="1"><xs:complexType><xs:sequence><xs:element name="GUID" type="xs:string" nillable="false"/><xs:element name="MATERIAL" type="xs:string" nillable="false"/><xs:element name="EVENT01" type="xs:string" nillable="true"/><xs:element name="EVENT02" type="xs:string" nillable="true"/><xs:element name="EVENT03" type="xs:string" nillable="true"/><xs:element name="EVENT04" type="xs:string" nillable="true"/><xs:element name="EVENT05" type="xs:string" nillable="true"/><xs:element name="EVENT06" type="xs:string" nillable="true"/><xs:element name="EVENT07" type="xs:string" nillable="true"/><xs:element name="EVENT08" type="xs:string" nillable="true"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType></xs:schema>]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[true]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+            ]]><com.approuter.studio.connectors.task.MapTask><![CDATA[
+              ]]><key><![CDATA[mapOutputsTask]]></key><![CDATA[
+              ]]><children/><![CDATA[
+              ]]><model><![CDATA[
+                ]]><map><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[selected]]></string><![CDATA[
+                    ]]><string><![CDATA[false]]></string><![CDATA[
+                  ]]></entry><![CDATA[
+                  ]]><entry><![CDATA[
+                    ]]><string><![CDATA[batch]]></string><![CDATA[
+                    ]]><boolean><![CDATA[false]]></boolean><![CDATA[
+                  ]]></entry><![CDATA[
+                ]]></map><![CDATA[
+              ]]></model><![CDATA[
+              ]]><listeners/><![CDATA[
+            ]]></com.approuter.studio.connectors.task.MapTask><![CDATA[
+          ]]></listeners><![CDATA[
+        ]]></com.approuter.studio.connectors.task.ActivityRefTask><![CDATA[
+      ]]></listeners><![CDATA[
+    ]]></com.approuter.studio.connectors.database.tasks.DBEndpointTask><![CDATA[
+    ]]><com.approuter.studio.connectors.task.ActivityRefTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.task.MapTask"/><![CDATA[
+    ]]><com.approuter.studio.connectors.task.MapTask reference="../com.approuter.studio.connectors.database.tasks.DBEndpointTask/listeners/com.approuter.studio.connectors.task.ActivityRefTask/listeners/com.approuter.studio.connectors.task.MapTask[2]"/><![CDATA[
+  ]]></tasks><![CDATA[
+  ]]><valid><![CDATA[false]]></valid><![CDATA[
+]]></com.approuter.studio.connectors.task.TaskList></tasksConfig></invoke><invoke activityId="1440" activityName="" comments="" configurationId="sfdc_update_id" description="Aggiorna oggetti" expanded="true" moduleName="http://www.approuter.com/module/sfdc/" name="Aggiorna oggetti" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source canBeSubstitutedFromUI="true" displayName="riga_prodotto" isParameter="false" location="appnet-guid://E286835B31D60B227DE325B439590B6316FF0DD14AA38E3FC3660576A2F4F9F3" locationType="0" logicalName="srcDoc1" optionalParameter="false" originalRootNodeName="Products" rootNodeName="list" varName="riga_prodotto" xpathToRootNode="/Products/list"/><source canBeSubstitutedFromUI="true" displayName="num_eventi" isParameter="false" location="num_eventi" locationType="2" logicalName="srcDoc2" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi" rootNodeName="num_eventi" varName="num_eventi"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_con_relazioni" isParameter="false" location="num_eventi_con_relazioni" locationType="2" logicalName="srcDoc3" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_con_relazioni" rootNodeName="num_eventi_con_relazioni" varName="num_eventi_con_relazioni"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_svolti" isParameter="false" location="num_eventi_congiunti_svolti" locationType="2" logicalName="srcDoc4" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_svolti" rootNodeName="num_eventi_congiunti_svolti" varName="num_eventi_congiunti_svolti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti_pianificati" isParameter="false" location="num_eventi_congiunti_pianificati" locationType="2" logicalName="srcDoc5" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti_pianificati" rootNodeName="num_eventi_congiunti_pianificati" varName="num_eventi_congiunti_pianificati"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_congiunti" isParameter="false" location="num_eventi_congiunti" locationType="2" logicalName="srcDoc6" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_congiunti" rootNodeName="num_eventi_congiunti" varName="num_eventi_congiunti"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_mese" isParameter="false" location="num_eventi_mese" locationType="2" logicalName="srcDoc7" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_mese" rootNodeName="num_eventi_mese" varName="num_eventi_mese"/><source canBeSubstitutedFromUI="true" displayName="num_eventi_ytd" isParameter="false" location="num_eventi_ytd" locationType="2" logicalName="srcDoc8" namespace="http://www.approuter.com/schemas/2003/1/castirontypes" optionalParameter="false" originalRootNodeName="num_eventi_ytd" rootNodeName="num_eventi_ytd" varName="num_eventi_ytd"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="objects" isParameter="true" location="objects-param.xsd-1440" locationType="2" logicalName="dstDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="AssignmentRuleHeader" isParameter="true" location="assignmentRule-param.xsd-1440" locationType="2" logicalName="dstDoc2" messageType="AssignmentRuleHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="AssignmentRuleHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="AssignmentRuleHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="MruHeader" isParameter="true" location="mru-param.xsd-1440" locationType="2" logicalName="dstDoc3" messageType="MruHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="MruHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="MruHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="EmailHeader" isParameter="true" location="email-param.xsd-1440" locationType="2" logicalName="dstDoc4" messageType="EmailHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="EmailHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="EmailHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="CallOptions" isParameter="true" location="callOptions-param.xsd-1440" locationType="2" logicalName="dstDoc5" messageType="CallOptions" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="CallOptions" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="CallOptions"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="AllowFieldTruncationHeader" isParameter="true" location="allowFieldTruncation-param.xsd-1440" locationType="2" logicalName="dstDoc6" messageType="AllowFieldTruncationHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="AllowFieldTruncationHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="AllowFieldTruncationHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="PackageVersionHeader" isParameter="true" location="packageVersionHeader-param.xsd-1440" locationType="2" logicalName="dstDoc7" messageType="PackageVersionHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="PackageVersionHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="PackageVersionHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="DisableFeedTrackingHeader" isParameter="true" location="disableFeedTracking-param.xsd-1440" locationType="2" logicalName="dstDoc8" messageType="DisableFeedTrackingHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="DisableFeedTrackingHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="DisableFeedTrackingHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="loginCredentials-param.xsd-1440" locationType="2" logicalName="dstDoc9" messageType="connection" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="connection"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-param.xsd-1440" locationType="2" logicalName="dstDoc10" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="AllOrNoneHeader" isParameter="true" location="allOrNoneHeader.xsd-1440" locationType="2" logicalName="dstDoc11" messageType="AllOrNoneHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="AllOrNoneHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="AllOrNoneHeader"/><destination activityId="1440" canBeSubstitutedFromUI="true" displayName="OwnerChangeOptions" isParameter="true" location="ownerChangeOptions.xsd-1440" locationType="2" logicalName="dstDoc12" messageType="OwnerChangeOptions" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="OwnerChangeOptions" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="OwnerChangeOptions"/></specInfo><doMapping><rule emitCData="false" guaranteed="true"><do guaranteed="true"><from docName="srcDoc1" path="/list/Id"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Id"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc2" path="/num_eventi"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Eventi__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc2" path="/num_eventi"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Eventi__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc3" path="/num_eventi_con_relazioni"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Di_cui_con_Relazioni__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc3" path="/num_eventi_con_relazioni"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/Di_cui_con_Relazioni__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc4" path="/num_eventi_congiunti_svolti"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_Svolti__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc4" path="/num_eventi_congiunti_svolti"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_Svolti__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc5" path="/num_eventi_congiunti_pianificati"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_Pianificati__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc5" path="/num_eventi_congiunti_pianificati"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_Pianificati__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc6" path="/num_eventi_congiunti"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_MTD__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc6" path="/num_eventi_congiunti"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Congiunti_MTD__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc7" path="/num_eventi_mese"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Totali_MTD__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc7" path="/num_eventi_mese"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Totali_MTD__c"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc8" path="/num_eventi_ytd"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Totali_YTD__c/ihmap:exists"/></do></rule><rule emitCData="false" guaranteed="false"><do guaranteed="false"><from docName="srcDoc8" path="/num_eventi_ytd"/><to docName="dstDoc1" path="/objects/Prodotto_del_Piano_Commerciale__c/ETL_N_Eventi_Totali_YTD__c"/></do></rule></doMapping></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="1440" canBeSubstitutedFromUI="true" displayName="results" isParameter="true" location="saveResult-param.xsd-1440" locationType="2" logicalName="srcDoc1" messageType="results" namespace="urn:partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="results" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="results"/><source activityId="1440" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-out-param.xsd-1440" locationType="2" logicalName="srcDoc2" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="false" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/></specInfo><doMapping/></mapSpec></outputMapSpecConfig><model><ns2:updateObjects connectionTimeout="300" endpoint="/Endpoints/Salesforce" maxRetries="5" objectType="Prodotto_del_Piano_Commerciale__c" retryInterval="30" xmlns="http://www.approuter.com/schemas/module/sfdc/metadata/1.0" xmlns:ns2="http://www.approuter.com/schemas/module/sfdc/activity/1.0"><ns2:objectFields isExternalId="false" label="ID record" name="Id" nillable="false" required="true" soapType="tns:ID" type="id" used="true"/><ns2:objectFields isExternalId="false" label="ID titolare" name="OwnerId" nillable="false" required="false" soapType="tns:ID" type="Lookup(Name)" used="false"/><ns2:objectFields isExternalId="true" label="Piano Commerciale" lookupObject="Piano_Commerciale__c" name="Piano_Commerciale__c" nillable="true" relationshipName="Piano_Commerciale__r" required="false" soapType="tns:ID" type="Lookup(Piano_Commerciale__c)(Piano_Commerciale__c)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi effettuati Q1" name="Eventi_effettuati_Q1__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi effettuati Q2" name="Eventi_effettuati_Q2__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi effettuati Q3" name="Eventi_effettuati_Q3__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi effettuati Q4" name="Eventi_effettuati_Q4__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi pianificati Q1" name="Eventi_pianificati_Q1__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi pianificati Q2" name="Eventi_pianificati_Q2__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi pianificati Q3" name="Eventi_pianificati_Q3__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="old_Eventi pianificati Q4" name="Eventi_pianificati_Q4__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Fattori abilitanti (Edit)" name="Fattori_abilitanti__c" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="Macroprodotto" name="Macroprodotto__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="ETL Margine Chiuse" name="Margine_Ponderato_000__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="ETL Opportunità Chiuse" name="Numero_di_opportunit__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="Priorità" name="Priorit__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Prodotto" name="Prodotto__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Reciprocity (Edit)" name="Reciprocity__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="RecordType developer name" name="RecordType_developer_name__c" nillable="true" required="false" soapType="xsd:string" type="Text(255)" used="false"/><ns2:objectFields isExternalId="false" label="Target offerta ISP (Edit)" name="Target_offerta_ISP__c" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="Reciprocity (CM)" name="Reciprocity_per_CM__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Target Offerta ISP (CM)" name="Target_Offerta_ISPperCM__c" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="ETL Eventi" name="Eventi__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL Di cui con Relazioni" name="Di_cui_con_Relazioni__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL Margine Ponderato Aperte" name="Val_Margine_Ponderato_Aperte__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="ETL Opportunità Aperte" name="Opportunit_Aperte__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="OLD_Fattori Abilitanti (Elenco sele)" name="Fattori_Abilitanti2__c" nillable="true" required="false" soapType="xsd:string" type="Picklist" used="false"/><ns2:objectFields isExternalId="false" label="Fattori Abilitanti (CM)" name="Fattori_Abilitanti_perCM__c" nillable="true" required="false" soapType="xsd:string" type="Text Area(255)" used="false"/><ns2:objectFields isExternalId="false" label="ETL N Eventi Congiunti Svolti" name="ETL_N_Eventi_Congiunti_Svolti__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL N_Opportunità Perse o Annullate" name="ETL_N_Opportunit_Perse_o_Annullate__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="ETL N Opp. Aperte Succ. &quot;Sent Proposal&quot;" name="ETL_N_Opp_Aperte_Succ_Sent_Proposal__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="ETL N Eventi Congiunti Pianificati" name="ETL_N_Eventi_Congiunti_Pianificati__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="OLD_Fattori Abilitanti (CRS)" name="Fattori_Abilitanti_perCMRisk__c" nillable="true" required="false" soapType="xsd:string" type="Text(255)" used="false"/><ns2:objectFields isExternalId="false" label="Target Offerta ISP (CRS)" name="Target_Offerta_ISPperCMRisk__c" nillable="true" required="false" soapType="xsd:string" type="Text(255)" used="false"/><ns2:objectFields isExternalId="false" label="Reciprocity (CRS)" name="Reciprocity_perCMRisk__c" nillable="true" required="false" soapType="xsd:string" type="Text(255)" used="false"/><ns2:objectFields isExternalId="false" label="ETL N Eventi Congiunti MTD" name="ETL_N_Eventi_Congiunti_MTD__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL N Eventi Totali MTD" name="ETL_N_Eventi_Totali_MTD__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL N Eventi Totali YTD" name="ETL_N_Eventi_Totali_YTD__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="true"/><ns2:objectFields isExternalId="false" label="ETL N Opportunità Perse" name="ETL_N_Opportunit_Perse__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/><ns2:objectFields isExternalId="false" label="ETL_N_Opportunit_Annullate" name="ETL_N_Opportunit_Annullate__c" nillable="true" required="false" soapType="xsd:double" type="Number(18, 0)" used="false"/></ns2:updateObjects></model></invoke></sequence><conditional><expression joinOperator="" leftExpression="bpws:getVariableData('num_eventi')" operator=">" rightExpression="0"/></conditional></case><otherwise activityId="908" comments="" configurationId="flow_otherwise_id_1" description="Attività Altrimenti" expanded="true" name="Else"><sequence activityId="2657" comments="" configurationId="flow_sequence_id_1" description="Attività Avvia" expanded="true" name="sequence"><empty activityId="910" comments="" configurationId="flow_empty_id_1" description="Attività Svuota" expanded="true" name="Svuota"/></sequence></otherwise></switch></sequence></foreach><scope activityId="1639" comments="" configurationId="flow_basic_scope_id_1" description="Gruppo di attività" expanded="true" name="consuntivo piano comm"><startScope activityId="2658" name="scope"><invoke activityId="1638" activityName="" comments="" configurationId="sfdc_query_id" description="Esegui query oggetti" expanded="true" moduleName="http://www.approuter.com/module/sfdc/" name="sum eventi piano com" partnerLink=""><inputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="parameters" isParameter="true" location="params-param.xsd-1638" locationType="2" logicalName="dstDoc1" messageType="parameters" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="parameters" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="parameters" varName="parameters"/><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="MruHeader" isParameter="true" location="mru-param.xsd-1638" locationType="2" logicalName="dstDoc2" messageType="MruHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="MruHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="MruHeader"/><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="CallOptions" isParameter="true" location="callOptions-param.xsd-1638" locationType="2" logicalName="dstDoc3" messageType="CallOptions" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="CallOptions" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="CallOptions"/><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="PackageVersionHeader" isParameter="true" location="packageVersionHeader-param.xsd-1638" locationType="2" logicalName="dstDoc4" messageType="PackageVersionHeader" namespace="urn:partner.soap.sforce.com" optionalParameter="true" originalRootNodeName="PackageVersionHeader" originalRootNodeNameNS="urn:partner.soap.sforce.com" rootNodeName="PackageVersionHeader"/><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="connection" isParameter="true" location="loginCredentials-param.xsd-1638" locationType="2" logicalName="dstDoc5" messageType="connection" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="connection" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="connection"/><destination activityId="1638" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-param.xsd-1638" locationType="2" logicalName="dstDoc6" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="true" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/></specInfo><doMapping/></mapSpec></inputMapSpecConfig><outputMapSpecConfig><mapSpec context="orchestration" optionalParameterVisible="false" version="1.0" xmlns="http://www.approuter.com/schemas/2003/1/transformation/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><specInfo><source activityId="1638" canBeSubstitutedFromUI="true" displayName="objects" isParameter="true" location="objects-param.xsd-1638" locationType="2" logicalName="srcDoc1" messageType="objects" namespace="urn:sobject.partner.soap.sforce.com" optionalParameter="false" originalRootNodeName="objects" originalRootNodeNameNS="urn:sobject.partner.soap.sforce.com" rootNodeName="objects" varName="objects"/><source activityId="1638" canBeSubstitutedFromUI="true" displayName="sessionInfo" isParameter="true" location="sessionInfo-out-param.xsd-1638" locationType="2" logicalName="srcDoc2" messageType="sessionInfo" namespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" optionalParameter="false" originalRootNodeName="sessionInfo" originalRootNodeNameNS="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" rootNodeName="sessionInfo"/></specInfo><doMapping/></mapSpec></outputMapSpecConfig><model><queryObjects batchSize="500" connectionTimeout="300" endpoint="/Endpoints/Salesforce" includeDeleted="false" maxRetries="5" query="SELECT Piano_Commerciale__c, &#xa;&#xa;&#xa;sum(Eventi__c),&#xa;sum(Di_cui_con_Relazioni__c),&#xa;sum(ETL_N_Eventi_Congiunti_Svolti__c),&#xa;sum(ETL_N_Eventi_Congiunti_Pianificati__c)&#xa;&#xa;&#xa;&#xa;FROM Prodotto_del_Piano_Commerciale__c where Piano_Commerciale__c in (SELECT Id FROM Piano_Commerciale__c where Name = '2015')&#xa;&#xa;group by Piano_Commerciale__c&#xa;" retryInterval="30" valid="true" xmlns="http://www.approuter.com/schemas/module/sfdc/activity/1.0"/></model></invoke></startScope></scope></sequence></process>

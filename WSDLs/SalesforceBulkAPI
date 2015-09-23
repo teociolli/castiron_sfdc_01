@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document><main name="SalesforceBulkAPI.wsdl" type="http://www.approuter.com/schemas/2003/1/wsdl/"><wsdl:definitions name="closeJob" targetNamespace="http://www.approuter.com/connectors/wsdl" xmlns="" xmlns:api="http://www.approuter.com/schemas/cdk/api/" xmlns:fns="urn:fault.partner.soap.sforce.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.approuter.com/connectors/wsdl" xmlns:tns1="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" xmlns:tns10="urn:sobject.partner.soap.sforce.com" xmlns:tns11="http://www.approuter.com/connectors/request/5/" xmlns:tns2="http://www.approuter.com/connectors/request/213/" xmlns:tns3="http://www.force.com/2009/06/asyncapi/dataload" xmlns:tns4="http://www.approuter.com/connectors/request/334/" xmlns:tns5="http://www.approuter.com/connectors/request/414/" xmlns:tns6="http://www.approuter.com/connectors/request/873/" xmlns:tns7="http://www.approuter.com/connectors/request/1428/" xmlns:tns8="http://www.approuter.com/connectors/request/3328/" xmlns:tns9="urn:partner.soap.sforce.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+      <xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/schemas/cdk/api/" xmlns="http://www.approuter.com/schemas/cdk/api/" xmlns:cca="http://www.approuter.com/schemas/cdk/api/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:import namespace="http://www.approuter.com/schemas/cdk/api/" schemaLocation="ci-connector-api.xsd"/><xs:element name="TestConnection" type="cca:TestConnection"/><xs:element name="TestConnectionResponse" type="cca:TestConnectionResponse"/><xs:element name="ListObjects" type="cca:ListObjects"/><xs:element name="ListObjectsResponse" type="cca:ListObjectsResponse"/><xs:element name="DescribeObject" type="cca:DescribeObject"/><xs:element name="DescribeObjectResponse" type="cca:DescribeObjectResponse"/><xs:element name="connectionDetails">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="0" name="userName" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="password" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="uri" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="proxy_domain" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="proxy_host" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="proxy_port" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="proxy_username" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="proxy_password" type="xs:string"/></xs:sequence></xs:complexType></xs:element><xs:element name="JobId" type="xs:string"/></xs:schema><xs:schema elementFormDefault="qualified" targetNamespace="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.approuter.com/schemas/2007/1/module/sfdc/connectionparam" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="sessionInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="serverURL" type="xs:string"/><xs:element name="sessionId" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/213/" xmlns:tns="http://www.approuter.com/connectors/request/213/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="closeJobRequest">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="JobInfo" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="id" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="closeJobRequest" type="tns:closeJobRequest"/></xs:schema><schema elementFormDefault="qualified" targetNamespace="http://www.force.com/2009/06/asyncapi/dataload" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.force.com/2009/06/asyncapi/dataload">
+      <element name="jobInfo" type="tns:JobInfo"/><element name="batchInfo" type="tns:BatchInfo"/><element name="error" type="tns:Error"/><element name="results" type="tns:BatchResult"/><element name="resultswrapper" type="tns:BatchResultWrapper"/><element name="batchInfoList">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" ref="tns:batchInfo"/></sequence></complexType></element><complexType name="Error">
+        <sequence>
+          <element name="exceptionCode" type="string"/><element name="exceptionMessage" type="string"/></sequence></complexType><complexType name="JobInfo">
+        <sequence>
+          <element maxOccurs="1" minOccurs="0" name="id" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="operation" type="tns:OperationEnum">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="object" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="createdById" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="createdDate" type="dateTime">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="systemModstamp" type="dateTime">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="state" type="tns:JobStateEnum">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="externalIdFieldName" type="string"/><element maxOccurs="1" minOccurs="0" name="concurrencyMode" type="tns:ConcurrencyModeEnum">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="contentType" type="tns:ContentType">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberBatchesQueued" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberBatchesInProgress" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberBatchesCompleted" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberBatchesFailed" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberBatchesTotal" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberRecordsProcessed" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="numberRetries" type="int">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="apiVersion" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="assignmentRuleId" type="string">
+            <annotation>
+              <documentation/></annotation></element></sequence></complexType><simpleType name="OperationEnum">
+        <restriction base="string">
+          <enumeration value="insert"/><enumeration value="upsert"/><enumeration value="update"/><enumeration value="delete"/></restriction></simpleType><simpleType name="JobStateEnum">
+        <annotation>
+          <documentation/></annotation><restriction base="string">
+          <enumeration value="Open"/><enumeration value="Closed"/><enumeration value="Aborted"/><enumeration value="Completed"/><enumeration value="Failed"/></restriction></simpleType><complexType name="BatchInfo">
+        <sequence>
+          <element minOccurs="1" name="id" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="1" name="jobId" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="1" name="state" type="tns:BatchStateEnum">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="stateMessage" type="string">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="1" name="createdDate" type="dateTime">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="0" name="systemModstamp" type="dateTime">
+            <annotation>
+              <documentation/></annotation></element><element maxOccurs="1" minOccurs="1" name="numberRecordsProcessed" type="int">
+            <annotation>
+              <documentation/></annotation></element></sequence></complexType><simpleType name="BatchStateEnum">
+        <restriction base="string">
+          <enumeration value="Queued"/><enumeration value="InProgress"/><enumeration value="Completed"/><enumeration value="Failed"/><enumeration value="NotProcessed"/></restriction></simpleType><complexType name="BatchInfoList">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="batchInfo" type="tns:BatchInfo"/></sequence></complexType><simpleType name="ConcurrencyModeEnum">
+        <restriction base="string">
+          <enumeration value="Parallel"/><enumeration value="Serial"/></restriction></simpleType><simpleType name="ContentType">
+        <restriction base="string">
+          <enumeration value="XML"/><enumeration value="CSV"/></restriction></simpleType><complexType name="BatchResultWrapper">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="resultwrapper" type="tns:BatchResult">
+          </element></sequence><attribute name="batchID" type="string"/></complexType><complexType name="BatchResult">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="result" type="tns:Result">
+          </element></sequence><attribute name="batchID" type="string"/></complexType><complexType name="Result">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="errors" type="tns:ResultError"/><element maxOccurs="1" minOccurs="1" name="id" type="string"/><element maxOccurs="1" minOccurs="1" name="success" type="boolean"/><element maxOccurs="1" minOccurs="1" name="created" type="boolean"/></sequence></complexType><complexType name="ResultError">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="fields" nillable="true" type="string"/><element name="message" type="string"/><element name="statusCode" type="tns:StatusCode"/></sequence></complexType><simpleType name="StatusCode">
+        <restriction base="string">
+          <enumeration value="ALREADY_IN_PROCESS"/><enumeration value="ASSIGNEE_TYPE_REQUIRED"/><enumeration value="BAD_CUSTOM_ENTITY_PARENT_DOMAIN"/><enumeration value="BCC_NOT_ALLOWED_IF_BCC_COMPLIANCE_ENABLED"/><enumeration value="CANNOT_CASCADE_PRODUCT_ACTIVE"/><enumeration value="CANNOT_CHANGE_FIELD_TYPE_OF_APEX_REFERENCED_FIELD"/><enumeration value="CANNOT_CREATE_ANOTHER_MANAGED_PACKAGE"/><enumeration value="CANNOT_DEACTIVATE_DIVISION"/><enumeration value="CANNOT_DELETE_LAST_DATED_CONVERSION_RATE"/><enumeration value="CANNOT_DELETE_MANAGED_OBJECT"/><enumeration value="CANNOT_DISABLE_LAST_ADMIN"/><enumeration value="CANNOT_ENABLE_IP_RESTRICT_REQUESTS"/><enumeration value="CANNOT_INSERT_UPDATE_ACTIVATE_ENTITY"/><enumeration value="CANNOT_MODIFY_MANAGED_OBJECT"/><enumeration value="CANNOT_RENAME_APEX_REFERENCED_FIELD"/><enumeration value="CANNOT_RENAME_APEX_REFERENCED_OBJECT"/><enumeration value="CANNOT_REPARENT_RECORD"/><enumeration value="CANNOT_UPDATE_CONVERTED_LEAD"/><enumeration value="CANT_DISABLE_CORP_CURRENCY"/><enumeration value="CANT_UNSET_CORP_CURRENCY"/><enumeration value="CHILD_SHARE_FAILS_PARENT"/><enumeration value="CIRCULAR_DEPENDENCY"/><enumeration value="CUSTOM_CLOB_FIELD_LIMIT_EXCEEDED"/><enumeration value="CUSTOM_ENTITY_OR_FIELD_LIMIT"/><enumeration value="CUSTOM_FIELD_INDEX_LIMIT_EXCEEDED"/><enumeration value="CUSTOM_INDEX_EXISTS"/><enumeration value="CUSTOM_LINK_LIMIT_EXCEEDED"/><enumeration value="CUSTOM_TAB_LIMIT_EXCEEDED"/><enumeration value="DELETE_FAILED"/><enumeration value="DELETE_REQUIRED_ON_CASCADE"/><enumeration value="DEPENDENCY_EXISTS"/><enumeration value="DUPLICATE_CASE_SOLUTION"/><enumeration value="DUPLICATE_COMM_NICKNAME"/><enumeration value="DUPLICATE_CUSTOM_ENTITY_DEFINITION"/><enumeration value="DUPLICATE_CUSTOM_TAB_MOTIF"/><enumeration value="DUPLICATE_DEVELOPER_NAME"/><enumeration value="DUPLICATE_EXTERNAL_ID"/><enumeration value="DUPLICATE_MASTER_LABEL"/><enumeration value="DUPLICATE_SENDER_DISPLAY_NAME"/><enumeration value="DUPLICATE_USERNAME"/><enumeration value="DUPLICATE_VALUE"/><enumeration value="EMAIL_NOT_PROCESSED_DUE_TO_PRIOR_ERROR"/><enumeration value="EMPTY_SCONTROL_FILE_NAME"/><enumeration value="ENTITY_FAILED_IFLASTMODIFIED_ON_UPDATE"/><enumeration value="ENTITY_IS_ARCHIVED"/><enumeration value="ENTITY_IS_DELETED"/><enumeration value="ENTITY_IS_LOCKED"/><enumeration value="ERROR_IN_MAILER"/><enumeration value="FAILED_ACTIVATION"/><enumeration value="FIELD_CUSTOM_VALIDATION_EXCEPTION"/><enumeration value="FIELD_INTEGRITY_EXCEPTION"/><enumeration value="HTML_FILE_UPLOAD_NOT_ALLOWED"/><enumeration value="IMAGE_TOO_LARGE"/><enumeration value="INACTIVE_OWNER_OR_USER"/><enumeration value="INSUFFICIENT_ACCESS_ON_CROSS_REFERENCE_ENTITY"/><enumeration value="INSUFFICIENT_ACCESS_OR_READONLY"/><enumeration value="INVALID_ACCESS_LEVEL"/><enumeration value="INVALID_ARGUMENT_TYPE"/><enumeration value="INVALID_ASSIGNEE_TYPE"/><enumeration value="INVALID_ASSIGNMENT_RULE"/><enumeration value="INVALID_BATCH_OPERATION"/><enumeration value="INVALID_CREDIT_CARD_INFO"/><enumeration value="INVALID_CROSS_REFERENCE_KEY"/><enumeration value="INVALID_CROSS_REFERENCE_TYPE_FOR_FIELD"/><enumeration value="INVALID_CURRENCY_CONV_RATE"/><enumeration value="INVALID_CURRENCY_CORP_RATE"/><enumeration value="INVALID_CURRENCY_ISO"/><enumeration value="INVALID_EMAIL_ADDRESS"/><enumeration value="INVALID_EMPTY_KEY_OWNER"/><enumeration value="INVALID_FIELD"/><enumeration value="INVALID_FIELD_FOR_INSERT_UPDATE"/><enumeration value="INVALID_FIELD_WHEN_USING_TEMPLATE"/><enumeration value="INVALID_FILTER_ACTION"/><enumeration value="INVALID_GOOGLE_DOCS_URL"/><enumeration value="INVALID_ID_FIELD"/><enumeration value="INVALID_INET_ADDRESS"/><enumeration value="INVALID_LINEITEM_CLONE_STATE"/><enumeration value="INVALID_MASTER_OR_TRANSLATED_SOLUTION"/><enumeration value="INVALID_OPERATION"/><enumeration value="INVALID_OPERATOR"/><enumeration value="INVALID_OR_NULL_FOR_RESTRICTED_PICKLIST"/><enumeration value="INVALID_PARTNER_NETWORK_STATUS"/><enumeration value="INVALID_PERSON_ACCOUNT_OPERATION"/><enumeration value="INVALID_SAVE_AS_ACTIVITY_FLAG"/><enumeration value="INVALID_SESSION_ID"/><enumeration value="INVALID_SETUP_OWNER"/><enumeration value="INVALID_STATUS"/><enumeration value="INVALID_TYPE"/><enumeration value="INVALID_TYPE_FOR_OPERATION"/><enumeration value="INVALID_TYPE_ON_FIELD_IN_RECORD"/><enumeration value="IP_RANGE_LIMIT_EXCEEDED"/><enumeration value="LICENSE_LIMIT_EXCEEDED"/><enumeration value="LIMIT_EXCEEDED"/><enumeration value="MALFORMED_ID"/><enumeration value="MANAGER_NOT_DEFINED"/><enumeration value="MASSMAIL_RETRY_LIMIT_EXCEEDED"/><enumeration value="MASS_MAIL_LIMIT_EXCEEDED"/><enumeration value="MAXIMUM_CCEMAILS_EXCEEDED"/><enumeration value="MAXIMUM_DASHBOARD_COMPONENTS_EXCEEDED"/><enumeration value="MAXIMUM_HIERARCHY_LEVELS_REACHED"/><enumeration value="MAXIMUM_SIZE_OF_ATTACHMENT"/><enumeration value="MAXIMUM_SIZE_OF_DOCUMENT"/><enumeration value="MAX_ACTIONS_PER_RULE_EXCEEDED"/><enumeration value="MAX_ACTIVE_RULES_EXCEEDED"/><enumeration value="MAX_APPROVAL_STEPS_EXCEEDED"/><enumeration value="MAX_FORMULAS_PER_RULE_EXCEEDED"/><enumeration value="MAX_RULES_EXCEEDED"/><enumeration value="MAX_RULE_ENTRIES_EXCEEDED"/><enumeration value="MAX_TASK_DESCRIPTION_EXCEEEDED"/><enumeration value="MAX_TM_RULES_EXCEEDED"/><enumeration value="MAX_TM_RULE_ITEMS_EXCEEDED"/><enumeration value="MERGE_FAILED"/><enumeration value="MISSING_ARGUMENT"/><enumeration value="MIXED_DML_OPERATION"/><enumeration value="NONUNIQUE_SHIPPING_ADDRESS"/><enumeration value="NO_APPLICABLE_PROCESS"/><enumeration value="NO_ATTACHMENT_PERMISSION"/><enumeration value="NO_INACTIVE_DIVISION_MEMBERS"/><enumeration value="NO_MASS_MAIL_PERMISSION"/><enumeration value="NUMBER_OUTSIDE_VALID_RANGE"/><enumeration value="NUM_HISTORY_FIELDS_BY_SOBJECT_EXCEEDED"/><enumeration value="OPTED_OUT_OF_MASS_MAIL"/><enumeration value="PACKAGE_LICENSE_REQUIRED"/><enumeration value="PORTAL_USER_ALREADY_EXISTS_FOR_CONTACT"/><enumeration value="PRIVATE_CONTACT_ON_ASSET"/><enumeration value="RECORD_IN_USE_BY_WORKFLOW"/><enumeration value="REQUEST_RUNNING_TOO_LONG"/><enumeration value="REQUIRED_FIELD_MISSING"/><enumeration value="SELF_REFERENCE_FROM_TRIGGER"/><enumeration value="SHARE_NEEDED_FOR_CHILD_OWNER"/><enumeration value="STANDARD_PRICE_NOT_DEFINED"/><enumeration value="STORAGE_LIMIT_EXCEEDED"/><enumeration value="STRING_TOO_LONG"/><enumeration value="TABSET_LIMIT_EXCEEDED"/><enumeration value="TEMPLATE_NOT_ACTIVE"/><enumeration value="TERRITORY_REALIGN_IN_PROGRESS"/><enumeration value="TEXT_DATA_OUTSIDE_SUPPORTED_CHARSET"/><enumeration value="TOO_MANY_APEX_REQUESTS"/><enumeration value="TOO_MANY_ENUM_VALUE"/><enumeration value="TRANSFER_REQUIRES_READ"/><enumeration value="UNABLE_TO_LOCK_ROW"/><enumeration value="UNAVAILABLE_RECORDTYPE_EXCEPTION"/><enumeration value="UNDELETE_FAILED"/><enumeration value="UNKNOWN_EXCEPTION"/><enumeration value="UNSPECIFIED_EMAIL_ADDRESS"/><enumeration value="UNSUPPORTED_APEX_TRIGGER_OPERATON"/><enumeration value="UNVERIFIED_SENDER_ADDRESS"/><enumeration value="WEBLINK_SIZE_LIMIT_EXCEEDED"/><enumeration value="WRONG_CONTROLLER_TYPE"/></restriction></simpleType><xs:element name="sObjects">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sObject" type="tns3:sObject"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="sObject">
+        <xs:sequence>
+              </xs:sequence></xs:complexType></schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/334/" xmlns:tns="http://www.approuter.com/connectors/request/334/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="abortJobRequest">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="JobInfo" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="id" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="abortJobRequest" type="tns:abortJobRequest"/></xs:schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/414/" xmlns:tns="http://www.approuter.com/connectors/request/414/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="addBatch">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Batch" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="JobId" nillable="false" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="Data" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="addBatch" type="tns:addBatch"/></xs:schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/873/" xmlns:tns="http://www.approuter.com/connectors/request/873/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="batchStatus">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Batch" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="Id" nillable="false" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="JobId" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="batchStatus" type="tns:batchStatus"/></xs:schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/1428/" xmlns:tns="http://www.approuter.com/connectors/request/1428/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="jobDetail">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Job" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="id" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="jobDetail" type="tns:jobDetail"/></xs:schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/3328/" xmlns:tns="http://www.approuter.com/connectors/request/3328/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="batchResult">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="Batch" nillable="false">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="1" name="id" nillable="false" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="JobId" nillable="false" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="batchResult" type="tns:batchResult"/></xs:schema><xs:schema elementFormDefault="qualified" targetNamespace="urn:sobject.partner.soap.sforce.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      
+      <element name="objects" type="xs:anyType"/><xs:element name="createBatchInsert">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sObject" type="tns10:sObject"/></xs:sequence></xs:complexType></xs:element><xs:element name="createBatchUpdate">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sObject" type="tns10:sObject"/></xs:sequence></xs:complexType></xs:element><xs:element name="createBatchUpsert">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sObject" type="tns10:sObject"/><xs:element maxOccurs="1" minOccurs="0" name="externalIdFieldName" type="string"/></xs:sequence></xs:complexType></xs:element><xs:element name="sObjects">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="sObject" type="tns10:sObject"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="sObject">
+        <xs:sequence>
+</xs:sequence></xs:complexType><xs:element name="createBatchDelete">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="tns9:ID"/><xs:element maxOccurs="1" minOccurs="0" name="object" type="string"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="JobId">
+        <xs:sequence>
+          <xs:element maxOccurs="1" minOccurs="1" name="JobId" nillable="false" type="xs:string"/></xs:sequence></xs:complexType><xs:element name="getBatchStatus" type="tns10:JobId"/><xs:element name="getBatchResults" type="tns10:JobId"/></xs:schema><xs:schema elementFormDefault="qualified" targetNamespace="urn:partner.soap.sforce.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      
+      <xs:simpleType name="ID">
+        <xs:restriction base="xs:string">
+          <xs:length value="18"/><xs:pattern value="[a-zA-Z0-9]{18}"/></xs:restriction></xs:simpleType><xs:element name="ids">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="tns9:ID"/></xs:sequence></xs:complexType></xs:element></xs:schema><schema elementFormDefault="qualified" targetNamespace="urn:fault.partner.soap.sforce.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:fns="urn:fault.partner.soap.sforce.com">
+      
+      <simpleType name="ExceptionCode">
+        <restriction base="xs:string">
+          <enumeration value="API_CURRENTLY_DISABLED"/><enumeration value="API_DISABLED_FOR_ORG"/><enumeration value="CANT_ADD_STANDADRD_PORTAL_USER_TO_TERRITORY"/><enumeration value="CANT_ADD_STANDARD_PORTAL_USER_TO_TERRITORY"/><enumeration value="CIRCULAR_OBJECT_GRAPH"/><enumeration value="CLIENT_NOT_ACCESSIBLE_FOR_USER"/><enumeration value="CLIENT_REQUIRE_UPDATE_FOR_USER"/><enumeration value="CUSTOM_METADATA_LIMIT_EXCEEDED"/><enumeration value="DUPLICATE_VALUE"/><enumeration value="EMAIL_BATCH_SIZE_LIMIT_EXCEEDED"/><enumeration value="EMAIL_TO_CASE_INVALID_ROUTING"/><enumeration value="EMAIL_TO_CASE_LIMIT_EXCEEDED"/><enumeration value="EMAIL_TO_CASE_NOT_ENABLED"/><enumeration value="EXCEEDED_ID_LIMIT"/><enumeration value="EXCEEDED_LEAD_CONVERT_LIMIT"/><enumeration value="EXCEEDED_MAX_SIZE_REQUEST"/><enumeration value="EXCEEDED_MAX_TYPES_LIMIT"/><enumeration value="EXCEEDED_QUOTA"/><enumeration value="FUNCTIONALITY_NOT_ENABLED"/><enumeration value="INACTIVE_OWNER_OR_USER"/><enumeration value="INACTIVE_PORTAL"/><enumeration value="INSUFFICIENT_ACCESS"/><enumeration value="INVALID_ASSIGNMENT_RULE"/><enumeration value="INVALID_BATCH_SIZE"/><enumeration value="INVALID_CLIENT"/><enumeration value="INVALID_CROSS_REFERENCE_KEY"/><enumeration value="INVALID_FIELD"/><enumeration value="INVALID_FILTER_LANGUAGE"/><enumeration value="INVALID_FILTER_VALUE"/><enumeration value="INVALID_ID_FIELD"/><enumeration value="INVALID_LOCALE_LANGUAGE"/><enumeration value="INVALID_LOCATOR"/><enumeration value="INVALID_LOGIN"/><enumeration value="INVALID_NEW_PASSWORD"/><enumeration value="INVALID_OPERATION"/><enumeration value="INVALID_OPERATION_WITH_EXPIRED_PASSWORD"/><enumeration value="INVALID_QUERY_FILTER_OPERATOR"/><enumeration value="INVALID_QUERY_LOCATOR"/><enumeration value="INVALID_QUERY_SCOPE"/><enumeration value="INVALID_REPLICATION_DATE"/><enumeration value="INVALID_SEARCH"/><enumeration value="INVALID_SEARCH_SCOPE"/><enumeration value="INVALID_SESSION_ID"/><enumeration value="INVALID_SOAP_HEADER"/><enumeration value="INVALID_SSO_GATEWAY_URL"/><enumeration value="INVALID_TYPE"/><enumeration value="INVALID_TYPE_FOR_OPERATION"/><enumeration value="LIMIT_EXCEEDED"/><enumeration value="LOGIN_CHALLENGE_ISSUED"/><enumeration value="LOGIN_CHALLENGE_PENDING"/><enumeration value="LOGIN_DURING_RESTRICTED_DOMAIN"/><enumeration value="LOGIN_DURING_RESTRICTED_TIME"/><enumeration value="LOGIN_MUST_USE_SECURITY_TOKEN"/><enumeration value="MALFORMED_ID"/><enumeration value="MALFORMED_QUERY"/><enumeration value="MALFORMED_SEARCH"/><enumeration value="MISSING_ARGUMENT"/><enumeration value="NOT_MODIFIED"/><enumeration value="NO_SOFTPHONE_LAYOUT"/><enumeration value="NUMBER_OUTSIDE_VALID_RANGE"/><enumeration value="OPERATION_TOO_LARGE"/><enumeration value="ORG_IN_MAINTENANCE"/><enumeration value="ORG_LOCKED"/><enumeration value="ORG_NOT_OWNED_BY_INSTANCE"/><enumeration value="PASSWORD_LOCKOUT"/><enumeration value="PORTAL_NO_ACCESS"/><enumeration value="QUERY_TIMEOUT"/><enumeration value="QUERY_TOO_COMPLICATED"/><enumeration value="REQUEST_LIMIT_EXCEEDED"/><enumeration value="REQUEST_RUNNING_TOO_LONG"/><enumeration value="SERVER_UNAVAILABLE"/><enumeration value="SSO_SERVICE_DOWN"/><enumeration value="TOO_MANY_APEX_REQUESTS"/><enumeration value="TRIAL_EXPIRED"/><enumeration value="UNKNOWN_EXCEPTION"/><enumeration value="UNSUPPORTED_API_VERSION"/><enumeration value="UNSUPPORTED_CLIENT"/></restriction></simpleType><simpleType name="FaultCode">
+        <restriction base="xs:QName">
+          <enumeration value="fns:API_CURRENTLY_DISABLED"/><enumeration value="fns:API_DISABLED_FOR_ORG"/><enumeration value="fns:CANT_ADD_STANDADRD_PORTAL_USER_TO_TERRITORY"/><enumeration value="fns:CANT_ADD_STANDARD_PORTAL_USER_TO_TERRITORY"/><enumeration value="fns:CIRCULAR_OBJECT_GRAPH"/><enumeration value="fns:CLIENT_NOT_ACCESSIBLE_FOR_USER"/><enumeration value="fns:CLIENT_REQUIRE_UPDATE_FOR_USER"/><enumeration value="fns:CUSTOM_METADATA_LIMIT_EXCEEDED"/><enumeration value="fns:DUPLICATE_VALUE"/><enumeration value="fns:EMAIL_BATCH_SIZE_LIMIT_EXCEEDED"/><enumeration value="fns:EMAIL_TO_CASE_INVALID_ROUTING"/><enumeration value="fns:EMAIL_TO_CASE_LIMIT_EXCEEDED"/><enumeration value="fns:EMAIL_TO_CASE_NOT_ENABLED"/><enumeration value="fns:EXCEEDED_ID_LIMIT"/><enumeration value="fns:EXCEEDED_LEAD_CONVERT_LIMIT"/><enumeration value="fns:EXCEEDED_MAX_SIZE_REQUEST"/><enumeration value="fns:EXCEEDED_MAX_TYPES_LIMIT"/><enumeration value="fns:EXCEEDED_QUOTA"/><enumeration value="fns:FUNCTIONALITY_NOT_ENABLED"/><enumeration value="fns:INACTIVE_OWNER_OR_USER"/><enumeration value="fns:INACTIVE_PORTAL"/><enumeration value="fns:INSUFFICIENT_ACCESS"/><enumeration value="fns:INVALID_ASSIGNMENT_RULE"/><enumeration value="fns:INVALID_BATCH_SIZE"/><enumeration value="fns:INVALID_CLIENT"/><enumeration value="fns:INVALID_CROSS_REFERENCE_KEY"/><enumeration value="fns:INVALID_FIELD"/><enumeration value="fns:INVALID_FILTER_LANGUAGE"/><enumeration value="fns:INVALID_FILTER_VALUE"/><enumeration value="fns:INVALID_ID_FIELD"/><enumeration value="fns:INVALID_LOCALE_LANGUAGE"/><enumeration value="fns:INVALID_LOCATOR"/><enumeration value="fns:INVALID_LOGIN"/><enumeration value="fns:INVALID_NEW_PASSWORD"/><enumeration value="fns:INVALID_OPERATION"/><enumeration value="fns:INVALID_OPERATION_WITH_EXPIRED_PASSWORD"/><enumeration value="fns:INVALID_QUERY_FILTER_OPERATOR"/><enumeration value="fns:INVALID_QUERY_LOCATOR"/><enumeration value="fns:INVALID_QUERY_SCOPE"/><enumeration value="fns:INVALID_REPLICATION_DATE"/><enumeration value="fns:INVALID_SEARCH"/><enumeration value="fns:INVALID_SEARCH_SCOPE"/><enumeration value="fns:INVALID_SESSION_ID"/><enumeration value="fns:INVALID_SOAP_HEADER"/><enumeration value="fns:INVALID_SSO_GATEWAY_URL"/><enumeration value="fns:INVALID_TYPE"/><enumeration value="fns:INVALID_TYPE_FOR_OPERATION"/><enumeration value="fns:LIMIT_EXCEEDED"/><enumeration value="fns:LOGIN_CHALLENGE_ISSUED"/><enumeration value="fns:LOGIN_CHALLENGE_PENDING"/><enumeration value="fns:LOGIN_DURING_RESTRICTED_DOMAIN"/><enumeration value="fns:LOGIN_DURING_RESTRICTED_TIME"/><enumeration value="fns:LOGIN_MUST_USE_SECURITY_TOKEN"/><enumeration value="fns:MALFORMED_ID"/><enumeration value="fns:MALFORMED_QUERY"/><enumeration value="fns:MALFORMED_SEARCH"/><enumeration value="fns:MISSING_ARGUMENT"/><enumeration value="fns:NOT_MODIFIED"/><enumeration value="fns:NO_SOFTPHONE_LAYOUT"/><enumeration value="fns:NUMBER_OUTSIDE_VALID_RANGE"/><enumeration value="fns:OPERATION_TOO_LARGE"/><enumeration value="fns:ORG_IN_MAINTENANCE"/><enumeration value="fns:ORG_LOCKED"/><enumeration value="fns:ORG_NOT_OWNED_BY_INSTANCE"/><enumeration value="fns:PASSWORD_LOCKOUT"/><enumeration value="fns:PORTAL_NO_ACCESS"/><enumeration value="fns:QUERY_TIMEOUT"/><enumeration value="fns:QUERY_TOO_COMPLICATED"/><enumeration value="fns:REQUEST_LIMIT_EXCEEDED"/><enumeration value="fns:REQUEST_RUNNING_TOO_LONG"/><enumeration value="fns:SERVER_UNAVAILABLE"/><enumeration value="fns:SSO_SERVICE_DOWN"/><enumeration value="fns:TOO_MANY_APEX_REQUESTS"/><enumeration value="fns:TRIAL_EXPIRED"/><enumeration value="fns:UNKNOWN_EXCEPTION"/><enumeration value="fns:UNSUPPORTED_API_VERSION"/><enumeration value="fns:UNSUPPORTED_CLIENT"/></restriction></simpleType><complexType name="ApiFault">
+        <sequence>
+          <element name="exceptionCode" type="fns:ExceptionCode"/><element name="exceptionMessage" type="xs:string"/></sequence></complexType><element name="fault" type="fns:ApiFault"/><complexType name="ApiQueryFault">
+        <complexContent>
+          <extension base="fns:ApiFault">
+            <sequence>
+              <element name="row" type="xs:int"/><element name="column" type="xs:int"/></sequence></extension></complexContent></complexType><complexType name="LoginFault">
+        <complexContent>
+          <extension base="fns:ApiFault"/></complexContent></complexType><element name="LoginFault" type="fns:LoginFault"/><complexType name="InvalidQueryLocatorFault">
+        <complexContent>
+          <extension base="fns:ApiFault"/></complexContent></complexType><element name="InvalidQueryLocatorFault" type="fns:InvalidQueryLocatorFault"/><complexType name="InvalidNewPasswordFault">
+        <complexContent>
+          <extension base="fns:ApiFault"/></complexContent></complexType><element name="InvalidNewPasswordFault" type="fns:InvalidNewPasswordFault"/><complexType name="InvalidIdFault">
+        <complexContent>
+          <extension base="fns:ApiFault"/></complexContent></complexType><element name="InvalidIdFault" type="fns:InvalidIdFault"/><complexType name="UnexpectedErrorFault">
+        <complexContent>
+          <extension base="fns:ApiFault"/></complexContent></complexType><element name="UnexpectedErrorFault" type="fns:UnexpectedErrorFault"/><complexType name="InvalidFieldFault">
+        <complexContent>
+          <extension base="fns:ApiQueryFault"/></complexContent></complexType><element name="InvalidFieldFault" type="fns:InvalidFieldFault"/><complexType name="InvalidSObjectFault">
+        <complexContent>
+          <extension base="fns:ApiQueryFault"/></complexContent></complexType><element name="InvalidSObjectFault" type="fns:InvalidSObjectFault"/><complexType name="MalformedQueryFault">
+        <complexContent>
+          <extension base="fns:ApiQueryFault"/></complexContent></complexType><element name="MalformedQueryFault" type="fns:MalformedQueryFault"/><complexType name="MalformedSearchFault">
+        <complexContent>
+          <extension base="fns:ApiQueryFault"/></complexContent></complexType><element name="MalformedSearchFault" type="fns:MalformedSearchFault"/></schema><xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.approuter.com/connectors/request/5/" xmlns:tns="http://www.approuter.com/connectors/request/5/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="bulkQuery">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element ref="tns:queryString"/><xs:element ref="tns:ObjectName"/></xs:sequence></xs:complexType></xs:element><xs:element name="queryString" type="xs:string"/><xs:element name="ObjectName" type="xs:NCName"/></xs:schema><xs:schema elementFormDefault="qualified" targetNamespace="http://www.force.com/2009/06/asyncapi/dataload" xmlns:dataload="http://www.force.com/2009/06/asyncapi/dataload" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="queryResultData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" ref="dataload:data"/></xs:sequence></xs:complexType></xs:element><xs:element name="data" type="xs:string"/></xs:schema></wsdl:types><wsdl:message name="TestConnection">
+    <wsdl:part element="api:TestConnection" name="request"/></wsdl:message><wsdl:message name="TestConnectionResponse">
+    <wsdl:part element="api:TestConnectionResponse" name="response"/></wsdl:message><wsdl:message name="ListObjects">
+    <wsdl:part element="api:ListObjects" name="request"/></wsdl:message><wsdl:message name="ListObjectsResponse">
+    <wsdl:part element="api:ListObjectsResponse" name="response"/></wsdl:message><wsdl:message name="DescribeObject">
+    <wsdl:part element="api:DescribeObject" name="request"/></wsdl:message><wsdl:message name="DescribeObjectResponse">
+    <wsdl:part element="api:DescribeObjectResponse" name="response"/></wsdl:message><wsdl:message name="ConnectionDetails">
+    <wsdl:part element="api:ConnectionDetails" name="connection"/></wsdl:message><wsdl:message name="createBatchInsertRequest">
+    <wsdl:part element="tns10:createBatchInsert" name="request"> </wsdl:part></wsdl:message><wsdl:message name="createBatchInsertHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="createBatchInsertResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpdateRequest">
+    <wsdl:part element="tns10:createBatchUpdate" name="request"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpdateHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpdateResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpsertRequest">
+    <wsdl:part element="tns10:createBatchUpsert" name="request"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpsertHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="createBatchUpsertResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="createBatchDeleteRequest">
+    <wsdl:part element="tns10:createBatchDelete" name="request"> </wsdl:part></wsdl:message><wsdl:message name="createBatchDeleteHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="createBatchDeleteResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="getBatchStatusRequest">
+    <wsdl:part element="tns10:getBatchStatus" name="request"> </wsdl:part></wsdl:message><wsdl:message name="getBatchStatusHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="getBatchStatusResponse">
+    <wsdl:part element="tns3:batchInfoList" name="response"> </wsdl:part></wsdl:message><wsdl:message name="getBatchResultsRequest">
+    <wsdl:part element="tns10:getBatchResults" name="request"> </wsdl:part></wsdl:message><wsdl:message name="getBatchResultsHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="getBatchResultsResponse">
+    <wsdl:part element="tns3:resultswrapper" name="response"> </wsdl:part></wsdl:message><wsdl:message name="ApiFault">
+    <wsdl:part element="fns:fault" name="fault"/></wsdl:message><wsdl:message name="LoginFault">
+    <wsdl:part element="fns:LoginFault" name="fault"/></wsdl:message><wsdl:message name="InvalidQueryLocatorFault">
+    <wsdl:part element="fns:InvalidQueryLocatorFault" name="fault"/></wsdl:message><wsdl:message name="InvalidNewPasswordFault">
+    <wsdl:part element="fns:InvalidNewPasswordFault" name="fault"/></wsdl:message><wsdl:message name="InvalidIdFault">
+    <wsdl:part element="fns:InvalidIdFault" name="fault"/></wsdl:message><wsdl:message name="UnexpectedErrorFault">
+    <wsdl:part element="fns:UnexpectedErrorFault" name="fault"/></wsdl:message><wsdl:message name="InvalidFieldFault">
+    <wsdl:part element="fns:InvalidFieldFault" name="fault"/></wsdl:message><wsdl:message name="InvalidSObjectFault">
+    <wsdl:part element="fns:InvalidSObjectFault" name="fault"/></wsdl:message><wsdl:message name="MalformedQueryFault">
+    <wsdl:part element="fns:MalformedQueryFault" name="fault"/></wsdl:message><wsdl:message name="MalformedSearchFault">
+    <wsdl:part element="fns:MalformedSearchFault" name="fault"/></wsdl:message><wsdl:message name="createJobRequest">
+    <wsdl:part element="tns3:jobInfo" name="request"> </wsdl:part></wsdl:message><wsdl:message name="createJobRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="createJobResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="error">
+    <wsdl:part element="tns3:error" name="fault"> </wsdl:part></wsdl:message><wsdl:message name="closeJobResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="closeJobRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="closeJobRequest">
+    <wsdl:part element="tns2:closeJobRequest" name="request"> </wsdl:part></wsdl:message><wsdl:message name="abortJobRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="abortJobResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="abortJobRequest">
+    <wsdl:part element="tns4:abortJobRequest" name="request"> </wsdl:part></wsdl:message><wsdl:message name="addBatchRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="addBatchResponse">
+    <wsdl:part element="tns3:batchInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="addBatchRequest">
+    <wsdl:part element="tns5:addBatch" name="request"> </wsdl:part></wsdl:message><wsdl:message name="batchStatusRequest">
+    <wsdl:part element="tns6:batchStatus" name="request"> </wsdl:part></wsdl:message><wsdl:message name="batchStatusRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="batchStatusResponse">
+    <wsdl:part element="tns3:batchInfoList" name="response"> </wsdl:part></wsdl:message><wsdl:message name="jobDetailResponse">
+    <wsdl:part element="tns3:jobInfo" name="response"> </wsdl:part></wsdl:message><wsdl:message name="jobDetailRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="jobDetailRequest">
+    <wsdl:part element="tns7:jobDetail" name="request"> </wsdl:part></wsdl:message><wsdl:message name="batchResultResponse">
+    <wsdl:part element="tns3:resultswrapper" name="response"> </wsdl:part></wsdl:message><wsdl:message name="batchResultRequestHeader">
+    <wsdl:part element="tns1:sessionInfo" name="request_header"> </wsdl:part></wsdl:message><wsdl:message name="batchResultRequest">
+    <wsdl:part element="tns8:batchResult" name="request"> </wsdl:part></wsdl:message><wsdl:message name="fault">
+    <wsdl:part element="fns:fault" name="fault"/></wsdl:message><wsdl:message name="bulkQueryRequestHeader">
+    <wsdl:part element="api:connectionDetails" name="request_header"/></wsdl:message><wsdl:message name="bulkQueryResponse">
+    <wsdl:part element="tns3:queryResultData" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="bulkQueryRequest">
+    <wsdl:part element="tns11:bulkQuery" name="request">
+    </wsdl:part></wsdl:message><wsdl:portType name="BulkAPI">
+    <wsdl:operation name="TestConnection">
+      <wsdl:documentation>Tests the connection to an endpoint</wsdl:documentation><wsdl:input message="tns:TestConnection"/><wsdl:output message="tns:TestConnectionResponse"/></wsdl:operation><wsdl:operation name="ListObjects">
+      <wsdl:documentation>Lists the available object types</wsdl:documentation><wsdl:input message="tns:ListObjects"/><wsdl:output message="tns:ListObjectsResponse"/></wsdl:operation><wsdl:operation name="DescribeObject">
+      <wsdl:documentation>Returns the metadata for a given object type</wsdl:documentation><wsdl:input message="tns:DescribeObject"/><wsdl:output message="tns:DescribeObjectResponse"/></wsdl:operation><wsdl:operation name="createBatchInsert">
+      <wsdl:input message="tns:createBatchInsertRequest"> </wsdl:input><wsdl:output message="tns:createBatchInsertResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="createBatchUpdate">
+      <wsdl:input message="tns:createBatchUpdateRequest"> </wsdl:input><wsdl:output message="tns:createBatchUpdateResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="createBatchUpsert">
+      <wsdl:input message="tns:createBatchUpsertRequest"> </wsdl:input><wsdl:output message="tns:createBatchUpsertResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="createBatchDelete">
+      <wsdl:input message="tns:createBatchDeleteRequest"> </wsdl:input><wsdl:output message="tns:createBatchDeleteResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="getBatchStatus">
+      <wsdl:input message="tns:getBatchStatusRequest"> </wsdl:input><wsdl:output message="tns:getBatchStatusResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="getBatchResults">
+      <wsdl:input message="tns:getBatchResultsRequest"> </wsdl:input><wsdl:output message="tns:getBatchResultsResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault><wsdl:fault message="tns:LoginFault" name="LoginFault"/><wsdl:fault message="tns:UnexpectedErrorFault" name="UnexpectedErrorFault"/><wsdl:fault message="tns:InvalidIdFault" name="InvalidIdFault"/></wsdl:operation><wsdl:operation name="bulkQuery">
+      <wsdl:input message="tns:bulkQueryRequest"/><wsdl:output message="tns:bulkQueryResponse"/><wsdl:fault message="tns:fault" name="fault"/></wsdl:operation><wsdl:operation name="createJob">
+      <wsdl:input message="tns:createJobRequest"> </wsdl:input><wsdl:output message="tns:createJobResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="closeJob">
+      <wsdl:input message="tns:closeJobRequest"> </wsdl:input><wsdl:output message="tns:closeJobResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="abortJob">
+      <wsdl:input message="tns:abortJobRequest"> </wsdl:input><wsdl:output message="tns:abortJobResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="addBatch">
+      <wsdl:input message="tns:addBatchRequest"> </wsdl:input><wsdl:output message="tns:addBatchResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="batchStatus">
+      <wsdl:input message="tns:batchStatusRequest"> </wsdl:input><wsdl:output message="tns:batchStatusResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="jobDetail">
+      <wsdl:input message="tns:jobDetailRequest"> </wsdl:input><wsdl:output message="tns:jobDetailResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation><wsdl:operation name="batchResult">
+      <wsdl:input message="tns:batchResultRequest"> </wsdl:input><wsdl:output message="tns:batchResultResponse"> </wsdl:output><wsdl:fault message="tns:error" name="SalesforceException"> </wsdl:fault></wsdl:operation></wsdl:portType><wsdl:binding name="BulkAPI" type="tns:BulkAPI">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/><wsdl:operation name="createBatchInsert">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:createBatchInsertHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="createBatchUpdate">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:createBatchUpdateHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="createBatchUpsert">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:createBatchUpsertHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="createBatchDelete">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:createBatchDeleteHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="getBatchStatus">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:getBatchStatusHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="getBatchResults">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:getBatchResultsHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault><wsdl:fault name="LoginFault">
+        <soap:fault name="LoginFault" use="literal"/></wsdl:fault><wsdl:fault name="UnexpectedErrorFault">
+        <soap:fault name="UnexpectedErrorFault" use="literal"/></wsdl:fault><wsdl:fault name="InvalidIdFault">
+        <soap:fault name="InvalidIdFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="bulkQuery">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:bulkQueryRequestHeader" part="request_header" use="literal"/></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="createJob">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:createJobRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="closeJob">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:closeJobRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="abortJob">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:abortJobRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="jobDetail">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:jobDetailRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="addBatch">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:addBatchRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="batchStatus">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:batchStatusRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="batchResult">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:batchResultRequestHeader" part="request_header" use="literal"> </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="SalesforceException">
+        <soap:fault name="SalesforceException" use="literal"/></wsdl:fault></wsdl:operation></wsdl:binding><wsdl:service name="SalesforceBulkAPI">
+    <wsdl:port binding="tns:BulkAPI" name="BulkAPI">
+      <soap:address location="http://place/holder"/></wsdl:port></wsdl:service></wsdl:definitions></main><include name="ci-connector-config.xsd" type="http://www.approuter.com/schemas/2003/1/xmlschema/"><xs:schema elementFormDefault="qualified" id="ci-cdk-config" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.0" targetNamespace="http://www.approuter.com/schemas/cdk/config/" version="1.0" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://www.approuter.com/schemas/cdk/config/" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="com.approuter.studio.connectors.cdk.config"/></jaxb:schemaBindings><jaxb:globalBindings>
+        <xjc:simple/></jaxb:globalBindings></xs:appinfo></xs:annotation><xs:element name="connectorConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="description" type="xs:string"/><xs:element name="endpoint" type="tns:EndpointForm"/><xs:element name="activity-group" type="tns:ActivityGroup"/><xs:element minOccurs="0" name="operations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="operation" type="tns:operationType"/></xs:sequence><xs:attribute name="default-endpoint-location" type="xs:string" use="optional"/></xs:complexType></xs:element></xs:sequence><xs:attribute name="name" type="xs:NCName" use="required"/><xs:attribute name="label" type="xs:string" use="required"/><xs:attribute name="connection-ns" type="xs:string" use="required"/><xs:attribute name="version" type="xs:string" use="required"/><xs:attribute name="notes" type="xs:string"/><xs:attribute name="release-date" type="xs:dateTime" use="optional"/><xs:attribute name="category" type="tns:ConnectorCategory"/></xs:complexType></xs:element><xs:complexType name="EndpointForm">
+    <xs:complexContent>
+      <xs:extension base="tns:Form">
+        <xs:sequence>
+          <xs:element name="test-connection-action" type="tns:TestConnectionAction"/><xs:element name="endpoint-description" type="xs:string"/></xs:sequence><xs:attribute name="endpoint-name" type="xs:string" use="required"/></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="Form">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="tns:FormField"/><xs:element maxOccurs="unbounded" minOccurs="0" name="field-group" type="tns:FieldGroup"/><xs:element maxOccurs="1" minOccurs="0" name="actions" type="tns:Actions"/></xs:sequence><xs:attribute name="name" type="xs:NCName" use="required"/></xs:complexType><xs:complexType name="FieldGroup">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="tns:FormField"/><xs:element maxOccurs="unbounded" minOccurs="0" name="field-group" type="tns:FieldGroup"/></xs:sequence><xs:attribute name="name" type="xs:NCName" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/><xs:attribute name="type" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="connection-timeout"/><xs:enumeration value="connection-proxy"/></xs:restriction></xs:simpleType></xs:attribute></xs:complexType><xs:complexType name="FormField">
+    <xs:annotation>
+      <xs:appinfo>
+        <jaxb:bindings node="//xs:complexType[@name='FormField']">
+          <jaxb:class implClass="com.approuter.studio.connectors.cdk.config.ConnectorFormField"/></jaxb:bindings></xs:appinfo></xs:annotation><xs:complexContent>
+      <xs:extension base="tns:FieldDescriptor">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="short-description" type="xs:string"/><xs:element minOccurs="0" name="long-description" type="xs:string"/><xs:element minOccurs="0" name="hint" type="xs:string"/></xs:sequence></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="Actions">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="action" type="tns:Action"/><xs:element minOccurs="0" name="short-description" type="xs:string"/></xs:sequence><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Action">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="label" type="xs:string"/><xs:attribute name="operation-name"/><xs:attribute name="short-description" type="xs:string" use="required"/></xs:extension></xs:simpleContent></xs:complexType><xs:complexType name="TestConnectionAction">
+    <xs:simpleContent>
+      <xs:restriction base="tns:Action">
+        <xs:attribute fixed="TestConnection" name="operation-name"/><xs:attribute fixed="Test Connection" name="label" type="xs:string"/></xs:restriction></xs:simpleContent></xs:complexType><xs:simpleType name="ConnectorCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRM"/><xs:enumeration value="SCM"/><xs:enumeration value="ERP"/><xs:enumeration value="ECM"/><xs:enumeration value="SFA"/><xs:enumeration value="BPM"/><xs:enumeration value="IBP"/><xs:enumeration value="ORM"/><xs:enumeration value="MIS"/><xs:enumeration value="SIS"/><xs:enumeration value="COM"/><xs:enumeration value="MOM"/><xs:enumeration value="PIM"/><xs:enumeration value="Database"/></xs:restriction></xs:simpleType><xs:complexType name="ActivityGroup">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="1" name="activity" type="tns:Activity"/></xs:sequence><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Activity">
+    <xs:sequence>
+      <xs:element name="operation-name" type="xs:string"/><xs:element name="description" type="xs:string"/><xs:element name="task-list" type="tns:Tasks"/></xs:sequence><xs:attribute name="name" type="xs:NCName" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Tasks">
+    <xs:sequence>
+      <xs:element name="configure-task" type="tns:ConfigureTask"/></xs:sequence></xs:complexType><xs:complexType name="ConfigureTask">
+    <xs:sequence>
+      <xs:element default="browse" name="type" type="tns:ConfigurationType"/><xs:element default="inputs" minOccurs="0" name="applies-to" type="tns:AppliesTo"/></xs:sequence></xs:complexType><xs:simpleType name="ConfigurationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none"/><xs:enumeration value="browse"/></xs:restriction></xs:simpleType><xs:simpleType name="AppliesTo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inputs"/><xs:enumeration value="outputs"/><xs:enumeration value="both"/></xs:restriction></xs:simpleType><xs:simpleType name="allNNI">
+   <xs:annotation><xs:documentation>
+    for maxOccurs</xs:documentation></xs:annotation><xs:union memberTypes="xs:nonNegativeInteger">
+    <xs:simpleType>
+     <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="unbounded"/></xs:restriction></xs:simpleType></xs:union></xs:simpleType><xs:attributeGroup name="counts">
+    <xs:attribute default="1" name="minCount" type="xs:nonNegativeInteger" use="optional"/><xs:attribute default="1" name="maxCount" type="tns:allNNI" use="optional"/></xs:attributeGroup><xs:complexType abstract="true" name="Descriptor">
+    <xs:sequence/><xs:attribute name="name" type="xs:NCName" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/><xs:attributeGroup ref="tns:counts"/></xs:complexType><xs:complexType name="FieldDescriptor">
+    <xs:complexContent>
+      <xs:extension base="tns:Descriptor">
+        <xs:sequence>
+          <xs:element name="type" type="tns:FieldType"/><xs:element minOccurs="0" name="soap-type" type="tns:SoapType"/><xs:element minOccurs="0" name="default-value" type="xs:string"/><xs:element minOccurs="0" name="format" type="tns:FieldFormat"/><xs:element minOccurs="0" name="field-restriction" type="tns:FieldRestriction"/><xs:element minOccurs="0" name="value-restriction" type="tns:ValueRestriction"/><xs:element minOccurs="0" name="value" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:element></xs:sequence><xs:attribute default="false" name="configurable" type="xs:boolean"/><xs:attribute default="true" name="used" type="xs:boolean">
+          <xs:annotation>
+            <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:attribute></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="ObjectDescriptor">
+    <xs:complexContent>
+      <xs:extension base="tns:Descriptor">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="tns:FieldDescriptor"/><xs:element maxOccurs="unbounded" minOccurs="0" name="object" type="tns:ObjectDescriptor"/></xs:sequence><xs:attribute default="true" name="used" type="xs:boolean">
+          <xs:annotation>
+            <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:attribute></xs:extension></xs:complexContent></xs:complexType><xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="string"/><xs:enumeration value="base64"/><xs:enumeration value="boolean"/><xs:enumeration value="int"/><xs:enumeration value="decimal"/><xs:enumeration value="date"/><xs:enumeration value="dateTime"/><xs:enumeration value="anyType"/></xs:restriction></xs:simpleType><xs:simpleType name="SoapType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="xs:base64Binary"/><xs:enumeration value="xs:boolean"/><xs:enumeration value="xs:decimal"/><xs:enumeration value="xs:int"/><xs:enumeration value="xs:string"/><xs:enumeration value="xs:date"/><xs:enumeration value="xs:dateTime"/><xs:enumeration value="xs:anyType"/></xs:restriction></xs:simpleType><xs:simpleType name="FieldFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="password"/><xs:enumeration value="percent"/><xs:enumeration value="phone"/><xs:enumeration value="url"/><xs:enumeration value="email"/><xs:enumeration value="currency"/></xs:restriction></xs:simpleType><xs:complexType name="FieldRestriction">
+    <xs:choice>
+      <xs:element name="value-range" type="tns:ValueRange"/><xs:element name="value-set" type="tns:ValueSet"/></xs:choice></xs:complexType><xs:complexType name="ValueSet">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" name="entry" type="tns:ValueSetEntry"/></xs:sequence><xs:attribute default="true" name="restricted" type="xs:boolean" use="optional"/></xs:complexType><xs:complexType name="ValueSetEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="label" type="xs:string"/><xs:element name="value" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ValueRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="min" type="xs:string"/><xs:element minOccurs="0" name="max" type="xs:string"/><xs:element default="1" minOccurs="0" name="step" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ValueRestriction">
+    <xs:sequence>
+      <xs:element minOccurs="0" ref="tns:length"/><xs:element minOccurs="0" ref="tns:min-length"/><xs:element minOccurs="0" ref="tns:max-length"/><xs:element minOccurs="0" ref="tns:pattern"/></xs:sequence></xs:complexType><xs:complexType name="ValueAttrib">
+    <xs:complexContent>
+      <xs:extension base="xs:anyType">
+        <xs:attribute name="value" use="required"/><xs:attribute default="false" name="fixed" type="xs:boolean" use="optional"/></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="NumAttrib">
+    <xs:complexContent>
+      <xs:restriction base="tns:ValueAttrib">
+        <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/></xs:restriction></xs:complexContent></xs:complexType><xs:complexType name="Pattern">
+    <xs:complexContent>
+      <xs:restriction base="tns:ValueAttrib">
+        <xs:attribute name="value" type="xs:string" use="required"/></xs:restriction></xs:complexContent></xs:complexType><xs:element id="length" name="length" type="tns:NumAttrib"/><xs:element id="minLength" name="min-length" type="tns:NumAttrib"/><xs:element id="maxLength" name="max-length" type="tns:NumAttrib"/><xs:element id="pattern" name="pattern" type="tns:Pattern"/><xs:complexType name="operationType">
+    <xs:sequence>
+      <xs:element name="endpoint-location" type="xs:string"/></xs:sequence><xs:attribute name="name">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="testConnection"/><xs:enumeration value="listObjects"/><xs:enumeration value="describeObject"/></xs:restriction></xs:simpleType></xs:attribute></xs:complexType></xs:schema></include><include name="ci-connector-api.xsd" type="http://www.approuter.com/schemas/2003/1/xmlschema/"><xs:schema elementFormDefault="qualified" id="ci-cdk-api" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.0" targetNamespace="http://www.approuter.com/schemas/cdk/api/" version="1.0" xmlns:ccc="http://www.approuter.com/schemas/cdk/config/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:tns="http://www.approuter.com/schemas/cdk/api/" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://www.approuter.com/schemas/cdk/config/" schemaLocation="ci-connector-config.xsd"/><xs:annotation>
+    <xs:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="com.approuter.studio.connectors.cdk.api"/></jaxb:schemaBindings></xs:appinfo></xs:annotation><xs:complexType name="TestConnection">
+    <xs:sequence>
+       <xs:element name="endpoint" type="ccc:EndpointForm"/></xs:sequence></xs:complexType><xs:complexType name="TestConnectionResponse">
+    <xs:sequence>
+      <xs:element name="success" type="xs:boolean"/><xs:element name="message" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ListObjects">
+    <xs:sequence>
+      <xs:element name="endpoint" type="ccc:EndpointForm"/><xs:element minOccurs="1" name="operation" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ListObjectsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="1" name="objectType" type="tns:ObjectType"/></xs:sequence></xs:complexType><xs:complexType name="ObjectType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="label" type="xs:string" use="optional"/></xs:extension></xs:simpleContent></xs:complexType><xs:complexType name="DescribeObject">
+    <xs:sequence>
+      <xs:element minOccurs="1" name="endpoint" type="ccc:EndpointForm"/><xs:element minOccurs="1" name="objectType" type="xs:string"/><xs:element name="operation-name" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="DescribeObjectResponse">
+    <xs:sequence>
+        <xs:element name="object" type="ccc:ObjectDescriptor"/></xs:sequence><xs:attribute name="name" type="xs:string"/><xs:attribute name="description" type="xs:string"/><xs:attribute name="typeNS" type="xs:string"/><xs:attribute name="baseTypeNS" type="xs:string"/><xs:attribute name="baseType" type="xs:string"/></xs:complexType></xs:schema></include></document>

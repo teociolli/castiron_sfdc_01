@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document><main name="schema.xsd" type="http://www.approuter.com/schemas/2003/1/xmlschema/"><schema elementFormDefault="qualified" targetNamespace="http://www.example.org/NewXMLSchema" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.example.org/NewXMLSchema">
+
+
+    
+
+    <complexType name="product">
+    	<sequence>
+    		<element name="Id" type="string"/><element name="Name" type="string"/><element name="Piano_Commerciale__c" type="string"/><element name="Key_piano_commerciale__c" type="string"/><element name="Macroprodotto__c" type="string"/><element name="RecordType_developer_name__c" type="string"/></sequence></complexType><element name="Products" type="tns:productList"/><complexType name="productList">
+    	<sequence maxOccurs="unbounded" minOccurs="0">
+    		<element name="list" type="tns:product"/></sequence></complexType></schema></main></document>

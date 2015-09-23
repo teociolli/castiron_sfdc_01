@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><userScript xmlns="http://www.approuter.com/schemas/2003/1/UserCallouts/"><functionName>substringLeft</functionName><arguments><argument required="true" type="string" name="input"/><argument required="true" type="number" name="len"/></arguments><result type="string"/><body>return input.substring(0,len)</body></userScript>

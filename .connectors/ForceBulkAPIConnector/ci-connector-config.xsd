@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cast Iron Systems
+  Connector configuration schema. 
+  Copyright 2009 Cast Iron Systems, Inc.
+  
+  Author: David Keehn
+  Version 1.0
+-->
+<xs:schema id="ci-cdk-config" version="1.0"
+  targetNamespace="http://www.approuter.com/schemas/cdk/config/"
+  xmlns:tns="http://www.approuter.com/schemas/cdk/config/"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+  xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:extensionBindingPrefixes="xjc"
+  jaxb:version="2.0" elementFormDefault="qualified">
+
+  <xs:annotation>
+    <xs:appinfo>
+      <jaxb:schemaBindings>
+        <jaxb:package name="com.approuter.studio.connectors.cdk.config"/>
+      </jaxb:schemaBindings>
+      <jaxb:globalBindings>
+        <xjc:simple/>
+      </jaxb:globalBindings>
+    </xs:appinfo>
+  </xs:annotation>
+
+
+  <xs:element name="connectorConfiguration">
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Connector description -->
+        <xs:element name="description" type="xs:string"/>
+        <!-- Endpoint form definition -->
+        <xs:element name="endpoint" type="tns:EndpointForm"/>
+        <!-- Connector activities -->
+        <xs:element name="activity-group" type="tns:ActivityGroup"/>
+        <xs:element name="operations" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="operation" type="tns:operationType" minOccurs="0"
+                maxOccurs="unbounded"/>
+            </xs:sequence>
+            <!-- default endpoint location for those operations that do not define one or are not defined -->
+            <xs:attribute name="default-endpoint-location" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+      <!-- Internal name of the connector.  Do not change names between releases of the connector -->
+      <xs:attribute name="name" type="xs:NCName" use="required"/>
+      <!-- Readable label for connector -->
+      <xs:attribute name="label" type="xs:string" use="required"/>
+      <!-- Connection namespace.  Used to associate activities with endpoints within Studio -->
+      <xs:attribute name="connection-ns" type="xs:string" use="required"/>
+      <!-- Version of this connector -->
+      <xs:attribute name="version" type="xs:string" use="required"/>
+      <!-- release notes -->
+      <xs:attribute name="notes" type="xs:string"/>
+      <!-- release date -->
+      <xs:attribute name="release-date" type="xs:dateTime" use="optional"/>
+      <!-- General hint to consumer as to its classification -->
+      <xs:attribute name="category" type="tns:ConnectorCategory"/>
+    </xs:complexType>
+  </xs:element>
+
+
+  <!-- Endpoint form.  Test connection action required. -->
+  <xs:complexType name="EndpointForm">
+    <xs:complexContent>
+      <xs:extension base="tns:Form">
+        <xs:sequence>
+          <xs:element name="test-connection-action" type="tns:TestConnectionAction"/>
+          <!-- Connector description -->
+          <xs:element name="endpoint-description" type="xs:string"/>
+        </xs:sequence>
+        <!-- Used for Studio menu integration (e.g. Endpoints menu-item, default endpoint instance name) -->
+        <xs:attribute name="endpoint-name" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Form">
+    <xs:sequence>
+      <!-- Form fields -->
+      <xs:element name="field" type="tns:FormField" minOccurs="0" maxOccurs="unbounded"/>
+      <!-- Fields can be grouped -->
+      <xs:element name="field-group" type="tns:FieldGroup" minOccurs="0" maxOccurs="unbounded"/>
+      <!-- Form actions.   -->
+      <xs:element name="actions" type="tns:Actions" minOccurs="0" maxOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+  </xs:complexType>
+
+  <!-- Fields can be a member of a group -->
+  <xs:complexType name="FieldGroup">
+    <xs:sequence>
+      <xs:element name="field" type="tns:FormField" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="field-group" type="tns:FieldGroup" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+    <!-- Readable group label -->
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+    <!-- Predefined groups.  If specified, there is no need to specify label, groups, or fields.  If specified they will be ignored. -->
+    <xs:attribute name="type" use="optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="connection-timeout"/>
+          <xs:enumeration value="connection-proxy"/>
+          <!-- TBD others -->
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="FormField">
+    <xs:annotation>
+      <xs:appinfo>
+        <jaxb:bindings node="//xs:complexType[@name='FormField']">
+          <jaxb:class implClass="com.approuter.studio.connectors.cdk.config.ConnectorFormField"/>
+        </jaxb:bindings>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:FieldDescriptor">
+        <xs:sequence>
+          <!-- summary description text -->
+          <xs:element name="short-description" type="xs:string" minOccurs="0"/>
+          <!-- detailed description text -->
+          <xs:element name="long-description" type="xs:string" minOccurs="0"/>
+          <!-- hint text -->
+          <xs:element name="hint" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="Actions">
+    <xs:sequence>
+      <xs:element name="action" type="tns:Action" maxOccurs="unbounded"/>
+      <!-- summary description text -->
+      <xs:element name="short-description" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <xs:complexType name="Action">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="label" type="xs:string"/>
+        <!-- the operation that should be invoked in response to the action -->
+        <xs:attribute name="operation-name"/>
+        <!-- summary description text -->
+        <xs:attribute name="short-description" type="xs:string" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+
+  <xs:complexType name="TestConnectionAction">
+    <xs:simpleContent>
+      <xs:restriction base="tns:Action">
+        <xs:attribute name="operation-name" fixed="TestConnection"/>
+        <xs:attribute name="label" type="xs:string" fixed="Test Connection"/>
+      </xs:restriction>
+    </xs:simpleContent>
+  </xs:complexType>
+
+
+  <!-- predefined connector categories -->
+  <!-- used to indicate the enterprise solution type -->
+  <xs:simpleType name="ConnectorCategory">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRM"/>
+      <xs:enumeration value="SCM"/>
+      <xs:enumeration value="ERP"/>
+      <xs:enumeration value="ECM"/>
+      <xs:enumeration value="SFA"/>
+      <xs:enumeration value="BPM"/>
+      <xs:enumeration value="IBP"/>
+      <xs:enumeration value="ORM"/>
+      <xs:enumeration value="MIS"/>
+      <xs:enumeration value="SIS"/>
+      <xs:enumeration value="COM"/>
+      <xs:enumeration value="MOM"/>
+      <xs:enumeration value="PIM"/>
+      <xs:enumeration value="Database"/>
+      <!-- etc -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- activities -->
+  <xs:complexType name="ActivityGroup">
+    <xs:sequence>
+      <xs:element name="activity" type="tns:Activity" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <!-- this is the label of the group under which the activities will appear -->
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <!-- activity -->
+  <xs:complexType name="Activity">
+    <xs:sequence>
+      <!-- wsdl operation -->
+      <xs:element name="operation-name" type="xs:string"/>
+      <xs:element name="description" type="xs:string"/>
+      <xs:element name="task-list" type="tns:Tasks"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+    <!-- this is the label of the activity that appears under an activity group -->
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+  </xs:complexType>
+
+  <!-- activity tasks -->
+  <xs:complexType name="Tasks">
+    <xs:sequence>
+      <xs:element name="configure-task" type="tns:ConfigureTask"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- possible enhancement: determine "browsability" based on if input is an extension of abstract type.  -->
+  <xs:complexType name="ConfigureTask">
+    <xs:sequence>
+      <xs:element name="type" type="tns:ConfigurationType" default="browse"/>
+      <xs:element name="applies-to" type="tns:AppliesTo" minOccurs="0" default="inputs"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- browsable or not -->
+  <!-- possible enhancement: determine browsability based on if input is an extension of abstract type.  -->
+  <xs:simpleType name="ConfigurationType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="none"/>
+      <xs:enumeration value="browse"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- are the inputs or outputs configured? -->
+  <!-- possible enhancement: determine browsability based on if input is an extension of abstract type.  -->
+  <xs:simpleType name="AppliesTo">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inputs"/>
+      <xs:enumeration value="outputs"/>
+      <xs:enumeration value="both"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- ******************* -->
+  <!-- Descriptors...      -->
+
+  <xs:simpleType name="allNNI">
+   <xs:annotation><xs:documentation>
+    for maxOccurs</xs:documentation></xs:annotation>
+   <xs:union memberTypes="xs:nonNegativeInteger">
+    <xs:simpleType>
+     <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="unbounded"/>
+     </xs:restriction>
+    </xs:simpleType>
+   </xs:union>
+  </xs:simpleType>
+
+  <xs:attributeGroup name="counts">
+    <xs:attribute name="minCount" type="xs:nonNegativeInteger" use="optional" default="1"/>
+    <xs:attribute name="maxCount" type="tns:allNNI" use="optional" default="1"/>
+  </xs:attributeGroup>
+
+  <xs:complexType name="Descriptor" abstract="true">
+    <xs:sequence/>
+    <xs:attribute name="name" type="xs:NCName" use="required"/>
+    <!-- readable label text -->
+    <xs:attribute name="label" type="xs:string" use="optional"/>
+    <xs:attributeGroup ref="tns:counts"/>
+  </xs:complexType>
+
+  <!-- child nodes annotated with 'volatile' indicate that text node is set externally to the connector implementation (e.g. by end-user building a project that uses the connector) -->
+  <xs:complexType name="FieldDescriptor">
+    <xs:complexContent>
+      <xs:extension base="tns:Descriptor">
+        <xs:sequence>
+          <!-- field type (e.g. string, boolean, ...) -->
+          <xs:element name="type" type="tns:FieldType"/>
+          <!-- associated xsd type -->
+          <xs:element name="soap-type" type="tns:SoapType" minOccurs="0"/>
+          <!-- if there's a default for uninitialized fields -->
+          <xs:element name="default-value" type="xs:string" minOccurs="0"/>
+          <!-- if values have an associated format e.g. number formats etc -->
+          <xs:element name="format" type="tns:FieldFormat" minOccurs="0"/>
+          <!-- if possible values form a collection (e.g. range, set) -->
+          <xs:element name="field-restriction" type="tns:FieldRestriction" minOccurs="0"/>
+          <!-- if values are resticted to pattern -->
+          <xs:element name="value-restriction" type="tns:ValueRestriction" minOccurs="0"/>
+          <!-- volatile: current or set value. (e.g. "posted" value from endpoint panel)  -->
+          <xs:element name="value" type="xs:string" minOccurs="0">
+            <xs:annotation>
+              <xs:appinfo>volatile</xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+        <!--        
+        <xs:attribute name="readable" type="xs:boolean" use="optional" default="true"/>
+        <xs:attribute name="writable" type="xs:boolean" default="true" use="optional"/>
+        -->
+        <!-- can a configuration property be applied to this field? -->
+        <xs:attribute name="configurable" type="xs:boolean" default="false"/>
+        <xs:attribute name="used" type="xs:boolean" default="true">
+          <xs:annotation>
+            <xs:appinfo>volatile</xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- Descriptor allows consumers to obtain detailed object description.   For instance, this allows -->
+  <!-- Studio's UI generator to produce a user interface with various ui-component types and behaviors (in a consistent way.)  -->
+  <!-- Note: ObjectDescriptor is part of DescribeObjectResponse defined in ci-connector-api.xsd -->
+  <xs:complexType name="ObjectDescriptor">
+    <xs:complexContent>
+      <xs:extension base="tns:Descriptor">
+        <xs:sequence>
+          <xs:element name="field" type="tns:FieldDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element name="object" type="tns:ObjectDescriptor" minOccurs="0" maxOccurs="unbounded"
+          />
+        </xs:sequence>
+        <xs:attribute name="used" type="xs:boolean" default="true">
+          <xs:annotation>
+            <xs:appinfo>volatile</xs:appinfo>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- supported types -->
+  <xs:simpleType name="FieldType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="string"/>
+      <xs:enumeration value="base64"/>
+      <xs:enumeration value="boolean"/>
+      <xs:enumeration value="int"/>
+      <xs:enumeration value="decimal"/>
+      <xs:enumeration value="date"/>
+      <xs:enumeration value="dateTime"/>
+      <xs:enumeration value="anyType"/>
+      <!-- any of the above (e.g. string, int, etc) -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- cooresponding xsd type -->
+  <xs:simpleType name="SoapType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="xs:base64Binary"/>
+      <xs:enumeration value="xs:boolean"/>
+      <xs:enumeration value="xs:decimal"/>
+      <xs:enumeration value="xs:int"/>
+      <xs:enumeration value="xs:string"/>
+      <xs:enumeration value="xs:date"/>
+      <xs:enumeration value="xs:dateTime"/>
+      <xs:enumeration value="xs:anyType"/>
+      <!-- can be id, booolean, decimal, int, string, date, dateTime -->
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- supported type formats -->
+  <xs:simpleType name="FieldFormat">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="password"/>
+      <xs:enumeration value="percent"/>
+      <xs:enumeration value="phone"/>
+      <!--<xsd:enumeration value="date"/> date formats??? -->
+      <xs:enumeration value="url"/>
+      <xs:enumeration value="email"/>
+      <xs:enumeration value="currency"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- possible values form a well defined collection -->
+  <xs:complexType name="FieldRestriction">
+    <xs:choice>
+      <!-- value is restricted to a range of values -->
+      <xs:element name="value-range" type="tns:ValueRange"/>
+      <!-- value is restricted to a set of values -->
+      <xs:element name="value-set" type="tns:ValueSet"/>
+    </xs:choice>
+  </xs:complexType>
+
+  <!-- possible values form a set -->
+  <xs:complexType name="ValueSet">
+    <xs:sequence>
+      <xs:element name="entry" type="tns:ValueSetEntry" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <!-- is the set of values open or closed to additions -->
+    <xs:attribute name="restricted" type="xs:boolean" use="optional" default="true"/>
+  </xs:complexType>
+
+  <xs:complexType name="ValueSetEntry">
+    <xs:sequence>
+      <xs:element name="label" type="xs:string" minOccurs="0"/>
+      <!-- value must be parsable for specified FieldType -->
+      <xs:element name="value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- possible values are within a defined range -->
+  <xs:complexType name="ValueRange">
+    <xs:sequence>
+      <!-- min and max must be parsable for specified FieldType -->
+      <xs:element name="min" type="xs:string" minOccurs="0"/>
+      <xs:element name="max" type="xs:string" minOccurs="0"/>
+      <!-- e.g. for FieldType 'int' with min=0, max = 4, and step=2, the only allowed field values are 0, 2, and 4 -->
+      <xs:element name="step" type="xs:string" minOccurs="0" default="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- value is restricted in length or regular expression -->
+  <xs:complexType name="ValueRestriction">
+    <xs:sequence>
+      <xs:element ref="tns:length" minOccurs="0"/>
+      <xs:element ref="tns:min-length" minOccurs="0"/>
+      <xs:element ref="tns:max-length" minOccurs="0"/>
+      <xs:element ref="tns:pattern" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ValueAttrib">
+    <xs:complexContent>
+      <xs:extension base="xs:anyType">
+        <xs:attribute name="value" use="required"/>
+        <xs:attribute name="fixed" type="xs:boolean" use="optional" default="false"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="NumAttrib">
+    <xs:complexContent>
+      <xs:restriction base="tns:ValueAttrib">
+        <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <!-- values conform to a regular expression -->
+  <xs:complexType name="Pattern">
+    <xs:complexContent>
+      <xs:restriction base="tns:ValueAttrib">
+        <xs:attribute name="value" type="xs:string" use="required"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:element name="length" id="length" type="tns:NumAttrib"/>
+
+  <xs:element name="min-length" id="minLength" type="tns:NumAttrib"/>
+
+  <xs:element name="max-length" id="maxLength" type="tns:NumAttrib"/>
+
+  <xs:element name="pattern" id="pattern" type="tns:Pattern"/>
+
+
+  <!--       ...Descriptors -->
+  <!-- ******************** -->
+
+  <!-- operationType allows defining endpoint location on a per operations basis. -->
+  <xs:complexType name="operationType">
+    <xs:sequence>
+      <xs:element name="endpoint-location" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="name">
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="testConnection"/>
+          <xs:enumeration value="listObjects"/>
+          <xs:enumeration value="describeObject"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+
+</xs:schema>

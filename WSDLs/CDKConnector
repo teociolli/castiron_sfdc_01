@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document><main name="CDKConnector.wsdl" type="http://www.approuter.com/schemas/2003/1/wsdl/"><wsdl:definitions name="Connector" targetNamespace="http://www.approuter.com/connectors/wsdl" xmlns="" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.approuter.com/connectors/wsdl" xmlns:tns1="http://www.approuter.com/schemas/cdk/api/" xmlns:tns2="http://www.ibm.com/xmlns/prod/castiron/connector/servicenow" xmlns:tns3="http://www.ibm.com/xmlns/prod/castiron/connector/serviceNowFault" xmlns:tns4="http://www.approuter.com/schemas/cdk/config/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://www.approuter.com/schemas/cdk/api/" xmlns="http://www.approuter.com/schemas/cdk/api/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="ConnectionFields">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element maxOccurs="1" minOccurs="0" name="Host_Name" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="User_Name" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Password" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Select_For_OAuth_Authentication" type="xs:boolean"/><xs:element maxOccurs="1" minOccurs="0" name="OAuth_Access_Token" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="OAuth_Refresh_Token" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Application_Client_Id" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Application_Client_Secret" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Proxy_Host" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Proxy_Port" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Proxy_UserName" type="xs:string"/><xs:element maxOccurs="1" minOccurs="0" name="Proxy_Password" type="xs:string"/></xs:sequence></xs:complexType></xs:element></xs:schema><xsd:schema elementFormDefault="qualified" targetNamespace="http://www.ibm.com/xmlns/prod/castiron/connector/servicenow" xmlns:servicenow="http://www.ibm.com/xmlns/prod/castiron/connector/servicenow" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="Create">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="requestObject" type="servicenow:requestObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="CreateResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="createResponseObject" type="servicenow:createResponseObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="Update">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="requestObject" type="servicenow:requestObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="UpdateResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="updateResponseObject" type="servicenow:updateResponseObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="Retrieve">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="1" minOccurs="1" name="retrieveRequestObject" type="servicenow:retrieveRequestObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="RetrieveResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="retrieveResponseObject" type="servicenow:retrieveResponseObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="Delete">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="requestObject" type="servicenow:requestObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:element name="DeleteResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element maxOccurs="unbounded" minOccurs="1" name="deleteResponseObject" type="servicenow:deleteResponseObject"/></xsd:sequence></xsd:complexType></xsd:element><xsd:complexType name="requestObject"/><xsd:complexType name="retrieveRequestObject">
+        <xsd:sequence>
+            <xsd:element default="false" maxOccurs="1" minOccurs="1" name="is_all_records">
+                <xsd:simpleType>
+                    <xsd:restriction base="xsd:string">
+                        <xsd:enumeration value="true"/><xsd:enumeration value="false"/></xsd:restriction></xsd:simpleType></xsd:element><xsd:element maxOccurs="unbounded" minOccurs="0" name="sys_id" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="1" name="query_object">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element maxOccurs="1" minOccurs="0" name="sysparm_display_value" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="0" name="sysparm_exclude_reference_link">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="true"/><xsd:enumeration value="false"/></xsd:restriction></xsd:simpleType></xsd:element><xsd:element maxOccurs="1" minOccurs="0" name="sysparm_fields" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="0" name="sysparm_limit" type="xsd:int"/><xsd:element maxOccurs="1" minOccurs="0" name="sysparm_query" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="0" name="sysparm_view" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType><xsd:complexType name="createResponseObject">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="success" type="xsd:boolean"/><xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="0" name="sys_id" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="updateResponseObject">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="success" type="xsd:boolean"/><xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"/><xsd:element maxOccurs="1" minOccurs="0" name="sys_id" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="retrieveResponseObject">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="success" type="xsd:boolean"/><xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"/></xsd:sequence></xsd:complexType><xsd:complexType name="deleteResponseObject">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="success" type="xsd:boolean"/><xsd:element maxOccurs="1" minOccurs="1" name="message" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:schema><xsd:schema targetNamespace="http://www.ibm.com/xmlns/prod/castiron/connector/serviceNowFault" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:servicenow="http://www.ibm.com/xmlns/prod/castiron/connector/serviceNowFault" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="ServiceNowFault">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="FaultCode" type="xsd:string"/><xsd:element name="FaultMessage" type="xsd:string"/><xsd:element name="errorDetails">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="errorCode" type="xsd:string"/><xsd:element name="message" type="xsd:string"/></xsd:sequence></xsd:complexType></xsd:element></xsd:sequence></xsd:complexType></xsd:element></xsd:schema><xs:schema elementFormDefault="qualified" id="ci-cdk-api" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.0" targetNamespace="http://www.approuter.com/schemas/cdk/api/" version="1.0" xmlns:ccc="http://www.approuter.com/schemas/cdk/config/" xmlns:cdk_api0="http://www.approuter.com/schemas/cdk/api/" xmlns:cdk_tns="http://www.approuter.com/schemas/cdk/api/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import namespace="http://www.approuter.com/schemas/cdk/config/"/><xs:annotation>
+        <xs:appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:package name="com.approuter.studio.connectors.cdk.api"/></jaxb:schemaBindings></xs:appinfo></xs:annotation><xs:complexType name="TestConnection">
+        <xs:sequence>
+            <xs:element name="endpoint" type="ccc:EndpointForm"/></xs:sequence></xs:complexType><xs:complexType name="TestConnectionResponse">
+        <xs:sequence>
+            <xs:element name="success" type="xs:boolean"/><xs:element name="message" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ListObjects">
+        <xs:sequence>
+            <xs:element name="endpoint" type="ccc:EndpointForm"/><xs:element minOccurs="1" name="operation" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ListObjectsResponse">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="objectType" type="cdk_tns:ObjectType"/></xs:sequence></xs:complexType><xs:complexType name="ObjectType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="label" type="xs:string" use="optional"/></xs:extension></xs:simpleContent></xs:complexType><xs:complexType name="DescribeObject">
+        <xs:sequence>
+            <xs:element minOccurs="1" name="endpoint" type="ccc:EndpointForm"/><xs:element minOccurs="1" name="objectType" type="xs:string"/><xs:element name="operation-name" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="DescribeObjectResponse">
+        <xs:sequence>
+            <xs:element name="object" type="ccc:ObjectDescriptor"/><xs:element name="responseObject" type="ccc:ObjectDescriptor"/></xs:sequence><xs:attribute name="name" type="xs:string"/><xs:attribute name="description" type="xs:string"/><xs:attribute name="typeNS" type="xs:string"/><xs:attribute name="baseTypeNS" type="xs:string"/><xs:attribute name="baseType" type="xs:string"/></xs:complexType><xs:element name="TestConnection" type="cdk_api0:TestConnection"/><xs:element name="TestConnectionResponse" type="cdk_api0:TestConnectionResponse"/><xs:element name="ListObjects" type="cdk_api0:ListObjects"/><xs:element name="ListObjectsResponse" type="cdk_api0:ListObjectsResponse"/><xs:element name="DescribeObject" type="cdk_api0:DescribeObject"/><xs:element name="DescribeObjectResponse" type="cdk_api0:DescribeObjectResponse"/></xs:schema><xs:schema elementFormDefault="qualified" id="ci-cdk-config" jaxb:extensionBindingPrefixes="xjc" jaxb:version="2.0" targetNamespace="http://www.approuter.com/schemas/cdk/config/" version="1.0" xmlns:cdk_api0="http://www.approuter.com/schemas/cdk/api/" xmlns:cdk_tns="http://www.approuter.com/schemas/cdk/config/" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:annotation>
+        <xs:appinfo>
+            <jaxb:schemaBindings>
+                <jaxb:package name="com.approuter.studio.connectors.cdk.config"/></jaxb:schemaBindings><jaxb:globalBindings>
+                <xjc:simple/></jaxb:globalBindings></xs:appinfo></xs:annotation><xs:element name="connectorConfiguration">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="description" type="xs:string"/><xs:element name="endpoint" type="cdk_tns:EndpointForm"/><xs:element name="activity-group" type="cdk_tns:ActivityGroup"/><xs:element minOccurs="0" name="operations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" minOccurs="0" name="operation" type="cdk_tns:operationType"/></xs:sequence><xs:attribute name="default-endpoint-location" type="xs:string" use="optional"/><xs:attribute name="default-starter-location" type="xs:string" use="optional"/></xs:complexType></xs:element></xs:sequence><xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="label" type="xs:string" use="required"/><xs:attribute name="connection-ns" type="xs:string" use="required"/><xs:attribute name="version" type="xs:string" use="required"/><xs:attribute name="notes" type="xs:string"/><xs:attribute name="release-date" type="xs:dateTime" use="optional"/><xs:attribute name="category" type="cdk_tns:ConnectorCategory"/></xs:complexType></xs:element><xs:complexType name="EndpointForm">
+        <xs:complexContent>
+            <xs:extension base="cdk_tns:Form">
+                <xs:sequence>
+                    <xs:element name="test-connection-action" type="cdk_tns:TestConnectionAction"/><xs:element name="endpoint-description" type="xs:string"/></xs:sequence><xs:attribute name="endpoint-name" type="xs:string" use="required"/></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="Form">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="cdk_tns:FormField"/><xs:element maxOccurs="unbounded" minOccurs="0" name="field-group" type="cdk_tns:FieldGroup"/><xs:element maxOccurs="1" minOccurs="0" name="actions" type="cdk_tns:Actions"/></xs:sequence><xs:attribute name="name" type="xs:string" use="required"/></xs:complexType><xs:complexType name="FieldGroup">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="cdk_tns:FormField"/><xs:element maxOccurs="unbounded" minOccurs="0" name="field-group" type="cdk_tns:FieldGroup"/></xs:sequence><xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/><xs:attribute name="type" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="connection-timeout"/><xs:enumeration value="connection-proxy"/></xs:restriction></xs:simpleType></xs:attribute></xs:complexType><xs:complexType name="FormField">
+        <xs:annotation>
+            <xs:appinfo>
+                <jaxb:bindings node="//xs:complexType[@name='FormField']">
+                    <jaxb:class implClass="com.ibm.wsci.cdk.config.ConnectorFormField"/></jaxb:bindings></xs:appinfo></xs:annotation><xs:complexContent>
+            <xs:extension base="cdk_tns:FieldDescriptor">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="short-description" type="xs:string"/><xs:element minOccurs="0" name="long-description" type="xs:string"/><xs:element minOccurs="0" name="hint" type="xs:string"/></xs:sequence></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="Actions">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="action" type="cdk_tns:Action"/><xs:element minOccurs="0" name="short-description" type="xs:string"/></xs:sequence><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Action">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="label" type="xs:string"/><xs:attribute name="operation-name"/><xs:attribute name="short-description" type="xs:string" use="required"/></xs:extension></xs:simpleContent></xs:complexType><xs:complexType name="TestConnectionAction">
+        <xs:simpleContent>
+            <xs:restriction base="cdk_tns:Action">
+                <xs:attribute fixed="TestConnection" name="operation-name"/><xs:attribute fixed="Test Connection" name="label" type="xs:string"/></xs:restriction></xs:simpleContent></xs:complexType><xs:simpleType name="ConnectorCategory">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="CRM"/><xs:enumeration value="SCM"/><xs:enumeration value="ERP"/><xs:enumeration value="ECM"/><xs:enumeration value="SFA"/><xs:enumeration value="BPM"/><xs:enumeration value="IBP"/><xs:enumeration value="ORM"/><xs:enumeration value="MIS"/><xs:enumeration value="SIS"/><xs:enumeration value="COM"/><xs:enumeration value="MOM"/><xs:enumeration value="PIM"/><xs:enumeration value="Database"/></xs:restriction></xs:simpleType><xs:complexType name="ActivityGroup">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="1" name="activity" type="cdk_tns:Activity"/></xs:sequence><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Activity">
+        <xs:sequence>
+            <xs:element name="operation-name" type="xs:string"/><xs:element name="description" type="xs:string"/><xs:element name="task-list" type="cdk_tns:Tasks"/></xs:sequence><xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="type" type="xs:string" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/></xs:complexType><xs:complexType name="Tasks">
+        <xs:sequence>
+            <xs:element name="configure-task" type="cdk_tns:ConfigureTask"/></xs:sequence></xs:complexType><xs:complexType name="ConfigureTask">
+        <xs:sequence>
+            <xs:element default="browse" name="type" type="cdk_tns:ConfigurationType"/><xs:element default="inputs" minOccurs="0" name="applies-to" type="cdk_tns:AppliesTo"/><xs:element default="none" minOccurs="0" name="static-substitution" type="cdk_tns:StaticSubstitution"/></xs:sequence></xs:complexType><xs:simpleType name="ConfigurationType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="none"/><xs:enumeration value="browse"/></xs:restriction></xs:simpleType><xs:simpleType name="AppliesToValue">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="inputs"/><xs:enumeration value="outputs"/><xs:enumeration value="both"/></xs:restriction></xs:simpleType><xs:complexType name="AppliesTo">
+        <xs:simpleContent>
+            <xs:extension base="cdk_tns:AppliesToValue">
+                <xs:attribute name="inputSubstitutionPath" type="xs:string" use="optional"/><xs:attribute name="outputSubstitutionPath" type="xs:string" use="optional"/></xs:extension></xs:simpleContent></xs:complexType><xs:simpleType name="StaticSubstitution">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="none"/><xs:enumeration value="inputs"/><xs:enumeration value="outputs"/><xs:enumeration value="both"/></xs:restriction></xs:simpleType><xs:simpleType name="allNNI">
+        <xs:annotation>
+            <xs:documentation>
+						for maxOccurs</xs:documentation></xs:annotation><xs:union memberTypes="xs:nonNegativeInteger">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="unbounded"/></xs:restriction></xs:simpleType></xs:union></xs:simpleType><xs:attributeGroup name="counts">
+        <xs:attribute default="1" name="minCount" type="xs:nonNegativeInteger" use="optional"/><xs:attribute default="1" name="maxCount" type="cdk_tns:allNNI" use="optional"/></xs:attributeGroup><xs:complexType abstract="true" name="Descriptor">
+        <xs:sequence/><xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/><xs:attribute name="namespace" type="xs:anyURI" use="optional"/><xs:attribute name="order" type="xs:int" use="optional"/><xs:attributeGroup ref="cdk_tns:counts"/></xs:complexType><xs:complexType name="AttributeDescriptor">
+        <xs:sequence>
+            <xs:element name="type" type="cdk_tns:AttributeType"/><xs:element minOccurs="0" name="soap-type" type="cdk_tns:SoapType"/><xs:element minOccurs="0" name="default-value" type="xs:string"/><xs:element minOccurs="0" name="use" type="xs:string"/><xs:element minOccurs="0" name="attribute-restriction" type="cdk_tns:AttributeRestriction"/><xs:element minOccurs="0" name="value-restriction" type="cdk_tns:ValueRestriction"/></xs:sequence><xs:attribute name="name" type="xs:string" use="required"/><xs:attribute name="label" type="xs:string" use="optional"/><xs:attribute default="true" name="used" type="xs:boolean">
+            <xs:annotation>
+                <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:attribute></xs:complexType><xs:complexType name="FieldDescriptor">
+        <xs:complexContent>
+            <xs:extension base="cdk_tns:Descriptor">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="attribute" type="cdk_tns:AttributeDescriptor"/><xs:element name="type" type="cdk_tns:FieldType"/><xs:element minOccurs="0" name="soap-type" type="cdk_tns:SoapType"/><xs:element minOccurs="0" name="default-value" type="xs:string"/><xs:element minOccurs="0" name="format" type="cdk_tns:FieldFormat"/><xs:element minOccurs="0" name="field-restriction" type="cdk_tns:FieldRestriction"/><xs:element minOccurs="0" name="value-restriction" type="cdk_tns:ValueRestriction"/><xs:element minOccurs="0" name="value" type="xs:string">
+                        <xs:annotation>
+                            <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:element></xs:sequence><xs:attribute default="false" name="configurable" type="xs:boolean"/><xs:attribute default="true" name="used" type="xs:boolean">
+                    <xs:annotation>
+                        <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:attribute></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="ObjectDescriptor">
+        <xs:complexContent>
+            <xs:extension base="cdk_tns:Descriptor">
+                <xs:sequence>
+                    <xs:element maxOccurs="unbounded" minOccurs="0" name="attribute" type="cdk_tns:AttributeDescriptor"/><xs:element maxOccurs="unbounded" minOccurs="0" name="field" type="cdk_tns:FieldDescriptor"/><xs:element maxOccurs="unbounded" minOccurs="0" name="object" type="cdk_tns:ObjectDescriptor"/></xs:sequence><xs:attribute default="true" name="used" type="xs:boolean">
+                    <xs:annotation>
+                        <xs:appinfo>volatile</xs:appinfo></xs:annotation></xs:attribute></xs:extension></xs:complexContent></xs:complexType><xs:simpleType name="FieldType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="string"/><xs:enumeration value="base64"/><xs:enumeration value="base64Binary"/><xs:enumeration value="boolean"/><xs:enumeration value="int"/><xs:enumeration value="decimal"/><xs:enumeration value="date"/><xs:enumeration value="dateTime"/><xs:enumeration value="anyType"/></xs:restriction></xs:simpleType><xs:simpleType name="AttributeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="string"/><xs:enumeration value="base64Binary"/><xs:enumeration value="boolean"/><xs:enumeration value="int"/><xs:enumeration value="decimal"/><xs:enumeration value="date"/><xs:enumeration value="dateTime"/><xs:enumeration value="anyType"/></xs:restriction></xs:simpleType><xs:simpleType name="SoapType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="xs:base64Binary"/><xs:enumeration value="xs:boolean"/><xs:enumeration value="xs:decimal"/><xs:enumeration value="xs:int"/><xs:enumeration value="xs:string"/><xs:enumeration value="xs:date"/><xs:enumeration value="xs:dateTime"/><xs:enumeration value="xs:anyType"/></xs:restriction></xs:simpleType><xs:simpleType name="FieldFormat">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="password"/><xs:enumeration value="percent"/><xs:enumeration value="phone"/><xs:enumeration value="url"/><xs:enumeration value="email"/><xs:enumeration value="currency"/></xs:restriction></xs:simpleType><xs:complexType name="FieldRestriction">
+        <xs:choice>
+            <xs:element name="value-range" type="cdk_tns:ValueRange"/><xs:element name="value-set" type="cdk_tns:ValueSet"/></xs:choice></xs:complexType><xs:complexType name="AttributeRestriction">
+        <xs:choice>
+            <xs:element name="value-range" type="cdk_tns:ValueRange"/><xs:element name="value-set" type="cdk_tns:ValueSet"/></xs:choice></xs:complexType><xs:complexType name="ValueSet">
+        <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="entry" type="cdk_tns:ValueSetEntry"/></xs:sequence><xs:attribute default="true" name="restricted" type="xs:boolean" use="optional"/></xs:complexType><xs:complexType name="ValueSetEntry">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="label" type="xs:string"/><xs:element name="value" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ValueRange">
+        <xs:sequence>
+            <xs:element minOccurs="0" name="min" type="xs:string"/><xs:element minOccurs="0" name="max" type="xs:string"/><xs:element default="1" minOccurs="0" name="step" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="ValueRestriction">
+        <xs:sequence>
+            <xs:element minOccurs="0" ref="cdk_tns:length"/><xs:element minOccurs="0" ref="cdk_tns:min-length"/><xs:element minOccurs="0" ref="cdk_tns:max-length"/><xs:element minOccurs="0" ref="cdk_tns:pattern"/></xs:sequence></xs:complexType><xs:complexType name="ValueAttrib">
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:attribute name="value" use="required"/><xs:attribute default="false" name="fixed" type="xs:boolean" use="optional"/></xs:extension></xs:complexContent></xs:complexType><xs:complexType name="NumAttrib">
+        <xs:complexContent>
+            <xs:restriction base="cdk_tns:ValueAttrib">
+                <xs:attribute name="value" type="xs:nonNegativeInteger" use="required"/></xs:restriction></xs:complexContent></xs:complexType><xs:complexType name="Pattern">
+        <xs:complexContent>
+            <xs:restriction base="cdk_tns:ValueAttrib">
+                <xs:attribute name="value" type="xs:string" use="required"/></xs:restriction></xs:complexContent></xs:complexType><xs:element id="length" name="length" type="cdk_tns:NumAttrib"/><xs:element id="minLength" name="min-length" type="cdk_tns:NumAttrib"/><xs:element id="maxLength" name="max-length" type="cdk_tns:NumAttrib"/><xs:element id="pattern" name="pattern" type="cdk_tns:Pattern"/><xs:complexType name="operationType">
+        <xs:sequence>
+            <xs:element name="endpoint-location" type="xs:string"/></xs:sequence><xs:attribute name="name">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="testConnection"/><xs:enumeration value="listObjects"/><xs:enumeration value="describeObject"/></xs:restriction></xs:simpleType></xs:attribute></xs:complexType></xs:schema></wsdl:types><wsdl:message name="ServiceNowFault">
+    <wsdl:part element="tns3:ServiceNowFault" name="fault">
+    </wsdl:part></wsdl:message><wsdl:message name="DeleteResponse">
+    <wsdl:part element="tns2:DeleteResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="CreateRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="UpdateRequest">
+    <wsdl:part element="tns2:Update" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="DeleteRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="CreateResponse">
+    <wsdl:part element="tns2:CreateResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="ListObjectsRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="CreateRequest">
+    <wsdl:part element="tns2:Create" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="UpdateRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="DescribeObjectResponse">
+    <wsdl:part element="tns1:DescribeObjectResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="DescribeObjectRequest">
+    <wsdl:part element="tns1:DescribeObject" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="TestConnectionResponse">
+    <wsdl:part element="tns1:TestConnectionResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="UpdateResponse">
+    <wsdl:part element="tns2:UpdateResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="TestConnectionRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="ListObjectsResponse">
+    <wsdl:part element="tns1:ListObjectsResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="RetrieveRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:message name="DeleteRequest">
+    <wsdl:part element="tns2:Delete" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="RetrieveResponse">
+    <wsdl:part element="tns2:RetrieveResponse" name="response">
+    </wsdl:part></wsdl:message><wsdl:message name="TestConnectionRequest">
+    <wsdl:part element="tns1:TestConnection" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="ListObjectsRequest">
+    <wsdl:part element="tns1:ListObjects" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="RetrieveRequest">
+    <wsdl:part element="tns2:Retrieve" name="request">
+    </wsdl:part></wsdl:message><wsdl:message name="DescribeObjectRequestHeader">
+    <wsdl:part element="tns1:ConnectionFields" name="request_header">
+    </wsdl:part></wsdl:message><wsdl:portType name="ConnectorPort">
+    <wsdl:operation name="Create">
+      <wsdl:input message="tns:CreateRequest">
+    </wsdl:input><wsdl:output message="tns:CreateResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateRequest">
+    </wsdl:input><wsdl:output message="tns:UpdateResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="Retrieve">
+      <wsdl:input message="tns:RetrieveRequest">
+    </wsdl:input><wsdl:output message="tns:RetrieveResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteRequest">
+    </wsdl:input><wsdl:output message="tns:DeleteResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="TestConnection">
+      <wsdl:input message="tns:TestConnectionRequest">
+    </wsdl:input><wsdl:output message="tns:TestConnectionResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="ListObjects">
+      <wsdl:input message="tns:ListObjectsRequest">
+    </wsdl:input><wsdl:output message="tns:ListObjectsResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation><wsdl:operation name="DescribeObject">
+      <wsdl:input message="tns:DescribeObjectRequest">
+    </wsdl:input><wsdl:output message="tns:DescribeObjectResponse">
+    </wsdl:output><wsdl:fault message="tns:ServiceNowFault" name="ServiceNowFault">
+    </wsdl:fault></wsdl:operation></wsdl:portType><wsdl:binding name="ConnectorBinding" type="tns:ConnectorPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/><wsdl:operation name="Create">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:CreateRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="Update">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:UpdateRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="Retrieve">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:RetrieveRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="Delete">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:DeleteRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="TestConnection">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:TestConnectionRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="ListObjects">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:ListObjectsRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation><wsdl:operation name="DescribeObject">
+      <soap:operation soapAction=""/><wsdl:input>
+        <soap:body use="literal"/><soap:header message="tns:DescribeObjectRequestHeader" part="request_header" use="literal">
+        </soap:header></wsdl:input><wsdl:output>
+        <soap:body use="literal"/></wsdl:output><wsdl:fault name="ServiceNowFault">
+        <soap:fault name="ServiceNowFault" use="literal"/></wsdl:fault></wsdl:operation></wsdl:binding><wsdl:service name="ConnectorService">
+    <wsdl:port binding="tns:ConnectorBinding" name="ConnectorPort">
+      <soap:address location="http://place/holder"/></wsdl:port></wsdl:service></wsdl:definitions></main></document>

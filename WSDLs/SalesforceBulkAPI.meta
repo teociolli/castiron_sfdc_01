@@ -1,0 +1,10 @@
+<com.approuter.studio.repository.model.EntryMetaData>
+  <__metaData>
+    <properties/>
+  </__metaData>
+  <__namespace>http://www.approuter.com/schemas/2003/1/wsdl/</__namespace>
+  <__version>wsdl:definitions:http://www.approuter.com/connectors/wsdl</__version>
+  <__valid>true</__valid>
+  <__hidden>true</__hidden>
+  <__guid>4DD1AE44A1683E66A3AEC58FF619A23D5344630E6810858C3F9E175C759D73BB</__guid>
+</com.approuter.studio.repository.model.EntryMetaData>

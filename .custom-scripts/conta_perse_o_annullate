@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><userScript xmlns="http://www.approuter.com/schemas/2003/1/UserCallouts/"><functionName>conta_perse_o_annullate</functionName><arguments><argument required="true" type="number" name="num_oppty"/><argument required="true" type="string" name="oggi"/><argument required="true" type="string" name="data"/><argument required="true" type="boolean" name="won"/><argument required="true" type="boolean" name="closed"/></arguments><result type="number"/><body>if (data.substring(0,4)==oggi.substring(0,4) &amp;&amp; closed == true &amp;&amp; won == false)
+  num_oppty = num_oppty + 1;
+
+return num_oppty;</body></userScript>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><userScript xmlns="http://www.approuter.com/schemas/2003/1/UserCallouts/"><functionName>conta_eventi_congiunti_pianificati</functionName><arguments><argument required="true" type="number" name="num_eventi"/><argument required="true" type="string" name="oggi"/><argument required="true" type="string" name="data"/><argument required="true" type="string" name="relazioni"/><argument required="true" type="string" name="prodotti"/></arguments><result type="number"/><body>if (data.substring(0,4)==oggi.substring(0,4) &amp;&amp; data &gt;= oggi &amp;&amp; relazioni == 'Si' &amp;&amp; prodotti != 'Nessun Desk coinvolto')
+  num_eventi = num_eventi + 1;
+
+return num_eventi;</body></userScript>

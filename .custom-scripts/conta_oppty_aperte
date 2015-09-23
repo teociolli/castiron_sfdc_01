@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><userScript xmlns="http://www.approuter.com/schemas/2003/1/UserCallouts/"><functionName>conta_oppty_aperte</functionName><arguments><argument required="true" type="number" name="num_oppty"/><argument required="true" type="string" name="oggi"/><argument required="true" type="string" name="data"/><argument required="true" type="boolean" name="closed"/><argument required="true" type="boolean" name="won"/></arguments><result type="number"/><body>if (data.substring(0,4)==oggi.substring(0,4) &amp;&amp; closed == false &amp;&amp; won == false)
+  num_oppty = num_oppty + 1;
+
+return num_oppty;</body></userScript>

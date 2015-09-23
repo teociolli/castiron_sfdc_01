@@ -1,0 +1,177 @@
+<!--
+  Cast Iron Systems
+  Force.com Bulk API connector configuration.
+  Copyright 2010 Cast Iron Systems, Inc.
+  Version 1.0
+
+	Licensed Materials - Property of IBM Restricted Materials of IBM
+	92358CX, 92358DX, 92358FX, 92358GX, 92358HX, 92358JX, D0H3PLL, D0H44LL, D0H3VLL, D0H47LL 
+	© Copyright IBM Corp. 2003, 2013 All Rights Reserved.
+
+	US Government Users Restricted Rights - Use, duplication or disclosure restricted by GSA 
+	ADP Schedule Contract with IBM Corp.
+-->
+<con:connectorConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.approuter.com/schemas/cdk/config/ ci-connector-config.xsd"
+ xmlns:con="http://www.approuter.com/schemas/cdk/config/"
+ category="CRM"
+ name="ForceBulkAPIConnector"
+ label="Force.com Bulk API"
+ version="2.1"
+ release-date="2014-02-03T11:40:52+05:30" 
+ notes="Salesforce Bulk API Connector version 2.1
+New Features:				  
+1) Added currency update to support Salesforce.com API version 28.0.
+2) Provided support for LookUp relationships which can be used to map External ID values of parent object.
+Issues Fixed :
+1) The issue for encrypted text datatype is fixed.
+2) The issue for GeoLocation datatype is fixed.
+3) The issue for PickList datatype with no default picklist values, is fixed.
+Salesforce Bulk API Connector version 2.0.0.1
+Get Batch Results activity issue fixed for CSV batch.
+Salesforce Bulk API Connector version 2.0
+Performance improvements in the connector.
+ Salesforce Bulk API Connector version 1.2.0.1
+APAR fix LI77092
+Salesforce Bulk API Connector version 1.2
+Added currency update to support Salesforce.com API version 25.0. 
+ Salesforce Bulk API Connector version 1.1.0.1 
+ New Features:
+1)Added new feature to support Salesforce Bulk Query .
+2)Added Proxy Connection support to Bulk API Connector.
+3)Added feature to associate the batch results to be grouped by individual batch id . That would help tracking failed jobs in a batch easier.
+Issues Fixed :
+1)Bulk Api getBatchResults activity returning results in reverse order , this issue is fixed .
+"
+ connection-ns="http://www.approuter.com/schemas/module/salesforcebulkapi/connection/1.0">
+  <con:description>Force.com Bulk API Connector. For Connector upgrade instructions please contact IBM Support.</con:description>
+  <con:endpoint name="ForceBulkAPIEndPoint" endpoint-name="Force.comBulkAPI">
+    <con:field-group name="connectionDetails" label="Connection Details">
+      <con:field name="userName" label="User Name" configurable="true">
+        <con:type>string</con:type>
+        <con:value-restriction>
+          <con:min-length value="1"/>
+        </con:value-restriction>
+      </con:field>
+
+      <con:field name="password" label="Password" configurable="true">
+        <con:type>string</con:type>
+        <con:format>password</con:format>
+        <con:value-restriction>
+          <con:min-length value="1"/>
+        </con:value-restriction>
+        <con:hint>Remember to append your security token to your password</con:hint>
+      </con:field>
+
+      <con:field name="uri" label="URI" configurable="true">
+        <con:type>string</con:type>
+        <con:default-value>https://login.salesforce.com/services/Soap/u/28.0</con:default-value>
+		<con:hint>This is a default value. You can change the version as per your need</con:hint>
+      </con:field>
+
+    </con:field-group>
+        <con:field-group name="ProxyInfo" label="Proxy Connection Details">
+         <con:field name="proxy_host" label="proxy_host" configurable="true">
+            <con:type>string</con:type>
+            <con:default-value></con:default-value>
+          </con:field>
+          <con:field name="proxy_port" label="proxy_port" configurable="true">
+            <con:type>string</con:type>
+            <con:default-value></con:default-value>
+          </con:field>
+          <con:field name="proxy_username" label="proxy_username" configurable="true">
+            <con:type>string</con:type>
+            <con:default-value></con:default-value>
+          </con:field>
+          <con:field name="proxy_password" label="proxy_password" configurable="true">
+            <con:type>string</con:type>
+           <con:format>password</con:format>
+          </con:field>
+          
+          
+          
+          
+    </con:field-group>
+    <con:test-connection-action short-description="Tests the connection to the Force.com Bulk API endpoint"/>
+    <con:endpoint-description>Force.com Bulk API Endpoint</con:endpoint-description>
+  </con:endpoint>
+
+  <con:activity-group>
+    <con:activity name="createBatchInsert" label="Batch Insert">
+      <con:operation-name>createBatchInsert</con:operation-name>
+      <con:description>
+        Creates a batch insert job.  The value of the job ID returned in the 'id' element is used in subsequent operations (e.g. Get Batch Results).  The activity splits it's input into 10,000 record batches.   Consider this when noting API usage limits in Force.com Bulk API Developer's Guide.
+      </con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>browse</con:type>
+          <con:applies-to>inputs</con:applies-to>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+    <con:activity name="createBatchUpdate" label="Batch Update">
+      <con:operation-name>createBatchUpdate</con:operation-name>
+      <con:description>
+        Creates a batch update job.  The value of the job ID returned in the 'id' element is used in subsequent operations (e.g. Get Batch Results).  The activity splits it's input into 10,000 record batches.   Consider this when noting API usage limits in Force.com Bulk API Developer's Guide.
+      </con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>browse</con:type>
+          <con:applies-to>inputs</con:applies-to>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+    <con:activity name="createBatchUpsert" label="Batch Upsert">
+      <con:operation-name>createBatchUpsert</con:operation-name>
+      <con:description>
+        Creates a batch upsert job.  The value of the job ID returned in the 'id' element is used in subsequent operations (e.g. Get Batch Results).  The activity splits it's input into 10,000 record batches.   Consider this when noting API usage limits in Force.com Bulk API Developer's Guide.
+      </con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>browse</con:type>
+          <con:applies-to>inputs</con:applies-to>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+    <con:activity name="createBatchDelete" label="Batch Delete">
+      <con:operation-name>createBatchDelete</con:operation-name>
+      <con:description>
+        Creates a batch delete job.  The value of the job ID returned in the 'id' element is used in subsequent operations (e.g. Get Batch Results).  The activity splits it's input into 10,000 record batches.   Consider this when noting API usage limits in Force.com Bulk API Developer's Guide.
+      </con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>none</con:type>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+    <con:activity name="batchStatus" label="Get Batch Status">
+      <con:operation-name>getBatchStatus</con:operation-name>
+      <con:description>Gets information about an existing batch job.  There may be one or more batchInfo objects returned depending on the number of records processed by the associated job.  Each batchInfo object contains the state of the batch and informs you whether you should proceed to get the results or whether you need to wait or fix errors related to your request.</con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>none</con:type>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+    <con:activity name="batchResults" label="Get Batch Results">
+      <con:operation-name>getBatchResults</con:operation-name>
+      <con:description>Gets the results of a batch job that has completed processing.</con:description>
+      <con:task-list>
+        <con:configure-task>
+          <con:type>none</con:type>
+        </con:configure-task>
+      </con:task-list>
+    </con:activity>
+        <con:activity name="bulkQuery" label="Bulk Query">
+          <con:operation-name>bulkQuery</con:operation-name>
+          <con:description>Gets the results of a bulk query that has completed processing.</con:description>
+          <con:task-list>
+            <con:configure-task>
+              <con:type>none</con:type>
+            </con:configure-task>
+          </con:task-list>
+    </con:activity>
+  </con:activity-group>
+  <con:operations default-endpoint-location="local:///ForceBulkAPIConnector/1.0"/>
+  <!--<con:operations default-endpoint-location="http://IBM-72HK79M66S2:8080/ForceBulkAPIConnector/1.0"/>-->
+</con:connectorConfiguration>

@@ -1,0 +1,46 @@
+ 				  Salesforce Bulk API Connector version 2.1
+New Features:				  
+1) Added currency update to support Salesforce.com API version 28.0.
+2) Provided support for LookUp relationships which can be used to map External ID values of parent object.
+
+Issues Fixed :
+1) The issue for encrypted text datatype is fixed.
+2) The issue for GeoLocation datatype is fixed.
+3) The issue for PickList datatype with no default picklist values, is fixed.
+
+				  
+				  Salesforce Bulk API Connector version 2.0.0.1
+1) Get Batch Results activity issue fixed for CSV batch.
+				 
+				 
+				 Salesforce Bulk API Connector version 2.0
+1) Performance improvements in the connector.
+				
+				
+				Salesforce Bulk API Connector version 1.2.0.1
+1) APAR fix LI77092
+				
+				
+				Salesforce Bulk API Connector version 1.2
+1) Added currency update to support Salesforce.com API version 25.0.
+				
+				
+				Salesforce Bulk API Connector version 1.0.1 
+New Features:
+1)Added new feature to support Salesforce Bulk Query .
+2)Added Proxy Connection support to Bulk API Connector.
+3)Added feature to associate the batch results to be grouped by individual batch id . That would help tracking failed jobs in a batch easier.
+
+Issues Fixed :
+1)Bulk Api getBatchResults activity returning results in reverse order , this issue is fixed .
+
+
+ 				Salesforce Bulk API Connector version 1.0.2
+
+ Salesforce BulkAPI Connector version 1.0.2 would resolve following defects:
+
+1)Unable to extract loop variable in studio for bulk api getBatchResults activity . 
+2)Modify bulk api batch size to 10,000.
+3)Salesforce activity setting requires default value to be exact max length .
+4)Proxy support of bulk api connector 
+5)Support for adding 'null' values using bulk api . To set data value as null , set field value as '#N/A' which connector would set as null  in salesforce.
