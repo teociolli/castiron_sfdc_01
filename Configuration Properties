@@ -2,7 +2,7 @@
   <propertyList>
     <com.approuter.studio.configprops.ConfigurationProperty>
       <name>sfdc_user</name>
-      <value>user@salesforce.dev</value>
+      <value>sfdc_user@salesforce.dev</value>
       <type>String</type>
       <hidden>false</hidden>
       <internal>false</internal>
